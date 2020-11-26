@@ -1,6 +1,20 @@
 # Smart Care Prep Documents
 
-# Specification Condensed
+
+
+## Table of Contents
+
+1. [Specification Condensed](#Specification Condensed)
+2. [Functional Requirements](#functional requirements)
+3. [Non Functional Requirements](# Non Functional Requirements)
+4. [Actors](# actors)
+5. [User Stories](# User Stories)
+6. [Feature List](# feature list)
+7. [Navigation](# Navigation)
+8. [Member Preferences](#member preferences)
+9. [Links](# links)
+
+# Preamble
 
 ### Context
 
@@ -14,7 +28,7 @@
 > * Set time consultations.
 > * Prescribed or forwarded to specialist doctors
 
-
+# Specification Condensed
 
 ### Project Spec
 
@@ -51,13 +65,48 @@ Address lookup can be handled through google maps.
 
 Filtering chapter 13 of HF book for showing data required to user authentication level.
 
+# Actors
 
+Business owner
 
-# Min requirements
+> Are the primary client, will benefit from the system however is unlikely to personally use it.
+> Therefore the main deliverable to the client will be the result that it has on the business.
+> The clients in this case are Mehmet and Chris and are required to be contacted formally if we're enquiring in the role of developer and client communications.
 
-The Web Application is expected to meet the following requirements:
+Admin
 
- 
+> Oversees the management of staff accounts.
+> Can view timetabling but not individual data of patients.
+> Is able to generate documents required for reports within the business including charges and turnover.
+
+Doctor/Nurse
+
+> Fulfil the same role in terms of the system, at least within the prototype as actors.
+> 
+
+Patient
+
+> Interacts with the system in order to meet needs to book appointments and subscriptions.
+> Normal access with no higher authorisation.
+
+DB Handler
+
+SmartWare Company (us)
+
+> Developing this application prototype.
+> Ideally easily maintainable code that could be handed to another team after prototyping is complete or even later on down the line.
+
+Google Calendar API
+
+Google Maps API
+
+# User Stories
+
+As *x* I want to *y* so I can *z*.
+
+# Requirements Copied From Spec
+
+## The Web Application is expected to meet the following requirements:
 
 1)   At least the following pages are expected to be included:
 
@@ -89,43 +138,135 @@ f)   A Dashboard page for “admin” users that lets to process the operations 
 
 
 
-# List of Actors
-
-Business owner
-
-Admin
-
-Doctor
-
-Nurse
-
-Patient
-
-DB Handler
-
-SmartWare Company (us)
+# Functional Requirements
 
 
 
-# User Stories
-
-As *x* I want to *y* so I can *z*.
-
-
+# Non Functional Requirements
 
 # Feature List
+
+
 
 ## Feature X: Feature Title
 
 Description of Feature
 
-MVC requirements
-
-Prerequisites
-
 Inputs
 
 Returns
+
+Additional details
+
+
+
+## Feature 1: Login Function
+
+### Description
+
+The login function is used to gain access to the application.
+Also used with the session feature to create cookies which will control access to different parts of the application based on role.
+
+### Input
+
+* Username (textbox)
+* Password (textbox)
+* Submit (Button)
+
+### Returns 
+
+* Role of user details entered.
+* Or displays message stating incorrect username/password.
+
+### Additional Details
+
+Will be accessed from the 'home' page.
+
+
+
+## Feature 2: Sign-up Function
+
+Accessed via home view
+
+Considering the SQL supplied for the database these details will be required for signup.
+
+```sql 
+INSERT INTO CLIENTS (CNAME, CADDRESS, CTYPE, UNAME) VALUES ('Prince Hassan', 'Non-UK street, Non-UK Town, Non_UK', 'private', 'princehassan')
+```
+
+Input: Full Name, Address, Type of Care (NHS or Private), Username, Password (All textbox).
+
+
+
+
+## Feature 3: Dashboards
+
+
+
+## Feature 4: Sessions
+
+
+
+## Feature 5: Patient Timetables
+
+
+
+## Feature 6: Issue Prescription
+
+
+
+## Feature 7: Patient Booking
+
+
+
+## Feature 8: Approve Staff User
+
+
+
+## Feature 9: Produce Weekly Documents
+
+
+
+## Feature 11: Assign Payments
+
+
+
+# App Navigation
+
+
+
+```mermaid
+graph LR
+a[Home] --> b1(Login/Signup)
+	
+	b1 --> c1(Patient Dashboard)
+		c1 --> pd1(View Appointments)
+		c1 --> pd2(Book Appointment)
+		c1 --> pd3(Request Repeating Prescription)
+		
+	b1 --> c2(Staff Dashboard)
+		c2 --> sd1(View Patient Timetables)
+		c2 --> sd2(Issue Prescription)
+		
+	b1 --> c3(Admin Dashboard)
+		c3 --> ad1(Produce Weekly Documents)
+		c3 --> ad2(Approve Staff User)
+		c3 --> ad3(View Patient Timetables)
+```
+
+# Member Preferences
+
+Preferences out of list of - Model, View, Controller, Testing, Documentation.
+
+* Carl - 
+
+* Dan - View, Testing, Documentation
+
+* Frank - 
+
+* Reece - 
+
+* Sam - 
 
 
 
@@ -133,9 +274,13 @@ Returns
 
 GitHub: [YatesyTea/esd8SmartCare: Smart care systems project for UWE 3rd year Enterprise Systems Development module. (github.com)](https://github.com/YatesyTea/esd8SmartCare)
 
-Trackers: https://docs.google.com/spreadsheets/d/19khCFj7zJaRq_iWB3Ul_akeA11pgPlihyJvwMop_d0c/edit?usp=sharing
+This Document: [esd8SmartCare/prepDoc.md at main · YatesyTea/esd8SmartCare (github.com)](https://github.com/YatesyTea/esd8SmartCare/blob/main/prepDoc.md)
+
+Trackers: [Google Sheets Tracker](https://docs.google.com/spreadsheets/d/19khCFj7zJaRq_iWB3Ul_akeA11pgPlihyJvwMop_d0c/edit?usp=sharing)
 
 Sprint Kanban's: [Projects · YatesyTea/esd8SmartCare (github.com)](https://github.com/YatesyTea/esd8SmartCare/projects)
+
+[Back to Top](#smart care prep documents)
 
 
 
