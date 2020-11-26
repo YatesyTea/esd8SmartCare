@@ -265,6 +265,9 @@ This feature will link up to the google calendar API, further details are TBD.
 
 ### Description
 
+Doctor only is able to issue prescription. 
+Which will be assigned to a given client.
+
 ### Input 
 
 ### Returns
@@ -309,7 +312,7 @@ This feature will link up to the google calendar API, further details are TBD.
 
 
 
-## Feature 10: Assign Payments
+## Feature 10: Generate Invoice
 
 ### Description
 
