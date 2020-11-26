@@ -6,7 +6,7 @@
 
 1. [Specification Condensed](#specification-condensed)
 2. [Functional Requirements](#functional-requirements)
-3. [Non Functional Requirements](# non-functional-requirements)
+3. [Non Functional Requirements](#non-functional-requirements)
 4. [Actors](#actors)
 5. [User Stories](#user-stories)
 6. [Feature List](#feature-list)
