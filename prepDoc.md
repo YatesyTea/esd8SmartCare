@@ -4,15 +4,15 @@
 
 ## Table of Contents
 
-1. [Specification Condensed](#Specification Condensed)
-2. [Functional Requirements](#functional requirements)
-3. [Non Functional Requirements](# Non Functional Requirements)
-4. [Actors](# actors)
-5. [User Stories](# User Stories)
-6. [Feature List](# feature list)
-7. [Navigation](# Navigation)
-8. [Member Preferences](#member preferences)
-9. [Links](# links)
+1. [Specification Condensed](#specification-condensed)
+2. [Functional Requirements](#functional-requirements)
+3. [Non Functional Requirements](# non-functional-requirements)
+4. [Actors](#actors)
+5. [User Stories](#user-stories)
+6. [Feature List](#feature-list)
+7. [Navigation](#navigation)
+8. [Member Preferences](#member-preferences)
+9. [Links](#links)
 
 # Preamble
 
