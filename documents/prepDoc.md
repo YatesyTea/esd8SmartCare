@@ -104,6 +104,18 @@ Google Maps API
 
 As *x* I want to *y* so I can *z*.
 
+## Patient
+
+As a Patient I want to login, so I can access other functions.
+
+## Doctor/Nurse
+
+
+
+## Admin
+
+
+
 # Requirements Copied From Spec
 
 ## The Web Application is expected to meet the following requirements:
@@ -198,8 +210,26 @@ Input: Full Name, Address, Type of Care (NHS or Private), Username, Password (Al
 
 
 
-
 ## Feature 3: Dashboards
+
+### Description
+
+Dashboards are the main access point for all of the features post-login.
+The access will be controlled by what role you are within the system.
+
+### Input
+
+Role of the user that is currently logged in.
+User input to whatever buttons are being displayed.
+
+### Returns
+
+Displays the features that are available to the user and allows access.
+When user input is taken takes the user to the feature that has been requested.
+
+### Additional Details
+
+Requires communication from the model prior to loading the page, if attempted to access without login details, then will display a blank page.
 
 
 
@@ -207,29 +237,87 @@ Input: Full Name, Address, Type of Care (NHS or Private), Username, Password (Al
 
 
 
-## Feature 5: Patient Timetables
+## Feature 5: View Client Timetables
+
+### Description
+
+Only accessible for Admin, Doctor, and Nurse displays the timetable of all clients for a given time period.
+
+### Input 
+
+* Date to View
+* NHS, or Private
+* Slot
+* Employee
+* Client
+
+### Returns
+
+List of client appointments that meet the criteria.
+
+#### Additional Details
+
+This feature will link up to the google calendar API, further details are TBD.
 
 
 
 ## Feature 6: Issue Prescription
 
+### Description
+
+### Input 
+
+### Returns
+
+#### Additional Details
 
 
-## Feature 7: Patient Booking
+
+## Feature 7: Client Booking
+
+### Description
+
+### Input 
+
+### Returns
+
+#### Additional Details
 
 
 
 ## Feature 8: Approve Staff User
 
+### Description
+
+### Input 
+
+### Returns
+
+#### Additional Details
+
 
 
 ## Feature 9: Produce Weekly Documents
 
+### Description
+
+### Input 
+
+### Returns
+
+#### Additional Details
 
 
-## Feature 11: Assign Payments
 
+## Feature 10: Assign Payments
 
+### Description
+
+### Input 
+
+### Returns
+
+#### Additional Details
 
 # App Navigation
 
@@ -239,19 +327,23 @@ Input: Full Name, Address, Type of Care (NHS or Private), Username, Password (Al
 graph LR
 a[Home] --> b1(Login/Signup)
 	
-	b1 --> c1(Patient Dashboard)
+	b1 --> c1(Client Dashboard)
 		c1 --> pd1(View Appointments)
 		c1 --> pd2(Book Appointment)
 		c1 --> pd3(Request Repeating Prescription)
 		
-	b1 --> c2(Staff Dashboard)
-		c2 --> sd1(View Patient Timetables)
+	b1 --> c2(Doctor Dashboard)
 		c2 --> sd2(Issue Prescription)
+		c2 --> sd1(View Client Timetables)
+
+		
+	b1 --> c4(Nurse Dashboard)
+		c4 --> sd1(View Client Timetables)
 		
 	b1 --> c3(Admin Dashboard)
 		c3 --> ad1(Produce Weekly Documents)
 		c3 --> ad2(Approve Staff User)
-		c3 --> ad3(View Patient Timetables)
+		c3 --> sd1(View Client Timetables)
 ```
 
 # Member Preferences
