@@ -312,8 +312,8 @@ Client is able to book an appointment with a Doctor, which will be displayed in 
 * Requested Doctor
 
 ### Returns
-Confirmation of Successful booking
-List of available appointment slots
+Confirmation of Successful booking.
+List of available appointment slots.
 
 #### Additional Details
 This feature will link up to the google calendar API, further details are TBD.
