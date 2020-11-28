@@ -263,9 +263,7 @@ Requires communication from the model prior to loading the page, if attempted to
 Sessions are used to store data across page requests, as HTTP does not record any information from one page request to another. Allowing for the ability hold information/attributes between requests until user, in this case (Doctor, Patient, Nurse) has logged out.
 
 ### Input
-
 ### Returns
-
 
 
 ## Feature 5: View Client Timetables
@@ -364,10 +362,17 @@ Document/Report displaying the relevant information gathered over the week.
 ## Feature 10: Generate Invoice
 
 ### Description
+Produce an invoice after each surgery. Invoice is a bill.
 
 ### Input 
+* Patient Name/ID
+* Surgery Type
+* Doctor Name/ID
+* Date
+* Cost
 
 ### Returns
+A bill providing containing the information above.
 
 #### Additional Details
 
