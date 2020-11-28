@@ -341,7 +341,7 @@ Admin users must approve of new doctors or nurses that have attempted to sign-up
 Confirmation of account creation. (Button?, Checkbox?)
 
 ### Returns
-Confirmation of account creation (Button?, Checkbox?). Create Dashboard for the account?
+Account information is added to the database and user will be able to log-in. Create Dashboard for the account?
 #### Additional Details
 
 
