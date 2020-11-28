@@ -349,10 +349,13 @@ Account information is added to the database and user will be able to log-in. Cr
 ## Feature 9: Produce Weekly Documents
 
 ### Description
+Admin needs to produce weekly documents consisting of the weekly turnover, private payments and charges set out to NHS.
 
 ### Input 
+Data gathered regarding the factors above (Turnover, payments, charges).
 
 ### Returns
+Document/Report displaying the relevant information gathered over the week.
 
 #### Additional Details
 
