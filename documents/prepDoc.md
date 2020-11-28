@@ -300,7 +300,7 @@ Confirmation of Successful booking
 List of available appointment slots
 
 #### Additional Details
-
+This feature will link up to the google calendar API, further details are TBD.
 
 
 ## Feature 8: Approve Staff User
