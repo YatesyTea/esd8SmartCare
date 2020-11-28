@@ -7,6 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import static javax.ws.rs.core.Response.status;
+
 
 
 public class usersBean {
@@ -42,4 +44,28 @@ public class usersBean {
         }//try
         return sb.toString();
     }  
+    public static boolean checkLogin(String username, String password){
+        boolean valid = false;
+        try {
+            Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "username", "password");
+            
+            PreparedStatement ps = con.prepareStatement("SELECT * from USERNAME.USERS WHERE uname=? and passwd=? and roles=?");
+            ps.setString(1, username);
+            ps.setString(2, password);        
+            
+            ResultSet rs = ps.executeQuery();
+            valid = rs.next();
+            
+        }
+        catch (Exception e){
+            System.out.print(e);
+        }
+        return valid;
+        
+    }
+    
+    
+    
+    
+    
 }

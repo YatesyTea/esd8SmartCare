@@ -14,10 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.usersBean;
 
-/**
- *
- * @author samue
- */
+
 public class usersServlet extends HttpServlet {
 
     /**
@@ -34,20 +31,21 @@ public class usersServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
       usersBean ub = new usersBean();
 
-        String n = request.getParameter("username");
+        String u = request.getParameter("username");
         String p = request.getParameter("password");
         String r = request.getParameter("roles");
+        
         //print data to form from database eg all employees
         String s = ub.doQuery("");
 
-//        if (usersBean.validate(n, p, r)) {
-//            request.setAttribute("usersData", s);
-//            RequestDispatcher view = request.getRequestDispatcher("results.jsp");
-//            view.forward(request, response);
-//        } else {
-//            RequestDispatcher view = request.getRequestDispatcher("index.html");
-//            view.forward(request, response);
-//        }
+       if (usersBean.checkLogin(u, p)) {
+           request.setAttribute("usersData", s);
+         RequestDispatcher view = request.getRequestDispatcher("results.jsp");
+           view.forward(request, response);
+       } else {
+           RequestDispatcher view = request.getRequestDispatcher("index.html");
+           view.forward(request, response);
+       }
     
     request.setAttribute("usersData", s);
         RequestDispatcher view = request.getRequestDispatcher("results.jsp");
