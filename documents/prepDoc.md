@@ -164,6 +164,14 @@ f)   A Dashboard page for “admin” users that lets to process the operations 
 
 # Non Functional Requirements
 
+* Navigation through pages should be smooth.
+* There should be a shortcut back to homepage or dashboard from every page.
+* Sessions should time out after 5 minutes.
+
+# Unsure of Requirement Category
+* System should produce an invoice following each surgery
+* System should calculate peridoic turnovers e.g.daily, weekly, monthly.
+
 # Feature List
 
 
