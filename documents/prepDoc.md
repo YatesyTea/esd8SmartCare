@@ -328,11 +328,13 @@ This feature will link up to the google calendar API, further details are TBD.
 ## Feature 8: Approve Staff User
 
 ### Description
+Admin users must approve of new doctors or nurses that have attempted to sign-up to the system.
 
 ### Input 
+Confirmation of account creation. (Button?, Checkbox?)
 
 ### Returns
-
+Confirmation of account creation (Button?, Checkbox?). Create Dashboard for the account?
 #### Additional Details
 
 
