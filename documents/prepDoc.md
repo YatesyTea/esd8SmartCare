@@ -152,6 +152,14 @@ f)   A Dashboard page for “admin” users that lets to process the operations 
 
 # Functional Requirements
 
+* System can only be accessed upon logging in.	
+* User able to confirm user type and action ahead on homepage.
+* Doctors and nurses are able to view all daily patients timetabled.
+* Doctors are able to issue a perscription for a patient after a consultation or surgery.
+* Patients are able to input a time, date and specified doctor to book an appointment online.
+* Patients are able to request re-issue of perscription.
+* Admin needs to be able to verify sign-ups for doctors and nurses.
+* Create a session after upon user login
 
 
 # Non Functional Requirements
