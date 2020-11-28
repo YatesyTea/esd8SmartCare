@@ -293,8 +293,14 @@ Doctor only is able to issue prescription.
 Which will be assigned to a given client.
 
 ### Input 
+* Name/Type of Prescription
+* Patient 
+* Issue Date
+* Dosage
 
 ### Returns
+Confirmation of prescription allocation.
+Patient notified of prescription.
 
 #### Additional Details
 
