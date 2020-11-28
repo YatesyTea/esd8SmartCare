@@ -106,14 +106,21 @@ As *x* I want to *y* so I can *z*.
 
 ## Patient
 
-As a Patient I want to login, so I can access other functions.
+* As a Patient I want to login/signup, so that I can access the functions of the system.
+* As a Patient I want to book an appointment with a doctor/nurse so that my medical issue can be resolved.
+* As a Patient I want to be able to request a repeat prescription so that I don’t run out of my medication.
+
 
 ## Doctor/Nurse
 
+* As a Doctor/Nurse I want to view the timetable of patient appointments so that I can organise my daily schedule.
+* As a Doctor/Nurse I want to issue a prescription to a patient so that the patient is able to get the medication they need.
 
 
 ## Admin
 
+* As an Admin I want to view new user requests so that new employees can be given access the system.
+* As an Admin I want to produce weekly documents so that the company can keep track of its turnover.
 
 
 # Requirements Copied From Spec
