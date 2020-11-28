@@ -167,6 +167,8 @@ f)   A Dashboard page for “admin” users that lets to process the operations 
 * Patients are able to request re-issue of perscription.
 * Admin needs to be able to verify sign-ups for doctors and nurses.
 * Create a session after upon user login
+* System needs to produce an invoice following each surgery
+* System needs to calculate peridoic turnovers e.g.daily, weekly, monthly.
 
 
 # Non Functional Requirements
@@ -174,10 +176,6 @@ f)   A Dashboard page for “admin” users that lets to process the operations 
 * Navigation through pages should be smooth.
 * There should be a shortcut back to homepage or dashboard from every page.
 * Sessions should time out after 5 minutes.
-
-# Unsure of Requirement Category
-* System should produce an invoice following each surgery
-* System should calculate peridoic turnovers e.g.daily, weekly, monthly.
 
 # Feature List
 
