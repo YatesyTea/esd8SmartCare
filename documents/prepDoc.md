@@ -235,6 +235,14 @@ Requires communication from the model prior to loading the page, if attempted to
 
 ## Feature 4: Sessions
 
+### Description
+
+Sessions are used to store data across page requests, as HTTP does not record any information from one page request to another. Allowing for the ability hold information/attributes between requests until user, in this case (Doctor, Patient, Nurse) has logged out.
+
+### Input
+
+### Returns
+
 
 
 ## Feature 5: View Client Timetables
@@ -280,9 +288,16 @@ Which will be assigned to a given client.
 
 ### Description
 
+Client is able to book an appointment with a Doctor, which will be displayed in the daily patients timetabled for doctors and nurses to view.
+
 ### Input 
+* Date and Time
+* Patient Information 
+* Requested Doctor
 
 ### Returns
+Confirmation of Successful booking
+List of available appointment slots
 
 #### Additional Details
 
