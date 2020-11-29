@@ -405,15 +405,97 @@ a[Home] --> b1(Login/Signup)
 
 Preferences out of list of - Model, View, Controller, Testing, Documentation.
 
-* Carl - 
+* Carl - View
 
 * Dan - View, Testing, Documentation
 
-* Frank - 
+* Frank - Controller, View, Documentation, Testing
 
-* Reece - 
+* Reece - Model, Controller
 
-* Sam - 
+* Sam - Model, Controller, Testing
+
+
+
+# Database Initialisation and Table Creation
+
+Create Database under the services tab.
+
+![image-20201129210956973](prepDoc.assets/javaDBCreate1.png)
+
+Fill in the popup following image below. (Password being admin)
+
+![image-20201129211151734](prepDoc.assets/createDB1.png)
+
+Click 'Execute Command'
+
+![image-20201129211428256](prepDoc.assets/selectDB.png)
+
+Execute the below code in that window
+
+```sql
+create table users(
+	uname varchar(20) primary key,
+	passwd varchar(20),
+	roles varchar(10)
+);
+
+create table clients(
+	cID int not null primary key
+            generated always as identity (start with 1, increment by 1), 
+	cName varchar(50),
+	cAddress varchar(100),
+	cType varchar(10),
+	uName varchar(20) references users(uname)
+);
+
+create table employee(
+	eID int not null primary key
+            generated always as identity (start with 1, increment by 1), 
+	eName varchar(50),
+	eAddress varchar(100),
+	uName varchar(20) references users(uname)
+);
+
+create table operations(
+    oID int not null primary key
+            generated always as identity (start with 1, increment by 1), 
+    eID int references employee(eID),
+    cID int references clients(cID),
+    oDate date,
+    oTime time,
+    nSlot int,
+    charge float
+);
+
+
+create table booking_slots(
+    sID int not null primary key
+            generated always as identity (start with 1, increment by 1),
+    eID int references employee(eID),
+    cID int references clients(cID),
+    sDate date,
+    sTime time
+);
+
+-- If you want to populate the database here are some samples provided by Mehmet
+
+-- User Samples
+INSERT INTO USERS (UNAME, PASSWD, "ROLES") VALUES ('test', 'test', 'doctor');
+INSERT INTO USERS (UNAME, PASSWD, "ROLES") VALUES ('eaydin', '12345me', 'nurse');
+INSERT INTO USERS (UNAME, PASSWD, "ROLES") VALUES ('caidan', '5432@10', 'client');
+INSERT INTO USERS (UNAME, PASSWD, "ROLES") VALUES ('princehassan', 'prince_passwd', 'client');
+INSERT INTO USERS (UNAME, PASSWD, "ROLES") VALUES ('admin', 'admin_passwd', 'admin');
+
+-- Employee Samples
+INSERT INTO EMPLOYEE (ENAME, EADDRESS, UNAME) VALUES ('Mehmet Aydin', 'Mehmets Address, London, NW4 0BH', 'meaydin');
+INSERT INTO EMPLOYEE (ENAME, EADDRESS, UNAME) VALUES ('Emin Aydin', 'Emiin''s Address, Bristol, BS16', 'eaydin');
+
+-- Client Samples
+INSERT INTO CLIENTS (CNAME, CADDRESS, CTYPE, UNAME) VALUES ('Charly Aidan', '14 King Street, Aberdeen, AB24 1BR', 'NHS', 'caidan');
+INSERT INTO CLIENTS (CNAME, CADDRESS, CTYPE, UNAME) VALUES ('Prince Hassan', 'Non-UK street, Non-UK Town, Non_UK', 'private', 'princehassan');
+
+```
 
 
 
