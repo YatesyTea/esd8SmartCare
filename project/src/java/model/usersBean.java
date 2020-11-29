@@ -31,8 +31,7 @@ public class usersBean {
             rs = state.executeQuery("SELECT * FROM ADMINISTRATOR.USERS");
 
             while (rs.next()) {
-                sb.append(rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3));
-                sb.append("\n<br>");
+                sb.append( rs.getString(3));
                 System.out.println("rs.setstring() output: " + rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3));
             }
             rs.close();
@@ -52,7 +51,7 @@ public class usersBean {
             PreparedStatement ps = con.prepareStatement("SELECT * from USERNAME.USERS WHERE uname=? and passwd=? and roles=?");
             ps.setString(1, username);
             ps.setString(2, password);        
-            
+      
             ResultSet rs = ps.executeQuery();
             valid = rs.next();
             
