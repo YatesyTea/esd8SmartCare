@@ -12,7 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.usersBean;
+import model.loginBean;
 
 
 public class usersServlet extends HttpServlet {
@@ -29,28 +29,32 @@ public class usersServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-      usersBean ub = new usersBean();
+      loginBean lb = new loginBean();    //call loginbean class
 
-        String u = request.getParameter("username");
+        String u = request.getParameter("username");    //get the entered login information 
         String p = request.getParameter("password");
         
         
-        //print data to form from database eg all employees
-        String a = ub.doQuery("");
+       
+        String a = lb.doQuery("");      //get the login role
 
-       if (usersBean.checkLogin(u, p)) {
+       if (loginBean.checkLogin(u, p)) { //check if user name and password is valid
            
+           //if valid check the persons role and display relevent view
                    if ("admin".equals(a)){
                     RequestDispatcher view = request.getRequestDispatcher("adminLogin.jsp");
                     view.forward(request, response);
                    }else if ("nurse".equals(a)){
                      RequestDispatcher view = request.getRequestDispatcher("nurseLogin.jsp");
                      view.forward(request, response);
+                     }else if ("client".equals(a)){
+                     RequestDispatcher view = request.getRequestDispatcher("clientLogin.jsp");
+                     view.forward(request, response);
                    }else{
                     RequestDispatcher view = request.getRequestDispatcher("doctorLogin.jsp");
                      view.forward(request, response);
                    }  
-           
+           //if invalid go back to login screen
        } else {
            RequestDispatcher view = request.getRequestDispatcher("index.html");
            view.forward(request, response);
