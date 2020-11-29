@@ -106,14 +106,21 @@ As *x* I want to *y* so I can *z*.
 
 ## Patient
 
-As a Patient I want to login, so I can access other functions.
+* As a Patient I want to login/signup, so that I can access the functions of the system.
+* As a Patient I want to book an appointment with a doctor/nurse so that my medical issue can be resolved.
+* As a Patient I want to be able to request a repeat prescription so that I don’t run out of my medication.
+
 
 ## Doctor/Nurse
 
+* As a Doctor/Nurse I want to view the timetable of patient appointments so that I can organise my daily schedule.
+* As a Doctor/Nurse I want to issue a prescription to a patient so that the patient is able to get the medication they need.
 
 
 ## Admin
 
+* As an Admin I want to view new user requests so that new employees can be given access the system.
+* As an Admin I want to produce weekly documents so that the company can keep track of its turnover.
 
 
 # Requirements Copied From Spec
@@ -152,9 +159,23 @@ f)   A Dashboard page for “admin” users that lets to process the operations 
 
 # Functional Requirements
 
+* System can only be accessed upon logging in.	
+* User able to confirm user type and action ahead on homepage.
+* Doctors and nurses are able to view all daily patients timetabled.
+* Doctors are able to issue a perscription for a patient after a consultation or surgery.
+* Patients are able to input a time, date and specified doctor to book an appointment online.
+* Patients are able to request re-issue of perscription.
+* Admin needs to be able to verify sign-ups for doctors and nurses.
+* Create a session after upon user login
+* System needs to produce an invoice following each surgery
+* System needs to calculate peridoic turnovers e.g.daily, weekly, monthly.
 
 
 # Non Functional Requirements
+
+* Navigation through pages should be smooth.
+* There should be a shortcut back to homepage or dashboard from every page.
+* Sessions should time out after 5 minutes.
 
 # Feature List
 
@@ -240,9 +261,7 @@ Requires communication from the model prior to loading the page, if attempted to
 Sessions are used to store data across page requests, as HTTP does not record any information from one page request to another. Allowing for the ability hold information/attributes between requests until user, in this case (Doctor, Patient, Nurse) has logged out.
 
 ### Input
-
 ### Returns
-
 
 
 ## Feature 5: View Client Timetables
@@ -277,8 +296,14 @@ Doctor only is able to issue prescription.
 Which will be assigned to a given client.
 
 ### Input 
+* Name/Type of Prescription
+* Patient 
+* Issue Date
+* Dosage
 
 ### Returns
+Confirmation of prescription allocation.
+Patient notified of prescription.
 
 #### Additional Details
 
@@ -296,8 +321,8 @@ Client is able to book an appointment with a Doctor, which will be displayed in 
 * Requested Doctor
 
 ### Returns
-Confirmation of Successful booking
-List of available appointment slots
+Confirmation of Successful booking.
+List of available appointment slots.
 
 #### Additional Details
 This feature will link up to the google calendar API, further details are TBD.
@@ -306,11 +331,13 @@ This feature will link up to the google calendar API, further details are TBD.
 ## Feature 8: Approve Staff User
 
 ### Description
+Admin users must approve of new doctors or nurses that have attempted to sign-up to the system.
 
 ### Input 
+Confirmation of account creation. (Button?, Checkbox?)
 
 ### Returns
-
+Account information is added to the database and user will be able to log-in. Create Dashboard for the account?
 #### Additional Details
 
 
@@ -318,10 +345,13 @@ This feature will link up to the google calendar API, further details are TBD.
 ## Feature 9: Produce Weekly Documents
 
 ### Description
+Admin needs to produce weekly documents consisting of the weekly turnover, private payments and charges set out to NHS.
 
 ### Input 
+Data gathered regarding the factors above (Turnover, payments, charges).
 
 ### Returns
+Document/Report displaying the relevant information gathered over the week.
 
 #### Additional Details
 
@@ -330,10 +360,17 @@ This feature will link up to the google calendar API, further details are TBD.
 ## Feature 10: Generate Invoice
 
 ### Description
+Produce an invoice after each surgery. Invoice is a bill.
 
 ### Input 
+* Patient Name/ID
+* Surgery Type
+* Doctor Name/ID
+* Date
+* Cost
 
 ### Returns
+A bill providing containing the information above.
 
 #### Additional Details
 
