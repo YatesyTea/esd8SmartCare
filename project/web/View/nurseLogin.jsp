@@ -1,6 +1,6 @@
 <%-- 
-    Document   : doctorLogin
-    Created on : 28-Nov-2020, 16:07:04
+    Document   : nurseLogin
+    Created on : 28-Nov-2020, 17:31:31
     Author     : samue
 --%>
 
@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Welcome doctor</h1>
+        <h1>Welcome nurse</h1>
     </body>
 </html>
