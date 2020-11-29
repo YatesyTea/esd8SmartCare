@@ -12,7 +12,8 @@
 6. [Feature List](#feature-list)
 7. [Navigation](#navigation)
 8. [Member Preferences](#member-preferences)
-9. [Links](#links)
+9. [Database Initialisation and Table Creation](#Database-Initialisation-and-Table-Creation)
+10. [Links](#links)
 
 # Preamble
 
