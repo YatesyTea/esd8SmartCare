@@ -52,6 +52,8 @@ public class usersBean {
         
         int flag = 0;
         try{
+            con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
+            
             //Check if user already exists in db
             String query = "SELECT * FROM USERS WHERE UNAME='" + data[0].trim() + "'";
             state = con.createStatement();
@@ -71,6 +73,7 @@ public class usersBean {
             }
             
             state.close();
+            con.close();
         } catch (SQLException e) {
             System.err.println("Error: " + e);
 
