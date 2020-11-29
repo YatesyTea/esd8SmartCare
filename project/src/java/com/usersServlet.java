@@ -36,18 +36,18 @@ public class usersServlet extends HttpServlet {
         String r = request.getParameter("roles");
         
         //print data to form from database eg all employees
-        String s = ub.doQuery("");
+        String a = ub.doQuery("");
 
        if (usersBean.checkLogin(u, p)) {
-           request.setAttribute("usersData", s);
-         RequestDispatcher view = request.getRequestDispatcher("results.jsp");
+           request.setAttribute("usersData", a);
+         RequestDispatcher view = request.getRequestDispatcher("adminLogin.jsp");
            view.forward(request, response);
        } else {
            RequestDispatcher view = request.getRequestDispatcher("index.html");
            view.forward(request, response);
        }
     
-    request.setAttribute("usersData", s);
+    request.setAttribute("usersData", a);
         RequestDispatcher view = request.getRequestDispatcher("results.jsp");
         view.forward(request, response);
     }
