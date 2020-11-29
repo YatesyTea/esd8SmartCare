@@ -65,7 +65,7 @@ public class usersBean {
                 rs.close();
                 
                 //Format user data
-                query = "INSERT INTO USERS VALUES(" + data[0].trim() + "," + data[1].trim() + "," + data[2].trim() + ")";
+                query = "INSERT INTO USERS VALUES('" + data[0].trim() + "','" + data[1].trim() + "','" + data[2].trim() + "')";
                 state = con.createStatement();
                 //Insert
                 flag = state.executeUpdate(query);
