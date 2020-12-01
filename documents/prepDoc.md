@@ -438,7 +438,7 @@ Execute the below code in that window
 create table users(
 	uname varchar(20) primary key,
 	passwd varchar(20),
-	roles varchar(10)
+	role varchar(10)
 );
 
 create table clients(
