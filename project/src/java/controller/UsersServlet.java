@@ -56,7 +56,7 @@ public class UsersServlet extends HttpServlet {
                    }  
            //if invalid go back to login screen
        } else {
-           RequestDispatcher view = request.getRequestDispatcher("index.html");
+           RequestDispatcher view = request.getRequestDispatcher("index.jsp");
            view.forward(request, response);
        }
     
