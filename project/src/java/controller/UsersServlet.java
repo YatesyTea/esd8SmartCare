@@ -12,7 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.LoginBean;
+import model.UsersBean;
 
 
 public class UsersServlet extends HttpServlet {
@@ -29,32 +29,30 @@ public class UsersServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-      LoginBean lb = new LoginBean();    //call loginbean class
+        UsersBean ub = new UsersBean();    //call loginbean class
 
         String u = request.getParameter("username");    //get the entered login information 
         String p = request.getParameter("password");
-        
-        
-       
-        String a = lb.doQuery("");      //get the login role
 
-       if (LoginBean.checkLogin(u, p)) { //check if user name and password is valid
-           
-           //if valid check the persons role and display relevent view
-                   if ("admin".equals(a)){
-                    RequestDispatcher view = request.getRequestDispatcher("adminLogin.jsp");
-                    view.forward(request, response);
-                   }else if ("nurse".equals(a)){
-                     RequestDispatcher view = request.getRequestDispatcher("nurseLogin.jsp");
-                     view.forward(request, response);
-                     }else if ("client".equals(a)){
-                     RequestDispatcher view = request.getRequestDispatcher("clientLogin.jsp");
-                     view.forward(request, response);
-                   }else{
-                    RequestDispatcher view = request.getRequestDispatcher("doctorLogin.jsp");
-                     view.forward(request, response);
-                   }  
-           //if invalid go back to login screen
+        String role = ub.checkLogin(u, p);      //get the login role
+
+        if (role != null) { //check if user name and password is valid
+   
+           //Redirect user based on role in db
+            if ("admin".equals(role)){
+                RequestDispatcher view = request.getRequestDispatcher("adminDashboard.jsp");
+                view.forward(request, response);
+            }else if ("nurse".equals(role)){
+                RequestDispatcher view = request.getRequestDispatcher("nurseDashboard.jsp");
+                view.forward(request, response);
+            }else if ("client".equals(role)){
+                RequestDispatcher view = request.getRequestDispatcher("clientDashboard.jsp");
+                view.forward(request, response);
+            }else{
+                RequestDispatcher view = request.getRequestDispatcher("doctorDashboard.jsp");
+                view.forward(request, response);
+            }  
+        //If invalid input - return to login screen
        } else {
            RequestDispatcher view = request.getRequestDispatcher("index.jsp");
            view.forward(request, response);
