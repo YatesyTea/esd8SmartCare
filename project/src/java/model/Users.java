@@ -9,12 +9,12 @@ package model;
  *
  * @author samuel
  */
-public class users {
+public class Users {
  private String username;
 private String password;
 private String role  ;
 
-    public users(String username, String password, String role) { //setters and getters for users details
+    public Users(String username, String password, String role) { //setters and getters for users details
         this.username = username;
         this.password = password;
         this.role = role;

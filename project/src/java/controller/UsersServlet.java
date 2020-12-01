@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com;
+package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,10 +12,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.loginBean;
+import model.LoginBean;
 
 
-public class usersServlet extends HttpServlet {
+public class UsersServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,7 +29,7 @@ public class usersServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-      loginBean lb = new loginBean();    //call loginbean class
+      LoginBean lb = new LoginBean();    //call loginbean class
 
         String u = request.getParameter("username");    //get the entered login information 
         String p = request.getParameter("password");
@@ -38,7 +38,7 @@ public class usersServlet extends HttpServlet {
        
         String a = lb.doQuery("");      //get the login role
 
-       if (loginBean.checkLogin(u, p)) { //check if user name and password is valid
+       if (LoginBean.checkLogin(u, p)) { //check if user name and password is valid
            
            //if valid check the persons role and display relevent view
                    if ("admin".equals(a)){

@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import static javax.ws.rs.core.Response.status;
 
-public class loginBean {
+public class LoginBean {
       private Connection con;
     private Statement state;
     private ResultSet rs;

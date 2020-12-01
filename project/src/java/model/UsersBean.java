@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import static javax.ws.rs.core.Response.status;
 
-public class usersBean {
+public class UsersBean {
   //doQuery
     private Connection con;
     private Statement state;
