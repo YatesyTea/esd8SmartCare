@@ -8,10 +8,87 @@ and open the template in the editor.
     Author     : Yates
 */
 
-body{
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  background: #2d3b49;
-  color: white;
+/*body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: #2d3b49;
+    color: white;
+}
+
+
+
+.container {
+    display:grid;
+    height: 100vh;
+    grid-template-columns:5fr 20fr;
+    grid-template-rows: 5fr 20fr;
+    grid-gap: 10px;
+    background: dark-grey;
+}
+
+.header {
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+.main {
+    grid-row-start: 2;
+    gird-row-start:3;
+}*/
+
+body {
+    background-color: #2d3b49;
+}
+
+.content {
+    grid-area: content;
+    display: grid;
+    grid-gap: 5px;
+    grid-template-areas:
+        "a b c"
+}
+.a {
+    grid-area: a;
+    background-color:#191919;
+    padding: 1vh;
+    display:flex;
+    justify-content: center;
+}
+
+.b {
+    grid-area: b;
+    background-color:#191919;
+    padding: 1vh;
+    display:flex;
+    justify-content: center;
+}
+
+.c {
+    grid-area: c;
+    background-color:#191919;
+    padding: 1vh;
+    display:flex;
+    justify-content: center;
+}
+
+.header {
+    grid-area: header;  
+    background-color:#191919;
+    padding: 1vh;
+}
+
+
+.wrapper {
+    margin: 1vh;
+    height: 100vh;
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 10vh 80vh;
+    grid-template-areas:
+        "header header  header"
+        "content content content";
+    background-color: #2d3b49;
+    color: white;
 }

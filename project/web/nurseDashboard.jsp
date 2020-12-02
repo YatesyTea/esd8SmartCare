@@ -14,6 +14,10 @@
         <title>SmartCare - Dashboard</title>
     </head>
     <body>
-        <h1>Welcome nurse</h1>
+        <div class="container">
+            <h1>Welcome Nurse</h1>
+            <h1>Issue Prescription</h1>
+            <h1>View Client Timetables</h1>
+        </div>
     </body>
 </html>

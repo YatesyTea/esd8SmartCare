@@ -14,13 +14,22 @@
         <title>SmartCare - Dashboard</title>
     </head>
     <body>
-        <div name="header">
-            <h1>Welcome Admin</h1>
-        </div>
-        <div name="wrapper">
-            <h1>View Client Timetables</h1>
-            <h1>Produce Weekly Documents</h1>
-            <h1>Approve Staff User</h1>
+        <div class="wrapper">
+            <div class="box header">
+                <h1>Welcome Admin</h1>
+            </div>
+            <div class="box content">
+                <div class= "content a">
+                    <h1>View Client Timetables</h1>
+                </div>
+                <div class= "content b">
+                    <h1>Documents</h1>
+                </div>
+                <div class= "content c">
+                    <h1>Manage Staff</h1>
+                </div>
+
+            </div>
         </div>
 
     </body>

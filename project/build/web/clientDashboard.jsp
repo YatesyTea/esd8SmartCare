@@ -14,6 +14,10 @@
         <title>SmartCare - Dashboard</title>
     </head>
     <body>
-        <h1>Hello client</h1>
+        <div class="container"></div>
+        <h1>Welcome Client</h1>
+        <h1>View Appointments</h1>
+        <h1>Book Appointment</h1>
+        <h1>Prescriptions</h1>
     </body>
 </html>
