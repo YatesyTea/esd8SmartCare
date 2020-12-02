@@ -18,10 +18,10 @@
             <form class="box" action="usersServlet.do" method="post">
                 <h1>Welcome To SmartCare</h1>
                 <h1>Login or Sign Up</h1>
-                <input type="text" name="username" placeholder="Username"/><br/><br/>
-                <input type="password" name="password" placeholder="Password"/><br/><br/>
+                <input type="text" name="username" placeholder="Username"/>
+                <input type="password" name="password" placeholder="Password"/>
                 <input type="Submit" value="Login"/>
-                <input type="Submit" value="Sign Up"/>
+                <input type="onclick" value="Sign Up"/>
             </form>
     </body>
 </html>

@@ -14,6 +14,14 @@
         <title>SmartCare - Dashboard</title>
     </head>
     <body>
-        <h1>Welcome Admin</h1>
+        <div name="header">
+            <h1>Welcome Admin</h1>
+        </div>
+        <div name="wrapper">
+            <h1>View Client Timetables</h1>
+            <h1>Produce Weekly Documents</h1>
+            <h1>Approve Staff User</h1>
+        </div>
+
     </body>
 </html>

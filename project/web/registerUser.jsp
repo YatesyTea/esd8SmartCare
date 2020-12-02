@@ -9,36 +9,32 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Registration Page</title>
+        <link rel="stylesheet" href="style/style.css">
+        <link rel="shorcut icon" type="image/png" href="image/favicon.png">
+        <title>SmartCare - Sign Up</title>
     </head>
     <body>
-        <form action="registerServlet.do" method="POST">
-            <p> Please fill in this form.<p>
-            <hr>
-            
-            <label for="name">Full Name<br/></label>
+        <form class="box" action="registerServlet.do" method="POST">
+            <h1>Sign Up</h1>
+            <h2>By Filling In Your Details</h2>
+
             <input type="text" placeholder="Enter Name" name="name" id ="nameid" required>
-            
-            <label for="address"><br/>Address<br/></label>
+
             <input type="text" placeholder="Enter Address" name="address" id="address" required>
-            
-            <label for="uname">Username<br/></label>
+
             <input type="text" placeholder="Enter Username" name="uname" id ="unameid" required>
-     
-            <label for="password"><br/>Password<br/></label>
+
             <input type="password" placeholder="Enter Password" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"required>
 
-            <label for="password1"><br/>Confirm Password</br></label>
             <input type="password" placeholder="Confirm Password" name="password1" id="confirmPassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
-            </br>
-            
-            <label for="type">Patient Type<br/></label>
+
+            <label for="type">Patient Type:</label>
             <select name ="type" id ="patient-type">
                 <option value="NHS">NHS</option>
                 <option value="private">Private</option>
             </select>
-            <button type="submit" class="registerbtn">Register</button>
-            
+            <input type="submit" value="Register">
+
         </form>
     </body>
 </html>
