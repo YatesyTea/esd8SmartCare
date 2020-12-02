@@ -53,10 +53,22 @@ public final class clientDashboard_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("        <title>SmartCare - Dashboard</title>\r\n");
       out.write("    </head>\r\n");
       out.write("    <body>\r\n");
-      out.write("        <h1>Welcome Client</h1>\r\n");
-      out.write("        <h1>View Appointments</h1>\r\n");
-      out.write("        <h1>Book Appointment</h1>\r\n");
-      out.write("        <h1>Prescriptions</h1>\r\n");
+      out.write("        <div class=\"wrapper\">\r\n");
+      out.write("            <div class=\"box header\">\r\n");
+      out.write("                <h1>Welcome Client</h1>\r\n");
+      out.write("            </div>\r\n");
+      out.write("            <div class=\"box content\">\r\n");
+      out.write("                <div class= \"content a\">\r\n");
+      out.write("                    <h1>View Appointments</h1>\r\n");
+      out.write("                </div>\r\n");
+      out.write("                <div class= \"content b\">\r\n");
+      out.write("                    <h1>Book Appointment</h1>\r\n");
+      out.write("                </div>\r\n");
+      out.write("                <div class= \"content c\">\r\n");
+      out.write("                    <h1>Prescriptions</h1>\r\n");
+      out.write("                </div>\r\n");
+      out.write("            </div>\r\n");
+      out.write("        </div>\r\n");
       out.write("    </body>\r\n");
       out.write("</html>\r\n");
     } catch (Throwable t) {

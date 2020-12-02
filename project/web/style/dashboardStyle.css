@@ -76,15 +76,18 @@ body {
     grid-area: header;  
     background-color:#191919;
     padding: 1vh;
+    display:flex;
+    justify-content: center;
 }
 
 
 .wrapper {
     margin: 1vh;
     height: 100vh;
+    width: 100vw;
     display: grid;
     grid-gap: 5px;
-    grid-template-columns: 33% 33% 33%;
+    grid-template-columns: 32vw 32vw 32vw;
     grid-template-rows: 10vh 80vh;
     grid-template-areas:
         "header header  header"

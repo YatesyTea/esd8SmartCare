@@ -28,9 +28,7 @@
                 <div class= "content c">
                     <h1>Manage Staff</h1>
                 </div>
-
             </div>
         </div>
-
     </body>
 </html>

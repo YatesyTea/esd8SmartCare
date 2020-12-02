@@ -14,10 +14,18 @@
         <title>SmartCare - Dashboard</title>
     </head>
     <body>
-        <div class="container">
-            <h1>Welcome Nurse</h1>
-            <h1>Issue Prescription</h1>
-            <h1>View Client Timetables</h1>
+        <div class="wrapper">
+            <div class="box header">
+                <h1>Welcome Nurse</h1>
+            </div>
+            <div class="box content">
+                <div class= "content a">
+                    <h1>Issue Prescription</h1>
+                </div>
+                <div class= "content b">
+                    <h1>View Client Timetables</h1>
+                </div>
+            </div>
         </div>
     </body>
 </html>

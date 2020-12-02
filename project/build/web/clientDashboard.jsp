@@ -14,10 +14,21 @@
         <title>SmartCare - Dashboard</title>
     </head>
     <body>
-        <div class="container"></div>
-        <h1>Welcome Client</h1>
-        <h1>View Appointments</h1>
-        <h1>Book Appointment</h1>
-        <h1>Prescriptions</h1>
+        <div class="wrapper">
+            <div class="box header">
+                <h1>Welcome Client</h1>
+            </div>
+            <div class="box content">
+                <div class= "content a">
+                    <h1>View Appointments</h1>
+                </div>
+                <div class= "content b">
+                    <h1>Book Appointment</h1>
+                </div>
+                <div class= "content c">
+                    <h1>Prescriptions</h1>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
