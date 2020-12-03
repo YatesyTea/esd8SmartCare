@@ -438,7 +438,7 @@ Execute the below code in that window
 create table users(
 	uname varchar(20) primary key,
 	passwd varchar(20),
-	roles varchar(10)
+	role varchar(10)
 );
 
 create table clients(
@@ -482,11 +482,11 @@ create table booking_slots(
 -- If you want to populate the database here are some samples provided by Mehmet
 
 -- User Samples
-INSERT INTO USERS (UNAME, PASSWD, "ROLES") VALUES ('test', 'test', 'doctor');
-INSERT INTO USERS (UNAME, PASSWD, "ROLES") VALUES ('eaydin', '12345me', 'nurse');
-INSERT INTO USERS (UNAME, PASSWD, "ROLES") VALUES ('caidan', '5432@10', 'client');
-INSERT INTO USERS (UNAME, PASSWD, "ROLES") VALUES ('princehassan', 'prince_passwd', 'client');
-INSERT INTO USERS (UNAME, PASSWD, "ROLES") VALUES ('admin', 'admin_passwd', 'admin');
+INSERT INTO USERS (UNAME, PASSWD, "ROLE") VALUES ('test', 'test', 'doctor');
+INSERT INTO USERS (UNAME, PASSWD, "ROLE") VALUES ('eaydin', '12345me', 'nurse');
+INSERT INTO USERS (UNAME, PASSWD, "ROLE") VALUES ('caidan', '5432@10', 'client');
+INSERT INTO USERS (UNAME, PASSWD, "ROLE") VALUES ('princehassan', 'prince_passwd', 'client');
+INSERT INTO USERS (UNAME, PASSWD, "ROLE") VALUES ('admin', 'admin_passwd', 'admin');
 
 -- Employee Samples
 INSERT INTO EMPLOYEE (ENAME, EADDRESS, UNAME) VALUES ('Mehmet Aydin', 'Mehmets Address, London, NW4 0BH', 'meaydin');

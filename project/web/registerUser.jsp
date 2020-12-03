@@ -14,7 +14,8 @@
         <title>SmartCare - Sign Up</title>
     </head>
     <body>
-        <form class="box" action="registerServlet.do" method="POST">
+
+        <form class="box" action="RegisterServlet.do" method="POST">
             <h1>Sign Up</h1>
             <h2>By Filling In Your Details</h2>
 

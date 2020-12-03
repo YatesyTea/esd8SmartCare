@@ -49,14 +49,14 @@ public class UsersBean {
         @param: String array (data) - user data to be added to table (UNAME, PASSWORD, ROLE)
         @return: int (flag) - returns an integer (1) based on whether a user was added to the db
     */
-    public int addUser(String[] data){
+    public int addUser(Users newUsers){
         
         int flag = 0;
         try{
             con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
             
             //Check if user already exists in db
-            String query = "SELECT * FROM USERS WHERE UNAME='" + data[0].trim() + "'";
+            String query = "SELECT * FROM USERS WHERE UNAME='" + newUsers.getUsername() + "'";
             state = con.createStatement();
             rs = state.executeQuery(query);
             
@@ -66,7 +66,7 @@ public class UsersBean {
                 rs.close();
                 
                 //Format user data
-                query = "INSERT INTO USERS VALUES('" + data[0].trim() + "','" + data[1].trim() + "','" + data[2].trim() + "')";
+                query = "INSERT INTO USERS VALUES('"+ newUsers.getUsername() + "','" + newUsers.getPassword() + "','" + newUsers.getRole() + "')";
                 state = con.createStatement();
                 //Insert
                 flag = state.executeUpdate(query);

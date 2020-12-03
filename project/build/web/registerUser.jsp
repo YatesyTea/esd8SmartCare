@@ -14,9 +14,11 @@
         <title>SmartCare - Sign Up</title>
     </head>
     <body>
+
         <form class="box" action="registerServlet.do" method="POST">
             <h1>Sign Up</h1>
             <h2>By Filling In Your Details</h2>
+
 
             <input type="text" placeholder="Enter Name" name="name" id ="nameid" required>
 

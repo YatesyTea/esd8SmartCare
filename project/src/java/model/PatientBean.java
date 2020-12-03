@@ -36,7 +36,7 @@ public class PatientBean {
             con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
             
             //Format query
-            String query = "INSERT INTO CLIENTS VALUES('"+ newPatient.getName() + "','" + newPatient.getAddress() + "','" +
+            String query = "INSERT INTO CLIENTS(CNAME, CADDRESS, CTYPE, UNAME) VALUES('"+ newPatient.getName() + "','" + newPatient.getAddress() + "','" +
                     newPatient.getType() + "','" + newPatient.getUsername() + "')";
             
             //Add to db
