@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class registerUser_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class adminDashboard_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -48,14 +48,24 @@ public final class registerUser_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("<html>\r\n");
       out.write("    <head>\r\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
-
-      out.write("            <select name =\"type\" id =\"patient-type\">\r\n");
-      out.write("                <option value=\"NHS\">NHS</option>\r\n");
-      out.write("                <option value=\"private\">Private</option>\r\n");
-      out.write("            </select>\r\n");
-      out.write("        </form>\r\n");
+      out.write("        <link rel=\"stylesheet\" href=\"style/dashboardStyle.css\">\r\n");
+      out.write("        <link rel=\"shorcut icon\" type=\"image/png\" href=\"image/favicon.png\">\r\n");
+      out.write("        <title>SmartCare - Dashboard</title>\r\n");
+      out.write("    </head>\r\n");
+      out.write("    <body>\r\n");
+      out.write("        <div class=\"wrapper\">\r\n");
+      out.write("            <div class=\"box header\">\r\n");
+      out.write("                <h1>Welcome Admin</h1>\r\n");
+      out.write("            </div>\r\n");
+      out.write("            <div class=\"box content\">\r\n");
+      out.write("                <h1>View Client Timetables</h1>\r\n");
+      out.write("                <h1>Documents</h1>\r\n");
+      out.write("                <h1>Manage Staff</h1>\r\n");
+      out.write("            </div>\r\n");
+      out.write("        </div>\r\n");
+      out.write("\r\n");
       out.write("    </body>\r\n");
-      out.write("</html>");
+      out.write("</html>\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;

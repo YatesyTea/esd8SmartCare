@@ -9,9 +9,26 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <link rel="stylesheet" href="style/dashboardStyle.css">
+        <link rel="shorcut icon" type="image/png" href="image/favicon.png">
+        <title>SmartCare - Dashboard</title>
     </head>
     <body>
-        <h1>Hello client</h1>
+        <div class="wrapper">
+            <div class="box header">
+                <h1>Welcome Client</h1>
+            </div>
+            <div class="box content">
+                <div class= "content a">
+                    <h1>View Appointments</h1>
+                </div>
+                <div class= "content b">
+                    <h1>Book Appointment</h1>
+                </div>
+                <div class= "content c">
+                    <h1>Prescriptions</h1>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
