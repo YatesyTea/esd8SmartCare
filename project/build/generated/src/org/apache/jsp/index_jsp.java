@@ -60,8 +60,8 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <input type=\"text\" name=\"username\" placeholder=\"Username\"/>\r\n");
       out.write("                <input type=\"password\" name=\"password\" placeholder=\"Password\"/>\r\n");
       out.write("                <input type=\"Submit\" value=\"Login\"/>\r\n");
-      out.write("                <input type=\"submit\" value=\"Sign Up\"/> <!-- Need to add link in servlet-->\r\n");
       out.write("            </form>\r\n");
+      out.write("         <input type=\"submit\" value=\"Sign Up\" onclick=\"location.href='registerUser.jsp'\"/> \r\n");
       out.write("    </body>\r\n");
       out.write("</html>\r\n");
     } catch (Throwable t) {

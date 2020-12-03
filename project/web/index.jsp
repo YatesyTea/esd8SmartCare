@@ -15,13 +15,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-            <form class="box" action="usersServlet.do" method="post">
+        <div class="box">
+            <form action="usersServlet.do" method="post">
                 <h1>Welcome To SmartCare</h1>
                 <h1>Login or Sign Up</h1>
                 <input type="text" name="username" placeholder="Username"/>
                 <input type="password" name="password" placeholder="Password"/>
                 <input type="Submit" value="Login"/>
             </form>
-         <input type="submit" value="Sign Up" onclick="location.href='registerUser.jsp'"/> 
+            <input type="submit" value="Sign Up" onclick="location.href = 'registerUser.jsp'"/> 
+        </div>
     </body>
 </html>
