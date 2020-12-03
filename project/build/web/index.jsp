@@ -21,7 +21,7 @@
                 <input type="text" name="username" placeholder="Username"/>
                 <input type="password" name="password" placeholder="Password"/>
                 <input type="Submit" value="Login"/>
-                <input type="submit" value="Sign Up"/> <!-- Need to add link in servlet-->
             </form>
+         <input type="submit" value="Sign Up" onclick="location.href='registerUser.jsp'"/> 
     </body>
 </html>
