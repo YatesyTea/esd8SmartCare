@@ -23,7 +23,7 @@
 
             <input type="text" placeholder="Enter Address" name="address" id="address" required>
 
-            <input type="text" placeholder="Enter Username" name="uname" id ="unameid" required>
+            <input type="text" placeholder="Enter Username" name="username" id ="unameid" required>
 
             <input type="password" placeholder="Enter Password" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"required>
 
