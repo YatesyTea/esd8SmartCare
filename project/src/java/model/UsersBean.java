@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import static javax.ws.rs.core.Response.status;
 
 public class UsersBean {
@@ -82,4 +83,45 @@ public class UsersBean {
         
         return flag;
     }
+    
+    /*
+    *   Description: Gets a list of all the users in the database
+    *   @param: None
+    *   @return: ArrayList<Users> - Returns a list of Users
+    */  
+    public ArrayList<Users> getAllUsers()throws SQLException{
+        try{
+            ArrayList<Users> listUsers = new ArrayList<>();
+            con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
+            
+            //Get list of users
+            String query = "SELECT * FROM USERS";
+            state = con.createStatement();
+            rs = state.executeQuery(query);
+            
+            //For each row in table create user & add to list
+            while(rs.next()){
+                String username = rs.getString("UNAME");
+                String password = rs.getString("PASSWD");
+                String role = rs.getString("ROLE");
+                
+                Users user = new Users(username, password, role);
+                listUsers.add(user);
+                
+            }
+            
+            rs.close();
+            state.close();
+            
+            return listUsers;
+            
+        } catch (SQLException e) {
+            System.err.println("Error: " + e);
+            return null;
+        }//try
+        
+    }
+    
+    
+    
 }
