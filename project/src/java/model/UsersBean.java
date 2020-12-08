@@ -84,7 +84,6 @@ public class UsersBean {
         return flag;
     }
     
-    
     /*
     *   Description: Gets a list of all the users in the database
     *   @param: None
@@ -147,6 +146,66 @@ public class UsersBean {
             System.err.println("Error: " + e);
             return flag;
         }//
+    }
+    
+    /*
+    *   Description: Updates a users information (password & role)
+    *   @param: Users
+    *   @return: int (flag) returns (1) if user info is successfully updated
+    */
+    public int updateUsers(Users user) throws SQLException{
+    
+        int flag = 0;
+        try{
+            con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
+            String query = "UPDATE USERS SET PASSWORD=?, ROLE=? WHERE UNAME=?";
+            
+            ps = con.prepareStatement(query);
+            ps.setString(1, user.getPassword());
+            ps.setString(2, user.getRole());
+            ps.setString(3, user.getUsername());
+            
+            flag = ps.executeUpdate();
+            ps.close();
+            con.close();
+                    
+            return flag;
+            
+        } catch (SQLException e) {
+            System.err.println("Error: " + e);
+            return flag;
+        }//
+    }
+    
+    /*
+    *   Description: Returns user information in db
+    *   @param: String username - the id of the user in the table
+    *   @return: Users - returns a user object (UNAME, PASSWD, ROLE) if the supplied username was valid
+    */
+    public Users getUser(String username) throws SQLException{
+        
+        Users user = null;
+        try{
+            con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
+            String query = "SELECT * FROM USERS WHERE UNAME=?";
+            
+            ps = con.prepareStatement(query);
+            ps.setString(1, username);
+            rs = ps.executeQuery();
+            
+            if(rs.next()){
+                String password = rs.getString("PASSWD");
+                String role = rs.getString("ROLE");
+                
+                user = new Users(username, password, role);
+            }
+            
+        } catch (SQLException e) {
+            System.err.println("Error: " + e);
+            
+        }//
+        
+        return user;
     }
     
 }
