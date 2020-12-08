@@ -17,7 +17,7 @@ public class UsersBean {
     private ResultSet rs;
     
     private PreparedStatement ps;
-
+    
     
     public static String checkLogin(String username, String password){
        
@@ -84,6 +84,7 @@ public class UsersBean {
         return flag;
     }
     
+    
     /*
     *   Description: Gets a list of all the users in the database
     *   @param: None
@@ -122,6 +123,30 @@ public class UsersBean {
         
     }
     
-    
+    /*
+    *   Description: Deletes a user from the database
+    *   @param: Users
+    *   @return: int (flag) returns (1) if user is successfully deleted
+    */
+    public int deleteUsers(Users user) throws SQLException{
+        
+        int flag = 0;
+        try{
+            con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
+            String query = "DELETE FROM USERS WHERE UNAME=?";
+            ps = con.prepareStatement(query);
+            ps.setString(1, user.getUsername());
+            
+            flag = ps.executeUpdate();
+            ps.close();
+            con.close();
+            
+            return flag;
+            
+        } catch (SQLException e) {
+            System.err.println("Error: " + e);
+            return flag;
+        }//
+    }
     
 }
