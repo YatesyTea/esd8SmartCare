@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 
 public class PatientBean {
@@ -53,7 +54,42 @@ public class PatientBean {
         return flag;
     }
     
+    public ArrayList<Patient> getAllPatients()throws SQLException{
     
+        try{
+            ArrayList<Patient> listPatient = new ArrayList<>();
+            con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
+            
+            //Get list of users
+            String query = "SELECT * FROM CLIENTS";
+            state = con.createStatement();
+            rs = state.executeQuery(query);
+            
+            //For each row in table create user & add to list
+            while(rs.next()){
+                String name = rs.getString("CNAME");
+                String address = rs.getString("CADDRESS");
+                String type = rs.getString("CTYPE");
+                String username = rs.getString("UNAME");
+                
+                Patient patient = new Patient(name, address, type, username);
+                listPatient.add(patient);
+                
+            }
+            
+            rs.close();
+            state.close();
+            
+            return listPatient;
+            
+            
+            
+        } catch (SQLException e) {
+            System.err.println("Error: " + e);
+            return null;
+        }//try
+        
+    }
     
     
     
