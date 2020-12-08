@@ -96,14 +96,14 @@ public class PatientBean {
         try{
             con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
             String query = "DELETE FROM CLIENTS WHERE UNAME=?";
+            
             ps = con.prepareStatement(query);
             ps.setString(1, patient.getUsername());
-            
             flag = ps.executeUpdate();
+            
             ps.close();
             con.close();
             
-            return flag;
         } catch (SQLException e) {
             System.err.println("Error: " + e);
             
@@ -116,7 +116,17 @@ public class PatientBean {
         int flag = 0;
         try{
             con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
+            String query = "UPDATE CLIENTS SET CNAME=?, CADDRESS=? , CTYPE=?, WHERE UNAME=?";
             
+            ps = con.prepareStatement(query);
+            ps.setString(1, patient.getName());
+            ps.setString(2, patient.getAddress());
+            ps.setString(3, patient.getType());
+            ps.setString(4, patient.getUsername());
+            
+            flag = ps.executeUpdate();
+            ps.close();
+            con.close();
             
         } catch (SQLException e) {
             System.err.println("Error: " + e);
