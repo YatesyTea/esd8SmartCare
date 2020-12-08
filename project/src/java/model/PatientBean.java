@@ -91,6 +91,52 @@ public class PatientBean {
         
     }
     
+    public int deletePatient(Patient patient) throws SQLException{
+        int flag = 0;
+        try{
+            con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
+            String query = "DELETE FROM CLIENTS WHERE UNAME=?";
+            ps = con.prepareStatement(query);
+            ps.setString(1, patient.getUsername());
+            
+            flag = ps.executeUpdate();
+            ps.close();
+            con.close();
+            
+            return flag;
+        } catch (SQLException e) {
+            System.err.println("Error: " + e);
+            
+        }//try
+        
+        return flag;
+    }
+    
+    public int updatePatient(Patient patient) throws SQLException{
+        int flag = 0;
+        try{
+            con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
+            
+            
+        } catch (SQLException e) {
+            System.err.println("Error: " + e);
+            
+        }//try
+        
+        return flag;
+    }
+    
+    public Patient getPatient(String username) throws SQLException{
+        try{
+            con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
+            
+        } catch (SQLException e) {
+            System.err.println("Error: " + e);
+            return null;
+        }//try
+        
+    }
+    
     
     
     
