@@ -137,14 +137,31 @@ public class PatientBean {
     }
     
     public Patient getPatient(String username) throws SQLException{
+        
+        Patient patient = null;
         try{
             con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
+
+            String query = "SELECT * FROM CLIENTS WHERE UNAME=?";
             
+            ps = con.prepareStatement(query);
+            ps.setString(1, username);
+            rs = ps.executeQuery();
+            
+            if(rs.next()){
+                String name = rs.getString("CNAME");
+                String address = rs.getString("CADDRESS");
+                String type = rs.getString("CTYPE");
+                
+                patient = new Patient(name, address, type, username);
+            }
+      
         } catch (SQLException e) {
             System.err.println("Error: " + e);
-            return null;
+
         }//try
         
+        return patient;
     }
     
     
