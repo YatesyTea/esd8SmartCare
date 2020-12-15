@@ -17,14 +17,14 @@ import java.util.*;
  *
  * @author carl
  */
-public class DBMembersReturn {
+public class DBEmployeesReturn {
     
     private Connection con;
     private Statement state;
     private ResultSet rs;
 
-    public ArrayList<Members> getMember() {
-        ArrayList<Members> result = new ArrayList<Members>();
+    public ArrayList<Employees> getEmployee() {
+        ArrayList<Employees> result = new ArrayList<Employees>();
         
         
         
@@ -37,7 +37,7 @@ public class DBMembersReturn {
             
             while (rs.next()) {
                 
-                result.add(new Members(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+                result.add(new Employees(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
                 
             }
             

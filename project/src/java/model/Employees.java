@@ -9,10 +9,10 @@ package model;
  *
  * @author carl
  */
-public class Members {
+public class Employees {
     private String id, name, address, dob, type;
 
-    public Members(String id, String name, String address, String dob) {
+    public Employees(String id, String name, String address, String dob) {
         this.id = id;
         this.name = name;
         this.address = address;

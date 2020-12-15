@@ -4,7 +4,7 @@
     Author     : carl
 --%>
 
-<%@page import="model.Members"%>
+<%@page import="model.Employees"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,7 +17,7 @@
         <h1 id="textid">Admin Members List</h1>
         
         <%
-            ArrayList<Members> members = (ArrayList<Members>)request.getAttribute("members");
+            ArrayList<Employees> employee = (ArrayList<Employees>)request.getAttribute("employees");
         %>
         
         <table>
@@ -28,13 +28,13 @@
                     <th>DOB</th>
                 </tr>
                 <% 
-                    for (int i = 0; i < members.size(); i++) {
+                    for (int i = 0; i < employee.size(); i++) {
                         out.println("<tr>");
-                        out.println("<td>" + members.get(i).getId() + "</td>");
-                        out.println("<td>" + members.get(i).getName() + "</td>");
-                        out.println("<td>" + members.get(i).getAddress() + "</td>");
-                        out.println("<td>" + members.get(i).getDob() + "</td>");
-                        out.println("<td><button onclick=\"submitIndex(this)\">Suspend Member</button></td>");
+                        out.println("<td>" + employee.get(i).getId() + "</td>");
+                        out.println("<td>" + employee.get(i).getName() + "</td>");
+                        out.println("<td>" + employee.get(i).getAddress() + "</td>");
+                        out.println("<td>" + employee.get(i).getDob() + "</td>");
+                        out.println("<td><button onclick=\"submitIndex(this)\">Suspend Employee</button></td>");
                         out.println("</tr>");
                     }
                 %>

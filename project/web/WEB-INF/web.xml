@@ -25,12 +25,12 @@
         <url-pattern>/RegisterServlet.do</url-pattern>
     </servlet-mapping>
     <servlet>
-       <servlet-name>AdminMembersController</servlet-name>
-        <servlet-class>controller.AdminMembersController</servlet-class>
+       <servlet-name>AdminEmployeesController</servlet-name>
+        <servlet-class>controller.AdminEmployeesController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>AdminMembersController</servlet-name>
-        <url-pattern>/AdminMembersController.do</url-pattern>
+        <servlet-name>AdminEmployeesController</servlet-name>
+        <url-pattern>/AdminEmployeesController.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

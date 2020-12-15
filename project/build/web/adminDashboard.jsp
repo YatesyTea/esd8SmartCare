@@ -28,8 +28,8 @@
                 <div class= "content c">
                     <h1>Manage Staff</h1>
                     
-                    <form method="post" action="AdminMembersController.do"><p style="text-align:center">
-                    <input id="textboxid" type="SUBMIT" value="Members" style="align-self: center">
+                    <form method="post" action="AdminEmployeesController.do"><p style="text-align:center">
+                    <input id="textboxid" type="SUBMIT" value="Employees" style="align-self: center">
                     </p></form>
                 </div>
             </div>

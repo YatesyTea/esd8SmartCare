@@ -12,25 +12,25 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.DBMembersReturn;
-import model.Members;
+import model.DBEmployeesReturn;
+import model.Employees;
 
 /**
  *
  * @author carl
  */
-public class AdminMembersController extends HttpServlet {
+public class AdminEmployeesController extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
      
-        DBMembersReturn Mem = new DBMembersReturn();
-        ArrayList<Members> members;
-        members = Mem.getMember();
-        request.setAttribute("members", members);
+        DBEmployeesReturn Emp = new DBEmployeesReturn();
+        ArrayList<Employees> empolyees;
+        empolyees = Emp.getEmployee();
+        request.setAttribute("employees", empolyees);
         
-        RequestDispatcher view = request.getRequestDispatcher("AdminMembers.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("AdminEmployees.jsp");
         view.forward(request, response);
     }
     
