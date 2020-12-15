@@ -15,25 +15,63 @@ public class UsersBean {
     private Connection con;
     private Statement state;
     private ResultSet rs;
-    
     private PreparedStatement ps;
     
+    private static String url;
+    private static String user;
+    private static String password;
     
-    public static String checkLogin(String username, String password){
+
+    public UsersBean(String db, String user, String password) {
+       this.url = db;
+       this.user = user;
+       this.password = password;
+       
+    }
+    
+    private boolean connect() throws SQLException{
+        try{
+            this.con = DriverManager.getConnection(this.url, this.user, this.password);
+            return true;
+        
+        } catch (Exception e){
+            System.out.print(e);
+        }
+        return false;
+        
+    }
+    
+    private boolean disconnect(){
+        try{
+            this.con.close();
+            return true;
+        
+        } catch (Exception e){
+            System.out.print(e);
+            return false;
+        }
+        
+    }
+    
+    
+    public String checkLogin(String username, String password){
        
         try {
-            Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
-           
-            PreparedStatement ps = con.prepareStatement("SELECT ROLE from USERS WHERE uname=? and passwd=?");
-            ps.setString(1, username);      //Format query
-            ps.setString(2, password);        
+            if(connect()){
+                PreparedStatement ps = con.prepareStatement("SELECT ROLE from USERS WHERE uname=? and passwd=?");
+                ps.setString(1, username);      //Format query
+                ps.setString(2, password);        
       
-            //Lookup user in db
-            ResultSet rs = ps.executeQuery();
+                //Lookup user in db
+                ResultSet rs = ps.executeQuery();
             
-            //If user was found return role
-            if(rs.next())
-                return rs.getString(1);
+                //If user was found return role
+                if(rs.next())
+                    return rs.getString(1);
+                
+                disconnect();
+            }
+           
             
         }
         catch (Exception e){
@@ -54,28 +92,26 @@ public class UsersBean {
         
         int flag = 0;
         try{
-            con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
-            
-            //Check if user already exists in db
-            String query = "SELECT * FROM USERS WHERE UNAME='" + newUsers.getUsername() + "'";
-            state = con.createStatement();
-            rs = state.executeQuery(query);
-            
-            //If user doesn't exist - add to db
-            if(!rs.next()){
-                state.close();
-                rs.close();
-                
-                //Format user data
-                query = "INSERT INTO USERS VALUES('"+ newUsers.getUsername() + "','" + newUsers.getPassword() + "','" + newUsers.getRole() + "')";
+            if(connect()){
+                //Check if user already exists in db
+                String query = "SELECT * FROM USERS WHERE UNAME='" + newUsers.getUsername() + "'";
                 state = con.createStatement();
-                //Insert
-                flag = state.executeUpdate(query);
+                rs = state.executeQuery(query);
+            
+                //If user doesn't exist - add to db
+                if(!rs.next()){
+                    //Format user data as query
+                    query = "INSERT INTO USERS VALUES('"+ newUsers.getUsername() + "','" + newUsers.getPassword() + "','" + newUsers.getRole() + "')";
+                    state = con.createStatement();
+                    //Insert
+                    flag = state.executeUpdate(query);
+                }           
+                
+                rs.close();
+                state.close();
+                disconnect();
                 
             }
-            
-            state.close();
-            con.close();
         } catch (SQLException e) {
             System.err.println("Error: " + e);
 
@@ -94,32 +130,35 @@ public class UsersBean {
             ArrayList<Users> listUsers = new ArrayList<>();
             con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
             
-            //Get list of users
-            String query = "SELECT * FROM USERS";
-            state = con.createStatement();
-            rs = state.executeQuery(query);
+            if(connect()){
+                //Get list of users
+                String query = "SELECT * FROM USERS";
+                state = con.createStatement();
+                rs = state.executeQuery(query);
+
+                //For each row in table create user & add to list
+                while(rs.next()){
+                    String username = rs.getString("UNAME");
+                    String password = rs.getString("PASSWD");
+                    String role = rs.getString("ROLE");
+
+                    Users user = new Users(username, password, role);
+                    listUsers.add(user);
+                }
+
+                rs.close();
+                state.close();
+                disconnect();
+
+                return listUsers;
             
-            //For each row in table create user & add to list
-            while(rs.next()){
-                String username = rs.getString("UNAME");
-                String password = rs.getString("PASSWD");
-                String role = rs.getString("ROLE");
-                
-                Users user = new Users(username, password, role);
-                listUsers.add(user);
-                
             }
-            
-            rs.close();
-            state.close();
-            
-            return listUsers;
             
         } catch (SQLException e) {
             System.err.println("Error: " + e);
-            return null;
         }//try
         
+        return null;
     }
     
     /*
@@ -131,21 +170,23 @@ public class UsersBean {
         
         int flag = 0;
         try{
-            con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
-            String query = "DELETE FROM USERS WHERE UNAME=?";
-            ps = con.prepareStatement(query);
-            ps.setString(1, user.getUsername());
-            
-            flag = ps.executeUpdate();
-            ps.close();
-            con.close();
-            
-            return flag;
+            if(connect()){
+                String query = "DELETE FROM USERS WHERE UNAME=?";
+                ps = con.prepareStatement(query);
+                ps.setString(1, user.getUsername());
+                flag = ps.executeUpdate();
+                
+                ps.close();
+                disconnect();
+
+                return flag;
+            }
             
         } catch (SQLException e) {
             System.err.println("Error: " + e);
-            return flag;
         }//
+        
+        return flag;
     }
     
     /*
@@ -157,28 +198,29 @@ public class UsersBean {
     
         int flag = 0;
         try{
-            con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
-            String query = "UPDATE USERS SET PASSWORD=?, ROLE=? WHERE UNAME=?";
-            
-            ps = con.prepareStatement(query);
-            ps.setString(1, user.getPassword());
-            ps.setString(2, user.getRole());
-            ps.setString(3, user.getUsername());
-            
-            flag = ps.executeUpdate();
-            ps.close();
-            con.close();
-                    
-            return flag;
-            
+            if(connect()){
+                String query = "UPDATE USERS SET PASSWORD=?, ROLE=? WHERE UNAME=?";
+                
+                ps = con.prepareStatement(query);
+                ps.setString(1, user.getPassword());
+                ps.setString(2, user.getRole());
+                ps.setString(3, user.getUsername());
+
+                flag = ps.executeUpdate();
+                ps.close();
+                disconnect();
+
+                return flag;
+            }
         } catch (SQLException e) {
             System.err.println("Error: " + e);
-            return flag;
         }//
+        
+        return flag;
     }
     
     /*
-    *   Description: Returns user information in db
+    *   Description: Retrieves a users information from db
     *   @param: String username - the id of the user in the table
     *   @return: Users - returns a user object (UNAME, PASSWD, ROLE) if the supplied username was valid
     */
@@ -186,19 +228,26 @@ public class UsersBean {
         
         Users user = null;
         try{
-            con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
-            String query = "SELECT * FROM USERS WHERE UNAME=?";
-            
-            ps = con.prepareStatement(query);
-            ps.setString(1, username);
-            rs = ps.executeQuery();
-            
-            if(rs.next()){
-                String password = rs.getString("PASSWD");
-                String role = rs.getString("ROLE");
+            if(connect()){
+                String query = "SELECT * FROM USERS WHERE UNAME=?";
+
+                ps = con.prepareStatement(query);
+                ps.setString(1, username);
+                rs = ps.executeQuery();
                 
-                user = new Users(username, password, role);
+                //Check if user was found in db
+                if(rs.next()){
+                    String pass = rs.getString("PASSWD");
+                    String role = rs.getString("ROLE");
+
+                    user = new Users(username, pass, role);
+                }
+                
+                ps.close(); rs.close();
+                disconnect();
+                
             }
+            
             
         } catch (SQLException e) {
             System.err.println("Error: " + e);

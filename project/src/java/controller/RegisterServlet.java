@@ -37,8 +37,8 @@ public class RegisterServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PatientBean pb = new PatientBean();
-        UsersBean ub = new UsersBean();
+        PatientBean pb = new PatientBean("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
+        UsersBean ub = new UsersBean("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
         
         //Create parameter variables using inputs taken from sign up form
         String n = request.getParameter("name");
