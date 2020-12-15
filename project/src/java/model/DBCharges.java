@@ -23,8 +23,8 @@ public class DBCharges {
     private Statement state;
     private ResultSet rs;
     
-    public ArrayList<Charge> getCharges() {
-        ArrayList<Charge> result = new ArrayList<Charge>();
+    public ArrayList<Charges> getCharges() {
+        ArrayList<Charges> result = new ArrayList<Charges>();
         
         
         try {
@@ -36,7 +36,7 @@ public class DBCharges {
             
             while (rs.next()) {
                 
-                result.add(new Charge(rs.getString(1), rs.getString(2), rs.getDate(3), rs.getDouble(4)));
+                result.add(new Charges(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4)));
                 
             }
             
@@ -49,4 +49,5 @@ public class DBCharges {
         }
         return result;
     
+    }
 }

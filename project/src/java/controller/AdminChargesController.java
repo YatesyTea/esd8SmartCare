@@ -11,6 +11,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Charges;
 import model.DBCharges;
 
 /**
@@ -25,7 +26,7 @@ public class AdminChargesController {
      
         DBCharges chr = new DBCharges();
         
-        ArrayList<Charge> charges;
+        ArrayList<Charges> charges;
         charges = chr.getCharges();
         request.setAttribute("charges", charges);
         
@@ -33,14 +34,12 @@ public class AdminChargesController {
         view.forward(request, response);
     }
     
-    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
         
     }
 
-    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
