@@ -12,17 +12,25 @@
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>controller.RegisterServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PrescriptionServlet</servlet-name>
+        <servlet-class>controller.PrescriptionServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>usersServlet</servlet-name>
         <url-pattern>/usersServlet.do</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UserServletListener</servlet-name>
-        <url-pattern>/UserServletListener</url-pattern>
+        <url-pattern>/UserServletListener.do</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PrescriptionServlet</servlet-name>
+        <url-pattern>/PrescriptionServlet.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
