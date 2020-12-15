@@ -11,8 +11,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.DBEmployeesReturn;
-import model.Employees;
+import model.DBCharges;
 
 /**
  *
@@ -23,7 +22,15 @@ public class AdminChargesController {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-             
+     
+        DBCharges chr = new DBCharges();
+        
+        ArrayList<Charge> charges;
+        charges = chr.getCharges();
+        request.setAttribute("charges", charges);
+        
+        RequestDispatcher view = request.getRequestDispatcher("AdminCharges.jsp");
+        view.forward(request, response);
     }
     
     @Override
