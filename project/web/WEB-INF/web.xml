@@ -32,6 +32,14 @@
         <servlet-name>AdminEmployeesController</servlet-name>
         <url-pattern>/AdminEmployeesController.do</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>AdminChargesController</servlet-name>
+        <servlet-class>controller.AdminChargesController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminChargesController</servlet-name>
+        <url-pattern>/AdminChargesController.do</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

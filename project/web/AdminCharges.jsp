@@ -4,6 +4,7 @@
     Author     : carl
 --%>
 
+<%@page import="model.Charges"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -16,7 +17,7 @@
         <h1 id="textid">Admin Charges</h1>
         
         <%
-            ArrayList<Charges> charges = (ArrayList<Charge>)request.getAttribute("claims");
+            ArrayList<Charges> charges = (ArrayList<Charges>)request.getAttribute("claims");
         %>
         
         <div style="overflow-x:auto;">
@@ -29,12 +30,12 @@
                 </tr>
                 
                 <% 
-                    for (int i = 0; i < charge.size(); i++) {
+                    for (int i = 0; i < charges.size(); i++) {
                         out.println("<tr>");
-                        out.println("<td>" + charge.get(i).getOId() + "</td>");
-                        out.println("<td>" + charge.get(i).getCId() + "</td>");
-                        out.println("<td>" + charge.get(i).getDate() + "</td>");
-                        out.println("<td>" + charge.get(i).getAmount() + "</td>");
+                        out.println("<td>" + charges.get(i).getId() + "</td>");
+                        //out.println("<td>" + charges.get(i).getClient_id + "</td>");
+                        out.println("<td>" + charges.get(i).getDate() + "</td>");
+                        out.println("<td>" + charges.get(i).getAmount() + "</td>");
                         out.println("</tr>");
                     }
                 %>
