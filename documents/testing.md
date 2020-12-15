@@ -93,6 +93,12 @@ Go back to login page and see if you're still logged in.
 
 ## Feature 5: View Patient Timetables
 
+Logged in as doctor/nurse user.
+Click the view patient timetables button on the dashboard.
+
+expected output : displays all of the patients timetabled appointments.
+
+
 ## Feature 6: Issue Prescriptions
 
 ## Feature 7: Client Booking
