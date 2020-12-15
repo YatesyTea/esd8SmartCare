@@ -10,9 +10,10 @@ package model;
  * @author samuel
  */
 public class Users {
- private String username;
-private String password;
-private String role  ;
+
+    private String username;
+    private String password;
+    private String role;
 
     public Users(String username, String password, String role) { //setters and getters for users details
         this.username = username;
@@ -43,6 +44,5 @@ private String role  ;
     public void setRole(String role) {
         this.role = role;
     }
-
 
 }
