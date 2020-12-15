@@ -24,6 +24,14 @@
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet.do</url-pattern>
     </servlet-mapping>
+    <servlet>
+       <servlet-name>AdminMembersController</servlet-name>
+        <servlet-class>controller.AdminMembersController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminMembersController</servlet-name>
+        <url-pattern>/AdminMembersController.do</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
