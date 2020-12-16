@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class prescriptionForm_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -41,29 +41,30 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("<!DOCTYPE html>\r\n");
-      out.write("<html>\r\n");
-      out.write("    <head>\r\n");
-      out.write("        <link rel=\"stylesheet\" href=\"style/style.css\">\r\n");
-      out.write("        <link rel=\"shorcut icon\" type=\"image/png\" href=\"image/favicon.png\">\r\n");
-      out.write("        <title>SmartCare - Login</title>\r\n");
-      out.write("        <meta charset=\"UTF-8\">\r\n");
-      out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n");
-      out.write("    </head>\r\n");
-      out.write("    <body>\r\n");
-      out.write("            <form class=\"box\" action=\"usersServlet.do\" method=\"post\">\r\n");
-      out.write("                <h1>Welcome To SmartCare</h1>\r\n");
-      out.write("                <h1>Login or Sign Up</h1>\r\n");
-      out.write("                <input type=\"text\" name=\"username\" placeholder=\"Username\"/>\r\n");
-      out.write("                <input type=\"password\" name=\"password\" placeholder=\"Password\"/>\r\n");
-      out.write("                <input type=\"Submit\" value=\"Login\"/>\r\n");
-      out.write("            </form>\r\n");
-      out.write("         <input type=\"submit\" value=\"Sign Up\" onclick=\"location.href='registerUser.jsp'\"/> \r\n");
-      out.write("    </body>\r\n");
-      out.write("</html>\r\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("<!DOCTYPE html>\n");
+      out.write("<html>\n");
+      out.write("    <head>\n");
+      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
+      out.write("        <link rel=\"stylesheet\" href=\"style/style.css\">\n");
+      out.write("        <link rel=\"shorcut icon\" type=\"image/png\" href=\"image/favicon.png\">\n");
+      out.write("        <title>Issue Prescription</title>\n");
+      out.write("    </head>\n");
+      out.write("    <body>\n");
+      out.write("        <form class=\"box\" action=\"PrescriptionServlet.do\" method=\"POST\">\n");
+      out.write("            <h1>Issue Prescription</h1>\n");
+      out.write("\n");
+      out.write("            <input type=\"text\" placeholder=\"Enter Prescription Type\" name=\"type\" required>\n");
+      out.write("            <input type=\"text\" placeholder=\"Enter Patient Name\" name=\"pname\" required>\n");
+      out.write("            <input type=\"text\" placeholder=\"Enter Date \" name=\"date\" required>\n");
+      out.write("            <input type=\"text\" placeholder=\"Enter Dosage\" name=\"dosage\" required>\n");
+      out.write("            <input type=\"text\" placeholder=\"Issued by\" name=\"ename\" required>\n");
+      out.write("            <input type=\"submit\" value=\"Issue Prescription\">\n");
+      out.write("        </form>\n");
+      out.write("    </body>\n");
+      out.write("</html>\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
