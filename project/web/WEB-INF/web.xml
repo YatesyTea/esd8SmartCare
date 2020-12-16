@@ -16,6 +16,10 @@
         <servlet-name>PrescriptionServlet</servlet-name>
         <servlet-class>controller.PrescriptionServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ViewPrescriptionServlet</servlet-name>
+        <servlet-class>controller.ViewPrescriptionServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>usersServlet</servlet-name>
         <url-pattern>/usersServlet.do</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>PrescriptionServlet</servlet-name>
         <url-pattern>/PrescriptionServlet.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewPrescriptionServlet</servlet-name>
+        <url-pattern>/ViewPrescriptionServlet.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -23,7 +23,6 @@
             <input type="text" placeholder="Enter Dosage" name="dosage" required>
             <input type="text" placeholder="Issued by" name="ename" required>
             <input type="submit" value="Issue Prescription">
-
         </form>
     </body>
 </html>

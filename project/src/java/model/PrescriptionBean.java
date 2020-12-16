@@ -31,7 +31,7 @@ public class PrescriptionBean {
      * @param doctorName
      * @return
      */
-    public static String checkValid(String patientName, String doctorName){
+    public static String checkValid(String patientName, String employeeName){
         String valid = "valid";
         
         try {
@@ -44,7 +44,7 @@ public class PrescriptionBean {
             
             //If user was found return role
             if(rs.next()){
-                PreparedStatement ps1 = con.prepareStatement("SELECT ENAME FROM EMPLOYEE WHERE EMPLOYEE.ENAME = '" + doctorName + "'");
+                PreparedStatement ps1 = con.prepareStatement("SELECT ENAME FROM EMPLOYEE WHERE EMPLOYEE.ENAME = '" + employeeName + "'");
                 ResultSet rs1 = ps1.executeQuery();
                 if (rs1.next())
                     return valid;
@@ -64,11 +64,12 @@ public class PrescriptionBean {
         
         int flag = 0;
         try{
+            //Connect to DB.
             con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
             
-            //Format query
-            String query = "INSERT INTO PRESCRIPTION(PTYPE, CNAME, DISSUE, DOSAGE ,DNAME) VALUES('"+ newPrescription.getType() + "','" + newPrescription.getPatientName() + "','" + newPrescription.getDate() + "','" 
-                    + newPrescription.getDosage() + "','" + newPrescription.getDoctor() +"')";
+            //Format query to insert prescription info into DB.
+            String query = "INSERT INTO PRESCRIPTION(PTYPE, CNAME, DISSUE, DOSAGE ,ENAME) VALUES('"+ newPrescription.getType() + "','" + newPrescription.getPatientName() + "','" + newPrescription.getDate() + "','" 
+                    + newPrescription.getDosage() + "','" + newPrescription.getEmployee() +"')";
             
             //Add to db
             state = con.createStatement();
