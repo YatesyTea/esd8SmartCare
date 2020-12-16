@@ -17,10 +17,9 @@
         <h1 id="textid">Admin Charges</h1>
         
         <%
-            ArrayList<Charges> charges = (ArrayList<Charges>)request.getAttribute("claims");
+            ArrayList<Charges> charges = (ArrayList<Charges>)request.getAttribute("charges");
         %>
         
-        <div style="overflow-x:auto;">
             <table>
                 <tr>
                     <th>ID</th>

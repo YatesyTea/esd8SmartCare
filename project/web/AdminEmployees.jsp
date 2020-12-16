@@ -11,10 +11,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Current Members</title>
+        <title>Current Employees</title>
     </head>
     <body>
-        <h1 id="textid">Admin Members List</h1>
+        <h1 id="textid">Admin Employees List</h1>
         
         <%
             ArrayList<Employees> employee = (ArrayList<Employees>)request.getAttribute("employees");

@@ -4,12 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/carl/Documents/GitHub/esd8SmartCare/project/web/adminDashboard.jsp</file>
-            <file>file:/C:/Users/carl/Documents/GitHub/esd8SmartCare/project/web/registerUser.jsp</file>
-            <file>file:/C:/Users/carl/Documents/GitHub/esd8SmartCare/project/web/nurseDashboard.jsp</file>
-            <file>file:/C:/Users/carl/Documents/GitHub/esd8SmartCare/project/web/clientDashboard.jsp</file>
-            <file>file:/C:/Users/carl/Documents/GitHub/esd8SmartCare/project/web/doctorDashboard.jsp</file>
+            <file>file:/C:/Users/carl/Documents/GitHub/esd8SmartCare/project/web/AdminCharges.jsp</file>
+            <file>file:/C:/Users/carl/Documents/GitHub/esd8SmartCare/project/src/java/model/Charges.java</file>
+            <file>file:/C:/Users/carl/Documents/GitHub/esd8SmartCare/project/src/java/controller/AdminChargesController.java</file>
+            <file>file:/C:/Users/carl/Documents/GitHub/esd8SmartCare/project/src/java/controller/AdminEmployeesController.java</file>
             <file>file:/C:/Users/carl/Documents/GitHub/esd8SmartCare/project/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/carl/Documents/GitHub/esd8SmartCare/project/web/index.jsp</file>
         </group>
     </open-files>
 </project-private>
