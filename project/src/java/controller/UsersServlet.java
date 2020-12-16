@@ -31,7 +31,8 @@ public class UsersServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        UsersBean ub = new UsersBean();    //call loginbean class
+        
+        UsersBean ub = new UsersBean("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");    //call loginbean class
 
         String u = request.getParameter("username");    //get the entered login information 
         String p = request.getParameter("password");
