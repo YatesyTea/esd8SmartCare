@@ -12,33 +12,33 @@
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>controller.RegisterServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PrescriptionServlet</servlet-name>
+        <servlet-class>controller.PrescriptionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewPrescriptionServlet</servlet-name>
+        <servlet-class>controller.ViewPrescriptionServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>usersServlet</servlet-name>
         <url-pattern>/usersServlet.do</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UserServletListener</servlet-name>
-        <url-pattern>/UserServletListener</url-pattern>
+        <url-pattern>/UserServletListener.do</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet.do</url-pattern>
     </servlet-mapping>
-    <servlet>
-       <servlet-name>AdminEmployeesController</servlet-name>
-        <servlet-class>controller.AdminEmployeesController</servlet-class>
-    </servlet>
     <servlet-mapping>
-        <servlet-name>AdminEmployeesController</servlet-name>
-        <url-pattern>/AdminEmployeesController.do</url-pattern>
+        <servlet-name>PrescriptionServlet</servlet-name>
+        <url-pattern>/PrescriptionServlet.do</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <servlet-name>AdminChargesController</servlet-name>
-        <servlet-class>controller.AdminChargesController</servlet-class>
-    </servlet>
     <servlet-mapping>
-        <servlet-name>AdminChargesController</servlet-name>
-        <url-pattern>/AdminChargesController.do</url-pattern>
+        <servlet-name>ViewPrescriptionServlet</servlet-name>
+        <url-pattern>/ViewPrescriptionServlet.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

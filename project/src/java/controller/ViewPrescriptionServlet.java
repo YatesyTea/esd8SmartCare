@@ -6,24 +6,21 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.PatientBean;
-import model.Patient;
-import model.UsersBean;
-import model.Users;
-        
+import model.DBPrescriptionReturn;
+import model.Prescription;
 
 
 /**
  *
  * @author fdent
  */
-public class RegisterServlet extends HttpServlet {
+public class ViewPrescriptionServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,25 +34,14 @@ public class RegisterServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PatientBean pb = new PatientBean("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
-        UsersBean ub = new UsersBean("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
         
-        //Create parameter variables using inputs taken from sign up form
-        String n = request.getParameter("name");
-        String u = request.getParameter("username");    //get the entered login information 
-        String p = request.getParameter("password");
-        String a = request.getParameter("address");
-        String p1 = request.getParameter("password1");
-        String type = request.getParameter("type");
-        String role = "client";
+        DBPrescriptionReturn vpres = new DBPrescriptionReturn();
+        ArrayList<Prescription> prescription;
+        prescription = vpres.getPrescription();
+        request.setAttribute("prescription",prescription);
         
-        /*Create new instance of User and Patient using their appropriate 
-         attributes in order to insert them into the database*/
-        Users user1 = new Users(u,p,role);
-        ub.addUser(user1);
-        Patient patient1 = new Patient(n,a,type,u);
-        pb.addPatient(patient1);
-        
+        RequestDispatcher view = request.getRequestDispatcher("viewPrescription.jsp");
+        view.forward(request,response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

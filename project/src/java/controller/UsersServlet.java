@@ -12,6 +12,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import model.UsersBean;
 
 
@@ -29,7 +31,8 @@ public class UsersServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        UsersBean ub = new UsersBean();    //call loginbean class
+        
+        UsersBean ub = new UsersBean("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");    //call loginbean class
 
         String u = request.getParameter("username");    //get the entered login information 
         String p = request.getParameter("password");
@@ -40,15 +43,31 @@ public class UsersServlet extends HttpServlet {
    
            //Redirect user based on role in db
             if ("admin".equals(role)){
+                HttpSession session = request.getSession();
+                session.setAttribute("admin", role);
+                session.setAttribute("uname",u);
+                session.setMaxInactiveInterval(10 * 600);
                 RequestDispatcher view = request.getRequestDispatcher("adminDashboard.jsp");
                 view.forward(request, response);
             }else if ("nurse".equals(role)){
+                HttpSession session = request.getSession();
+                session.setAttribute("nurse", role);
+                session.setAttribute("uname",u);
+                session.setMaxInactiveInterval(10 * 60);
                 RequestDispatcher view = request.getRequestDispatcher("nurseDashboard.jsp");
                 view.forward(request, response);
             }else if ("client".equals(role)){
+                HttpSession session = request.getSession();
+                session.setAttribute("client", role);
+                session.setAttribute("uname",u);
+                session.setMaxInactiveInterval(10 * 60);
                 RequestDispatcher view = request.getRequestDispatcher("clientDashboard.jsp");
                 view.forward(request, response);
             }else{
+                HttpSession session = request.getSession();
+                session.setAttribute("doctor", role);
+                session.setAttribute("uname",u);
+                session.setMaxInactiveInterval(10 * 60);
                 RequestDispatcher view = request.getRequestDispatcher("doctorDashboard.jsp");
                 view.forward(request, response);
             }  
