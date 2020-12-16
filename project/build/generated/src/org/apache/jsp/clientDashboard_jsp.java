@@ -66,6 +66,8 @@ public final class clientDashboard_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("                </div>\r\n");
       out.write("                <div class= \"content c\">\r\n");
       out.write("                    <h1>Prescriptions</h1>\r\n");
+      out.write("                    <form method=\"post\" action=\"ViewPrescriptionServlet.do\"><p style=\"text-align:center\">\r\n");
+      out.write("                    <input id=\"textboxid\" type=\"SUBMIT\" value=\"View Prescriptions\" style=\"align-self: center\">\r\n");
       out.write("                </div>\r\n");
       out.write("            </div>\r\n");
       out.write("        </div>\r\n");

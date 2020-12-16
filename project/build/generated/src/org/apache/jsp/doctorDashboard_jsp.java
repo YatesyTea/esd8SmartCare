@@ -60,13 +60,15 @@ public final class doctorDashboard_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("            <div class=\"box content\">\r\n");
       out.write("                <div class= \"content a\">\r\n");
       out.write("                    <h1>Issue Prescription</h1>\r\n");
+      out.write("                    <button onclick=\"location.href= 'prescriptionForm.jsp';\">\r\n");
+      out.write("                        Issue Prescription\r\n");
+      out.write("                    </button> \r\n");
       out.write("                </div>\r\n");
       out.write("                <div class= \"content b\">\r\n");
       out.write("                    <h1>View Client Timetables</h1>\r\n");
       out.write("                </div>\r\n");
       out.write("            </div>\r\n");
       out.write("        </div>\r\n");
-      out.write("    </div>\r\n");
       out.write("</body>\r\n");
       out.write("</html>\r\n");
     } catch (Throwable t) {
