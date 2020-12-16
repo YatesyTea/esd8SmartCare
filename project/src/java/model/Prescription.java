@@ -15,14 +15,14 @@ public class Prescription {
     private String patientName;
     private String date;
     private String dosage;
-    private String doctor;
+    private String employee;
 
-    public Prescription(String type, String patientName, String date, String dosage, String doctor) {
+    public Prescription(String type, String patientName, String date, String dosage, String employee) {
         this.type = type;
         this.patientName = patientName;
         this.date = date;
         this.dosage = dosage;
-        this.dosage = doctor;
+        this.employee = employee;
         
     }
 
@@ -41,8 +41,8 @@ public class Prescription {
         return dosage;
     }
     
-    public String getDoctor() {
-        return doctor;
+    public String getEmployee() {
+        return employee;
     }
     
 
@@ -53,16 +53,16 @@ public class Prescription {
     public void setPatientName(String patientName) {
         this.patientName = patientName;
     }
+    
+    public void setDate(String date) {
+         this.date = date;
+    }
 
     public void setDosage(String dosage) {
         this.dosage = dosage;
     }
-    
-     public void setDate() {
-         this.date = date;
-    }
-    
-    public void setDoctor(String doctor) {
-        this.doctor = doctor;
+        
+    public void setDoctor(String Employee) {
+        this.employee = employee;
     }    
 }

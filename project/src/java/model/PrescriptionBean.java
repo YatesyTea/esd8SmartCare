@@ -24,32 +24,55 @@ public class PrescriptionBean {
     private ResultSet rs;
     
     private PreparedStatement ps;
-
     
-     public int addPrescription(Prescription newPrescription){
+    /**
+     *
+     * @param patientName
+     * @param doctorName
+     * @return
+     */
+    public static String checkValid(String patientName, String doctorName){
+        String valid = "valid";
+        
+        try {
+            Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
+           
+            PreparedStatement ps = con.prepareStatement("SELECT CNAME FROM CLIENTS WHERE CLIENTS.CNAME='" + patientName + "'");
+      
+            //Lookup user in db
+            ResultSet rs = ps.executeQuery();
+            
+            //If user was found return role
+            if(rs.next()){
+                PreparedStatement ps1 = con.prepareStatement("SELECT ENAME FROM EMPLOYEE WHERE EMPLOYEE.ENAME = '" + doctorName + "'");
+                ResultSet rs1 = ps1.executeQuery();
+                if (rs1.next())
+                    return valid;
+            }
+            
+        }
+        catch (Exception e){
+            System.out.print(e);
+        }
+        
+        //If not found return null
+        return null;
+        
+    }
+    
+        public int addPrescription(Prescription newPrescription){
         
         int flag = 0;
         try{
             con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
             
-            //Check if user already exists in db 
-            String query = "SELECT CLIENTS.CNAME, EMPLOYEE.ENAME FROM CLIENTS, EMPLOYEE WHERE CLIENTS.CNAME='" + newPrescription.getPatientName() + "',EMPLOYEE.ENAME='" + newPrescription.getDoctor() + "'";
-            state = con.createStatement();
-            rs = state.executeQuery(query);
+            //Format query
+            String query = "INSERT INTO PRESCRIPTION(PTYPE, CNAME, DISSUE, DOSAGE ,DNAME) VALUES('"+ newPrescription.getType() + "','" + newPrescription.getPatientName() + "','" + newPrescription.getDate() + "','" 
+                    + newPrescription.getDosage() + "','" + newPrescription.getDoctor() +"')";
             
-            //If user doesn't exist - add to db
-            if(rs.next()){
-                state.close();
-                rs.close();
-                System.err.println("Hi");
-                
-                //Format user data
-                query = "INSERT INTO PRESCRIPTION(PTYPE,CNAME, DISSUE, DOSAGE ,DNAME) VALUES('"+ newPrescription.getType() + "','" + newPrescription.getPatientName() + "','" + newPrescription.getDate() + "','" + newPrescription.getDosage() + "',,'" + newPrescription.getDoctor() +"')";
-                state = con.createStatement();
-                //Insert
-                flag = state.executeUpdate(query);
-                
-            }
+            //Add to db
+            state = con.createStatement();
+            flag = state.executeUpdate(query);
             
             state.close();
             con.close();

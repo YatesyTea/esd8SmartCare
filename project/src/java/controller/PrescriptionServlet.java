@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.PrescriptionBean;
 import model.Prescription;
+import static model.PrescriptionBean.checkValid;
 
 /**
  *
@@ -42,8 +43,60 @@ public class PrescriptionServlet extends HttpServlet {
         String dsg = request.getParameter("dosage");
         String dn = request.getParameter("dname");
         
+        String valid = checkValid(pn,dn);
         Prescription prescription1 = new Prescription(t,pn,d,dsg,dn);
-        pb.addPrescription(prescription1);
+        System.out.print(prescription1);
+        
+        if (valid != null) {
+            pb.addPrescription(prescription1);
+            RequestDispatcher view = request.getRequestDispatcher("hi.jsp");
+            view.forward(request, response);
+        }
+        else {
+           RequestDispatcher view = request.getRequestDispatcher("index.jsp");
+           view.forward(request, response);
+        }
        
         }
+     
+
+  // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
     }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+}

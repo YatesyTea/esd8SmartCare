@@ -21,7 +21,7 @@
             <input type="text" placeholder="Enter Patient Name" name="pname" required>
             <input type="text" placeholder="Enter Date " name="date" required>
             <input type="text" placeholder="Enter Dosage" name="dosage" required>
-            <input type="text" placeholder="Issued by" name="dname" required>
+            <input type="text" placeholder="Issued by" name="ename" required>
             <input type="submit" value="Issue Prescription">
 
         </form>
