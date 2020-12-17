@@ -6,8 +6,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.time.LocalDate;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,6 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 import model.PrescriptionBean;
 import model.Prescription;
 import static model.PrescriptionBean.checkValid;
+import java.util.Date;  
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
 
 /**
  *
@@ -31,25 +36,28 @@ public class PrescriptionServlet extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.text.ParseException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ParseException {
         response.setContentType("text/html;charset=UTF-8");
         PrescriptionBean pb = new PrescriptionBean();
-        
+             
         //Create parameter variables using inputs taken from sign up form
-        String t = request.getParameter("type");
-        String pn = request.getParameter("pname");    //get the entered login information 
-        String d = request.getParameter("date");
-        String dsg = request.getParameter("dosage");
-        String en = request.getParameter("ename");
+        String d = request.getParameter("drug");
+        int cid = Integer.parseInt(request.getParameter("cid"));    //get the entered login information 
+        float c = Float.parseFloat(request.getParameter("cost"));
+        String dI = request.getParameter("date");
+        int dsg = Integer.parseInt(request.getParameter("dosage"));
+        int reI = Integer.parseInt(request.getParameter("reissue"));
+        int eid = 2;
         
-        String valid = checkValid(pn,en);
-        Prescription prescription1 = new Prescription(t,pn,d,dsg,en);
+        String valid = checkValid(cid,eid);
+        Prescription prescription1 = new Prescription(cid,d,dI,c,dsg,reI,eid);
         System.out.print(prescription1);
         
         if (valid != null) {
-            pb.addPrescription(prescription1);
+           pb.addPrescription(prescription1);
             RequestDispatcher view = request.getRequestDispatcher("doctorDashboard.jsp");
             view.forward(request, response);
         }
@@ -73,7 +81,11 @@ public class PrescriptionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ParseException ex) {
+            Logger.getLogger(PrescriptionServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -87,7 +99,11 @@ public class PrescriptionServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ParseException ex) {
+            Logger.getLogger(PrescriptionServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
