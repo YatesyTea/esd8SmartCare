@@ -413,6 +413,17 @@ A html block on page displaying required payments.
 
 
 
+# Architecture Selection
+
+Due to it being a prerequisite of the project being that it's created in MVC format within Netbeans 8.2 an architecture of MVC shall be used within this project.
+This architecture requires the separation of the project into 3 components within the project itself (outside of outside actors such as google calendar api).
+
+Model --> Handles connection to databases, and does nothing on it's own.
+
+Controller --> Consists of Servlets, takes and gives information to and from the View component, and sends orders to the Model component.
+
+View --> Handles the UI which it's told to display from the Controller, hands across user inputs to the  controller.
+
 # App Navigation
 
 
