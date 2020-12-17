@@ -21,6 +21,9 @@
             <div class="box content">
                 <div class= "content a">
                     <h1>Issue Prescription</h1>
+                    <button onclick="location.href= 'prescriptionForm.jsp';">
+                        Issue Prescription
+                    </button> 
                 </div>
                 <div class= "content b">
                     <h1>View Client Timetables</h1>

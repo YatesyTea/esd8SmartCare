@@ -41,6 +41,7 @@ public class PrescriptionServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
         response.setContentType("text/html;charset=UTF-8");
+        //Create new Instance of Prescription Bean
         PrescriptionBean pb = new PrescriptionBean();
              
         //Create parameter variables using inputs taken from sign up form
@@ -50,9 +51,11 @@ public class PrescriptionServlet extends HttpServlet {
         String dI = request.getParameter("date");
         int dsg = Integer.parseInt(request.getParameter("dosage"));
         int reI = Integer.parseInt(request.getParameter("reissue"));
-        int eid = 2;
+        int eid = 1;
         
+        //Function called to make sure prescription is valid.
         String valid = checkValid(cid,eid);
+        //Create new Prescription Object.
         Prescription prescription1 = new Prescription(cid,d,dI,c,dsg,reI,eid);
         System.out.print(prescription1);
         

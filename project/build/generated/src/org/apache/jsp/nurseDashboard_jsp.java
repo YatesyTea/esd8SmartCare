@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class doctorDashboard_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class nurseDashboard_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -55,7 +55,7 @@ public final class doctorDashboard_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("    <body>\r\n");
       out.write("        <div class=\"wrapper\">\r\n");
       out.write("            <div class=\"box header\">\r\n");
-      out.write("                <h1>Welcome Doctor</h1>\r\n");
+      out.write("                <h1>Welcome Nurse</h1>\r\n");
       out.write("            </div>\r\n");
       out.write("            <div class=\"box content\">\r\n");
       out.write("                <div class= \"content a\">\r\n");
@@ -69,7 +69,7 @@ public final class doctorDashboard_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("                </div>\r\n");
       out.write("            </div>\r\n");
       out.write("        </div>\r\n");
-      out.write("</body>\r\n");
+      out.write("    </body>\r\n");
       out.write("</html>\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
