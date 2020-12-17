@@ -131,11 +131,12 @@ public class ChargesTest {
     public void testSetAmount() {
         System.out.println("Test Set Amount");
         Charges instance = charge;
+        
+        double testAmount = 2.52;
+        instance.setAmount(testAmount);
 
-        instance.setAmount(2.52);
-
-        double expResult = 2.52;
-        double result = instance.getClient_id();
+        double expResult = testAmount;
+        double result = instance.getAmount();
 
         assertEquals(expResult, result, 0.001);
     }
