@@ -179,4 +179,4 @@ expected output : displays all of the patients timetabled appointments.
 
 
 
-[back to top](#testing-for-smartcare)d
+[back to top](#testing-for-smartcare)

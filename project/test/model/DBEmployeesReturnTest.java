@@ -5,6 +5,8 @@
  */
 package model;
 
+
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -14,11 +16,12 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Yates
+ * @author carl
  */
 public class DBEmployeesReturnTest {
     
-    public DBEmployeesReturnTest() {
+    public DBEmployeesReturnTest(){
+        
     }
     
     @BeforeClass
@@ -37,9 +40,27 @@ public class DBEmployeesReturnTest {
     public void tearDown() {
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    @Test
+    public void testValidgetEmployee(){
+        System.out.println("getEmployee");
+        DBEmployeesReturn instance = new DBEmployeesReturn();
+        
+        String id = "2";
+        String expResult = "2";
+        String result = instance.getEmployee().get(0).getId();
+        
+        assertEquals(expResult, result);  
+    }
+    
+    @Test
+    public void testInvalidgetEmployees() {
+        System.out.println("get Invalid Employee");
+        DBEmployeesReturn instance = new DBEmployeesReturn();
+
+        String name = "totallyrealname";
+        ArrayList<Employees> expResult = null;
+        ArrayList<Employees> result = instance.getEmployee();
+
+        assertEquals(expResult, result);
+    }
 }

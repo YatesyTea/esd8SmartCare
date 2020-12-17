@@ -5,64 +5,87 @@
  */
 package model;
 
+import java.util.*;
+
 /**
  *
  * @author fdent
  */
 public class Prescription {
     
-    private String type;
-    private String patientName;
+    
+    private int cid;
+    private String drug;
     private String date;
-    private String dosage;
-    private String employee;
+    private float cost;
+    private int dosage;
+    private int reissue;
+    private int eid;
 
-    public Prescription(String type, String patientName, String date, String dosage, String employee) {
-        this.type = type;
-        this.patientName = patientName;
+    public Prescription(int cid, String drug, String date, float cost, int dosage, int reissue,int eid) {
+        
+        this.cid = cid;
+        this.drug = drug;
         this.date = date;
+        this.cost = cost;
         this.dosage = dosage;
-        this.employee = employee;
+        this.reissue = reissue;
+        this.eid = eid;
         
     }
-
-    public String getType() {
-        return type;
+    
+    public int getCid() {
+        return cid;
     }
 
-    public String getPatientName() {
-        return patientName;
+    public String getDrug() {
+        return drug;
     }
-
     public String getDate() {
         return date;
     }
-    public String getDosage() {
+    
+    public float getCost() {
+        return cost;
+    }
+    
+    public int getDosage(){
         return dosage;
     }
     
-    public String getEmployee() {
-        return employee;
+    public int getReissue(){
+        return reissue;
     }
     
-
-    public void setType(String type) {
-        this.type = type;
+     public int getEid() {
+        return eid;
     }
 
-    public void setPatientName(String patientName) {
-        this.patientName = patientName;
+    public void setCid(int cid) {
+        this.cid = cid;
     }
     
+    public void setDrug(String drug){
+        this.drug = drug;
+    }
     public void setDate(String date) {
          this.date = date;
     }
 
-    public void setDosage(String dosage) {
+    public void setDosage(int dosage) {
         this.dosage = dosage;
     }
         
-    public void setDoctor(String Employee) {
-        this.employee = employee;
-    }    
+    public void setCost(float cost) {
+        this.cost = cost;
+    }
+    
+    public void setReissue(int reissue){
+        this.reissue = reissue;
+    }
+    
+     public void setEid(int eid) {
+        this.eid = eid;
+    }
+
 }
