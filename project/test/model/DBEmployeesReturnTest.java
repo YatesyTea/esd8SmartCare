@@ -40,14 +40,26 @@ public class DBEmployeesReturnTest {
     }
     
     @Test
-    public void testgetEmployee(){
+    public void testValidgetEmployee(){
         System.out.println("getEmployee");
         DBEmployeesReturn instance = new DBEmployeesReturn();
         
         String id = "2";
-        String expResult = "Emin Adyin";
-        String result = instance.getEmployee(id).get(0).getName();
+        String expResult = "2";
+        String result = instance.getEmployee().get(0).getId();
         
         assertEquals(expResult, result);  
+    }
+    
+    @Test
+    public void testInvalidgetEmployees() {
+        System.out.println("get Invalid Employee");
+        DBEmployeesReturn instance = new DBEmployeesReturn();
+
+        String name = "totallyrealname";
+        ArrayList<Employees> expResult = null;
+        ArrayList<Employees> result = instance.getEmployee();
+
+        assertEquals(expResult, result);
     }
 }
