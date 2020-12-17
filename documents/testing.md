@@ -109,6 +109,12 @@ expected output : displays all of the patients timetabled appointments.
 
 ## Feature 10: Generate Invoice
 
+## Feature 11: Manage Staff
+
+## Feature 12: Patient View Prescription
+
+
+
 
 
 [back to top](#testing-for-smartcare)
