@@ -54,14 +54,14 @@ public class UsersBeanTest {
         String uname = "uname";
         String password = "pass";
         String expResult = null;
-        String result = ub.checkLogin(uname, password);
+        String result = instance.checkLogin(uname, password);
         
         assertEquals(expResult, result);
         
         uname = "admin";
         password = "admin_passwd";        
         expResult = "admin";
-        result = ub.checkLogin(uname, password);
+        result = instance.checkLogin(uname, password);
         
         assertEquals(expResult, result);
         
@@ -75,14 +75,14 @@ public class UsersBeanTest {
         
         String username = "uname";
         String expResult = null;
-        Users result = ub.getUser(username);
+        Users result = instance.getUser(username);
         
         assertEquals(expResult, result);
         
         
         username = "admin";
         expResult = "admin";
-        result = ub.getUser(username);
+        result = instance.getUser(username);
         
         assertEquals(expResult, result.getUsername());
         
@@ -95,7 +95,7 @@ public class UsersBeanTest {
         
         Users user =  new Users("test","testPass","client");
         int expResult = 1;
-        int result = ub.addUser(user);
+        int result = instance.addUser(user);
         
         assertEquals(expResult, result);
         
@@ -107,7 +107,7 @@ public class UsersBeanTest {
         UsersBean instance = ub;
         
         ArrayList<Users> expResult = null;
-        ArrayList<Users> result = ub.getAllUsers();
+        ArrayList<Users> result = instance.getAllUsers();
         
         assertNotEquals(expResult, result);
         
@@ -120,11 +120,11 @@ public class UsersBeanTest {
         
         //Add test user to db
         Users user = new Users("test","password","client");
-        ub.addUser(user);
+        instance.addUser(user);
         
         //Delete
         int expResult = 1;
-        int result = ub.deleteUsers(user);
+        int result = instance.deleteUsers(user);
         
         assertEquals(expResult, result);
         
@@ -137,12 +137,12 @@ public class UsersBeanTest {
         
         //Add test user to db
         Users user = new Users("test","password","client");
-        ub.addUser(user);
+        instance.addUser(user);
         user.setPassword("1234");
         
         int expResult = 1;
-        int result = ub.updateUsers(user);
-        ub.deleteUsers(user);
+        int result = instance.updateUsers(user);
+        instance.deleteUsers(user);
         
         assertEquals(expResult, result);
     

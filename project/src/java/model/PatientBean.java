@@ -167,7 +167,7 @@ public class PatientBean {
         int flag = 0;
         try{
             if(connect()){
-                String query = "UPDATE CLIENTS SET CNAME=?, CADDRESS=? , CTYPE=?, WHERE UNAME=?";
+                String query = "UPDATE CLIENTS SET CNAME=?, CADDRESS=? , CTYPE=? WHERE UNAME=?";
 
                 ps = con.prepareStatement(query);
                 ps.setString(1, patient.getName());

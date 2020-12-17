@@ -21,6 +21,7 @@ import static org.junit.Assert.*;
 public class PatientBeanTest {
     
     private PatientBean pb;
+    private UsersBean ub;
     
     public PatientBeanTest() {
     }
@@ -37,6 +38,7 @@ public class PatientBeanTest {
     public void setUp() {
         System.out.println("== Set Up");
         pb = new PatientBean("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
+        ub = new UsersBean("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
         
     }
     
@@ -44,84 +46,94 @@ public class PatientBeanTest {
     public void tearDown() {
         System.out.println("== Tear Down");
         pb = null;
+        ub = null;
     }
 
     @Test
-    public void testGetUser() throws SQLException{
-        System.out.println("Get User");
+    public void testGetPatient() throws SQLException{
+        System.out.println("Get Patient");
         PatientBean instance = pb;
         
         String username = "uname";
         String expResult = null;
-        Patient result = pb.getPatient(username);
+        Patient result = instance.getPatient(username);
         
         assertEquals(expResult, result);
         
         
-        username = "meaydin";
-        expResult = "meaydin";
-        result = pb.getPatient(username);
+        username = "caidan";
+        expResult = "caidan";
+        result = instance.getPatient(username);
         
         assertEquals(expResult, result.getUsername());
         
     }
     
     @Test
-    public void testAddUser(){
-        System.out.println("Add User");
+    public void testAddPatient() throws SQLException{
+        System.out.println("Add Patient");
         PatientBean instance = pb;
+        UsersBean ub_instance = ub;
         
-        Patient patient = new Patient("test","testAddress","nhs","test");
+        //Add user
+        Users user = new Users("test","pass","client");
+        ub_instance.addUser(user);
+        
+        Patient patient = new Patient("test", "testAddress", "nhs", "test");
+        
         int expResult = 1;
-        int result = pb.addPatient(patient);
+        int result = instance.addPatient(patient);
         
         assertEquals(expResult, result);
+
+        ub_instance.deleteUsers(user);
+        instance.deletePatient(patient);
         
     }
     
     @Test
-    public void testGetAllUsers() throws SQLException{
-        System.out.println("Get All Users");
+    public void testGetAllPatient() throws SQLException{
+        System.out.println("Get All Patient");
         PatientBean instance = pb;
         
         ArrayList<Patient> expResult = null;
-        ArrayList<Patient> result = pb.getAllPatients();
+        ArrayList<Patient> result = instance.getAllPatients();
         
         assertNotEquals(expResult, result);
         
     }
     
     @Test
-    public void testDeleteUsers() throws SQLException{
-        System.out.println("Delete User");
+    public void testDeletePatient() throws SQLException{
+        System.out.println("Delete Patient");
         PatientBean instance = pb;
-        
-        //Add test user to db
-        Patient patient = new Patient("test","testAddress","nhs","test");
-        pb.addPatient(patient);
+
+        Patient patient = instance.getPatient("caidan");
         
         //Delete
         int expResult = 1;
-        int result = pb.deletePatient(patient);
+        int result = instance.deletePatient(patient);
+        instance.addPatient(patient);        
         
         assertEquals(expResult, result);
+        
+        
         
     }
     
     @Test
     public void testUpdatePatient() throws SQLException{
-        System.out.println("Update User");
+        System.out.println("Update Patient");
         PatientBean instance = pb;
         
         //Add test user to db
-        Patient patient = new Patient("test","testAddress","nhs","test");
-        pb.addPatient(patient);
+        Patient patient = instance.getPatient("caidan");
+        
         patient.setType("private");
         
         int expResult = 1;
-        int result = pb.updatePatient(patient);
-        pb.deletePatient(patient);
-        
+        int result = instance.updatePatient(patient);
+       
         assertEquals(expResult, result);
     
     }

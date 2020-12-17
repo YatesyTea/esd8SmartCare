@@ -35,7 +35,7 @@ public class PatientTest {
     @Before
     public void setUp() {
         System.out.println("== Set Up");
-        patient = new Patient("test","testAddress","NHS","uname");
+        patient = new Patient("test", "testAddress", "nhs", "uname");
     }
     
     @After
@@ -65,7 +65,7 @@ public class PatientTest {
         instance.setName(name);
 
         String expResult = "patientName";
-        String result = instance.getUsername();
+        String result = instance.getName();
 
         assertEquals(expResult, result);
     }
@@ -100,7 +100,7 @@ public class PatientTest {
         System.out.println("Get Type");
         Patient instance = patient;
 
-        String expResult = "NHS";
+        String expResult = "nhs";
         String result = instance.getType();
 
         assertEquals(expResult, result);
