@@ -4,7 +4,11 @@
 
 # White Box Testing (Unit Tests)
 
+
+
 ## DbConnection Test
+
+test Connection is true
 
 
 
@@ -28,23 +32,81 @@ Proof that it's passed:
 
 ![image-20201209154125381](testing.assets/usersTest.png)
 
-## Employee Test
+## Employees Test
+
+get/set EID
+
+get/set ENAME
+
+get/set EADDRESS
+
+get/set UNAME
 
 
 
 ## Patient Test
 
+get/set CID (INT PK)
+
+get/set CNAME (String)
+
+get/set CADDRESS (String)
+
+get/set CTYPE (NHS/Private)
+
+get/set UNAME (String FK)
+
 
 
 ## Booking Test
 
+get/set SID
+
+get/set EID
+
+get/set CID
+
+get/set SDATE
+
+get/set STIME
 
 
-## Operation Test
+
+## Operations Test
+
+get/set OID
+
+get/set EID
+
+get/set CID
+
+get/set ODATE
+
+get/set OTIME
+
+get/set NSLOT
+
+get/set CHARGE
 
 
 
 ## Prescription Test
+
+get/set PrescriptionId
+
+get/set CID
+
+get/set EID
+
+get/set Drug
+
+get/set Amount
+
+get/set Cost
+
+get/set Reissue
+
+get/set Date
 
 
 
@@ -108,6 +170,12 @@ expected output : displays all of the patients timetabled appointments.
 ## Feature 9: Produce Weekly Documents
 
 ## Feature 10: Generate Invoice
+
+## Feature 11: Manage Staff
+
+## Feature 12: Patient View Prescription
+
+
 
 
 

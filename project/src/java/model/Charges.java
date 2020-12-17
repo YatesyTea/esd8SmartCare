@@ -13,11 +13,11 @@ import java.util.Date;
  */
 public class Charges {
     
-    private int id;
-    private String client_id, date;
+    private int id, client_id;
+    private String  date;
     private double amount;
 
-    public Charges(int id, String client_id, String date, double amount) {
+    public Charges(int id, int client_id, String date, double amount) {
         this.id = id;
         this.client_id = client_id;
         this.amount = amount;
@@ -32,11 +32,11 @@ public class Charges {
         this.id = id;
     }
 
-    public String getClient_id() {
+    public int getClient_id() {
         return client_id;
     }
 
-    public void setClient_id(String client_id) {
+    public void setClient_id(int client_id) {
         this.client_id = client_id;
     }
 
