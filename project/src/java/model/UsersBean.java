@@ -199,7 +199,7 @@ public class UsersBean {
         int flag = 0;
         try{
             if(connect()){
-                String query = "UPDATE USERS SET PASSWORD=?, ROLE=? WHERE UNAME=?";
+                String query = "UPDATE USERS SET PASSWD=?, ROLE=? WHERE UNAME=?";
                 
                 ps = con.prepareStatement(query);
                 ps.setString(1, user.getPassword());
