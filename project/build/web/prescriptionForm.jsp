@@ -16,12 +16,14 @@
     <body>
         <form class="box" action="PrescriptionServlet.do" method="POST">
             <h1>Issue Prescription</h1>
-
-            <input type="text" placeholder="Enter Prescription Type" name="type" required>
-            <input type="text" placeholder="Enter Patient Name" name="pname" required>
-            <input type="text" placeholder="Enter Date " name="date" required>
+            
+            <input type="text" placeholder="Enter Client ID" name="cid" required>
+            <input type="text" placeholder="Drug Name" name="drug" required>
             <input type="text" placeholder="Enter Dosage" name="dosage" required>
-            <input type="text" placeholder="Issued by" name="ename" required>
+            <input type="text" placeholder ="Cost" name="cost" required>
+            <input type="date" placeholder="Date Prescribed (FORMAT YYYY/MM/DD)" name="date" required>
+            <input type="text" placeholder="Repeating" name="reissue" required>
+            
             <input type="submit" value="Issue Prescription">
         </form>
     </body>
