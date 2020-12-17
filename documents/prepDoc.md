@@ -518,6 +518,18 @@ create table operations(
     charge float
 );
 
+create table prescriptions(
+    pID int not null primary key
+            generated always as identity (start with 1, increment by 1),
+    cID int references clients(cID),
+    drug varchar(20),
+    dIssue varchar(20),
+    dosage int,
+    cost float,
+    reIssue int,
+    eID int references employee(eID)
+);
+
 
 create table booking_slots(
     sID int not null primary key
@@ -545,7 +557,10 @@ INSERT INTO EMPLOYEE (ENAME, EADDRESS, UNAME) VALUES ('Emin Aydin', 'Emiin''s Ad
 INSERT INTO CLIENTS (CNAME, CADDRESS, CTYPE, UNAME) VALUES ('Charly Aidan', '14 King Street, Aberdeen, AB24 1BR', 'NHS', 'caidan');
 INSERT INTO CLIENTS (CNAME, CADDRESS, CTYPE, UNAME) VALUES ('Prince Hassan', 'Non-UK street, Non-UK Town, Non_UK', 'private', 'princehassan');
 
-```
+``Prescription Samples
+INSERT INTO PRESCRIPTIONS(CID, DRUG, DISSUE ,DOSAGE, COST, REISSUE, EID) VALUES (2, 'Piriton', '2020-10-20', 20,9.99,7, 2);
+INSERT INTO PRESCRIPTIONS(CID, DRUG, DISSUE ,DOSAGE, COST, REISSUE, EID) VALUES (1, 'Medication', '2020-11-24', 100,12.99,21, 2);
+
 
 
 
