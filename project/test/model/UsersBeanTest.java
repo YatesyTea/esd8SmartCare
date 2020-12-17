@@ -6,6 +6,7 @@
 package model;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -45,6 +46,7 @@ public class UsersBeanTest {
         ub = null;
     }
     
+    @Test
     public void testCheckLogin(){
         System.out.println("Check Login");
         UsersBean instance = ub;
@@ -66,48 +68,84 @@ public class UsersBeanTest {
         
     }
     
+    @Test
     public void testGetUser() throws SQLException{
         System.out.println("Get User");
+        UsersBean instance = ub;
         
         String username = "uname";
-        Users expResult = null;
+        String expResult = null;
         Users result = ub.getUser(username);
         
         assertEquals(expResult, result);
         
         
         username = "admin";
-        expResult = new Users("admin","admin_passwd","admin");
+        expResult = "admin";
         result = ub.getUser(username);
+        
+        assertEquals(expResult, result.getUsername());
+        
+    }
+    
+    @Test
+    public void testAddUser(){
+        System.out.println("Add User");
+        UsersBean instance = ub;
+        
+        Users user =  new Users("test","testPass","client");
+        int expResult = 1;
+        int result = ub.addUser(user);
         
         assertEquals(expResult, result);
         
     }
     
-    public void testAddUser(){
-        System.out.println("Add User");
+    @Test
+    public void testGetAllUsers() throws SQLException{
+        System.out.println("Get All Users");
+        UsersBean instance = ub;
         
-        Users user =  new Users("test","testPass","client");
+        ArrayList<Users> expResult = null;
+        ArrayList<Users> result = ub.getAllUsers();
         
-    
+        assertNotEquals(expResult, result);
+        
     }
     
-    public void testGetAllUsers(){
-    
+    @Test
+    public void testDeleteUsers() throws SQLException{
+        System.out.println("Delete User");
+        UsersBean instance = ub;
+        
+        //Add test user to db
+        Users user = new Users("test","password","client");
+        ub.addUser(user);
+        
+        //Delete
+        int expResult = 1;
+        int result = ub.deleteUsers(user);
+        
+        assertEquals(expResult, result);
+        
     }
     
-    public void testDeleteUsers(){
+    @Test
+    public void testUpdateUsers() throws SQLException{
+        System.out.println("Update User");
+        UsersBean instance = ub;
+        
+        //Add test user to db
+        Users user = new Users("test","password","client");
+        ub.addUser(user);
+        user.setPassword("1234");
+        
+        int expResult = 1;
+        int result = ub.updateUsers(user);
+        ub.deleteUsers(user);
+        
+        assertEquals(expResult, result);
     
     }
-    
-    public void testUpdateUsers(){
-    
-    }
-    
-    
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    // "jdbc:derby://localhost:1527/smartcare", "administrator", "admin"
-    // @Test
-    // public void hello() {}
+
 }

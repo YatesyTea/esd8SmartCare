@@ -21,6 +21,7 @@ public class PatientTest {
     private Patient patient;
     
     public PatientTest() {
+        
     }
     
     @BeforeClass
@@ -119,7 +120,8 @@ public class PatientTest {
         assertEquals(expResult, result);
     }
     
-    @Test void testGetUsername(){
+    @Test 
+    public void testGetUsername(){
         System.out.println("Get Username");
         Patient instance = patient;
         
