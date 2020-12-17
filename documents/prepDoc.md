@@ -375,6 +375,44 @@ A bill providing containing the information above.
 
 #### Additional Details
 
+
+
+## Feature 11: Manage Staff
+
+### Description
+
+When logged in as admin allows you to 'suspend' staff from the system.
+
+### Input 
+
+* Clicking the 'suspend' button next to an employee name.
+
+### Returns
+
+A message proving removal from service.
+
+#### Additional Details
+
+
+
+## Feature 12: Patient View Charges
+
+### Description
+
+Patient can view invoice generated as in feature 10.
+
+### Input 
+
+* Patient ID (From cookie)
+
+### Returns
+
+A html block on page displaying required payments.
+
+#### Additional Details
+
+
+
 # App Navigation
 
 
