@@ -29,6 +29,7 @@ public class UsersBean {
        
     }
     
+    @VisibleForTesting
     private boolean connect() throws SQLException{
         try{
             this.con = DriverManager.getConnection(this.url, this.user, this.password);
