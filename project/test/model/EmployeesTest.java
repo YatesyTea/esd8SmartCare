@@ -140,8 +140,5 @@ public class EmployeesTest {
         String result = instance.getDob();
 
         assertEquals(expResult, result);
-    }
-   
+    }  
 }
-    
-

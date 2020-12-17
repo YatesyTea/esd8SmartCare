@@ -31,20 +31,20 @@ public class PrescriptionBean {
      * @param doctorName
      * @return
      */
-    public static String checkValid(String patientName, String employeeName){
+    public static String checkValid(int cid, int eid){
         String valid = "valid";
         
         try {
             Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
            
-            PreparedStatement ps = con.prepareStatement("SELECT CNAME FROM CLIENTS WHERE CLIENTS.CNAME='" + patientName + "'");
+            PreparedStatement ps = con.prepareStatement("SELECT CID FROM CLIENTS WHERE CLIENTS.CID=" + cid + "");
       
             //Lookup user in db
             ResultSet rs = ps.executeQuery();
             
             //If user was found return role
             if(rs.next()){
-                PreparedStatement ps1 = con.prepareStatement("SELECT ENAME FROM EMPLOYEE WHERE EMPLOYEE.ENAME = '" + employeeName + "'");
+                PreparedStatement ps1 = con.prepareStatement("SELECT EID FROM EMPLOYEE WHERE EMPLOYEE.EID = " + eid + "");
                 ResultSet rs1 = ps1.executeQuery();
                 if (rs1.next())
                     return valid;
@@ -68,8 +68,8 @@ public class PrescriptionBean {
             con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
             
             //Format query to insert prescription info into DB.
-            String query = "INSERT INTO PRESCRIPTION(PTYPE, CNAME, DISSUE, DOSAGE ,ENAME) VALUES('"+ newPrescription.getType() + "','" + newPrescription.getPatientName() + "','" + newPrescription.getDate() + "','" 
-                    + newPrescription.getDosage() + "','" + newPrescription.getEmployee() +"')";
+            String query = "INSERT INTO PRESCRIPTIONS(CID, DRUG, DISSUE, DOSAGE, COST , REISSUE, EID) VALUES("+ newPrescription.getCid() + ",'" + newPrescription.getDrug() + "','" + newPrescription.getDate() + "'," 
+                    + newPrescription.getDosage() + "," + newPrescription.getCost()+ "," + newPrescription.getReissue()+ "," + newPrescription.getEid() +")";
             
             //Add to db
             state = con.createStatement();
