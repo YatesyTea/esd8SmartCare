@@ -20,6 +20,22 @@
         <servlet-name>ViewPrescriptionServlet</servlet-name>
         <servlet-class>controller.ViewPrescriptionServlet</servlet-class>
     </servlet>
+    <servlet>
+       <servlet-name>AdminEmployeesController</servlet-name>
+        <servlet-class>controller.AdminEmployeesController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminChargesController</servlet-name>
+        <servlet-class>controller.AdminChargesController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminEmployeesController</servlet-name>
+        <url-pattern>/AdminEmployeesController.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminChargesController</servlet-name>
+        <url-pattern>/AdminChargesController.do</url-pattern>
+    </servlet-mapping> 
     <servlet-mapping>
         <servlet-name>usersServlet</servlet-name>
         <url-pattern>/usersServlet.do</url-pattern>
