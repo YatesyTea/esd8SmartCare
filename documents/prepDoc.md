@@ -424,6 +424,8 @@ Controller --> Consists of Servlets, takes and gives information to and from the
 
 View --> Handles the UI which it's told to display from the Controller, hands across user inputs to the  controller.
 
+![architecture](prepDoc.assets/architecture.png)
+
 # App Navigation
 
 
