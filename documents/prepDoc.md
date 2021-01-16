@@ -599,7 +599,7 @@ create table operations(
     oID int not null primary key
             generated always as identity (start with 1, increment by 1), 
     FK_eID int references employee(eID),
-    FK_PID int references patients(cID),
+    FK_PID int references patients(pID),
     oDate date,
     oTime time,
     nSlot int,
@@ -610,7 +610,7 @@ create table prescriptions(
     pID int not null primary key
             generated always as identity (start with 1, increment by 1),
     FK_eID int references employee(eID),
-    FK_PID int references patients(cID),
+    FK_PID int references patients(pID),
     drug varchar(20),
     dIssue varchar(20),
     dosage int,
@@ -623,7 +623,7 @@ create table appointment(
     sID int not null primary key
             generated always as identity (start with 1, increment by 1),
     FK_eID int references employee(eID),
-    FK_PID int references patients(cID),
+    FK_PID int references patients(pID),
     aDate date,
     aTime time
 );
