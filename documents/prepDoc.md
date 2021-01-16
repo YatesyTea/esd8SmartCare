@@ -496,7 +496,7 @@ create table clients(
 	cName varchar(50),
 	cAddress varchar(100),
 	cType varchar(10),
-	uName varchar(20) references users(uname)
+	FK_uName varchar(20) references users(uname)
 );
 
 create table employee(
@@ -504,14 +504,14 @@ create table employee(
             generated always as identity (start with 1, increment by 1), 
 	eName varchar(50),
 	eAddress varchar(100),
-	uName varchar(20) references users(uname)
+	FK_uName varchar(20) references users(uname)
 );
 
 create table operations(
     oID int not null primary key
             generated always as identity (start with 1, increment by 1), 
-    eID int references employee(eID),
-    cID int references clients(cID),
+    FK_eID int references employee(eID),
+    FK_cID int references clients(cID),
     oDate date,
     oTime time,
     nSlot int,
@@ -521,26 +521,26 @@ create table operations(
 create table prescriptions(
     pID int not null primary key
             generated always as identity (start with 1, increment by 1),
-    cID int references clients(cID),
+    FK_eID int references employee(eID),
+    FK_cID int references clients(cID),
     drug varchar(20),
     dIssue varchar(20),
     dosage int,
     cost float,
-    reIssue int,
-    eID int references employee(eID)
+    reIssue int
 );
 
 
 create table booking_slots(
     sID int not null primary key
             generated always as identity (start with 1, increment by 1),
-    eID int references employee(eID),
-    cID int references clients(cID),
+    FK_eID int references employee(eID),
+    FK_cID int references clients(cID),
     sDate date,
     sTime time
 );
 
--- If you want to populate the database here are some samples provided by Mehmet
+-- If you want to populate the database here are some samples provided by Mehmet in addition to some edits made by ESD Team 8.
 
 -- User Samples
 INSERT INTO USERS (UNAME, PASSWD, "ROLE") VALUES ('test', 'test', 'doctor');
@@ -550,19 +550,25 @@ INSERT INTO USERS (UNAME, PASSWD, "ROLE") VALUES ('princehassan', 'prince_passwd
 INSERT INTO USERS (UNAME, PASSWD, "ROLE") VALUES ('admin', 'admin_passwd', 'admin');
 
 -- Employee Samples
-INSERT INTO EMPLOYEE (ENAME, EADDRESS, UNAME) VALUES ('Mehmet Aydin', 'Mehmets Address, London, NW4 0BH', 'meaydin');
-INSERT INTO EMPLOYEE (ENAME, EADDRESS, UNAME) VALUES ('Emin Aydin', 'Emiin''s Address, Bristol, BS16', 'eaydin');
+INSERT INTO EMPLOYEE (ENAME, EADDRESS, FK_UNAME) VALUES ('Mehmet Aydin', 'Mehmets Address, London, NW4 0BH', 'meaydin');
+INSERT INTO EMPLOYEE (ENAME, EADDRESS, FK_UNAME) VALUES ('Emin Aydin', 'Emiin''s Address, Bristol, BS16', 'eaydin');
 
 -- Client Samples
-INSERT INTO CLIENTS (CNAME, CADDRESS, CTYPE, UNAME) VALUES ('Charly Aidan', '14 King Street, Aberdeen, AB24 1BR', 'NHS', 'caidan');
-INSERT INTO CLIENTS (CNAME, CADDRESS, CTYPE, UNAME) VALUES ('Prince Hassan', 'Non-UK street, Non-UK Town, Non_UK', 'private', 'princehassan');
+INSERT INTO CLIENTS (CNAME, CADDRESS, CTYPE, FK_UNAME) VALUES ('Charly Aidan', '14 King Street, Aberdeen, AB24 1BR', 'NHS', 'caidan');
+INSERT INTO CLIENTS (CNAME, CADDRESS, CTYPE, FK_UNAME) VALUES ('Prince Hassan', 'Non-UK street, Non-UK Town, Non_UK', 'private', 'princehassan');
 
-``Prescription Samples
-INSERT INTO PRESCRIPTIONS(CID, DRUG, DISSUE ,DOSAGE, COST, REISSUE, EID) VALUES (2, 'Piriton', '2020-10-20', 20,9.99,7, 2);
-INSERT INTO PRESCRIPTIONS(CID, DRUG, DISSUE ,DOSAGE, COST, REISSUE, EID) VALUES (1, 'Medication', '2020-11-24', 100,12.99,21, 2);
+-- Operation Samples
+INSERT INTO OPERATIONS (FK_EID, FK_CID, ODATE, OTIME, NSLOT, CHARGE) VALUES (1, 1, '2020-10-20', '19:30:10', 1, 250.25);
 
+INSERT INTO OPERATIONS (FK_EID, FK_CID, ODATE, OTIME, NSLOT, CHARGE) VALUES (2, 2, '2020-10-20', '19:30:10', 1, 250.25);
 
+-- Prescription Samples
+INSERT INTO PRESCRIPTIONS(FK_CID, FK_EID, DRUG, DISSUE ,DOSAGE, COST, REISSUE) VALUES (2, 2, 'Piriton', '2020-10-20', 20,9.99,7);
+INSERT INTO PRESCRIPTIONS(FK_CID, FK_CID, DRUG, DISSUE ,DOSAGE, COST, REISSUE) VALUES (1, 2, 'Medication', '2020-11-24', 100,12.99,21);
 
+-- Appointment Samples
+INSERT INTO APOINTMENT(FK_EID, FK_CID, ADATE, ATIME) VALUES (1, 1, '2020-11-24', '12:10:10');
+```
 
 # Links
 
@@ -575,8 +581,3 @@ Trackers: [Google Sheets Tracker](https://docs.google.com/spreadsheets/d/19khCFj
 Sprint Kanban's: [Projects · YatesyTea/esd8SmartCare (github.com)](https://github.com/YatesyTea/esd8SmartCare/projects)
 
 [Back to Top](#smart-care-prep-documents)
-
-
-
-
-
