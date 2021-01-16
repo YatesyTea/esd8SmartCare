@@ -624,8 +624,8 @@ create table appointment(
             generated always as identity (start with 1, increment by 1),
     FK_eID int references employee(eID),
     FK_PID int references patients(cID),
-    sDate date,
-    sTime time
+    aDate date,
+    aTime time
 );
 
 -- If you want to populate the database here are some samples provided by Mehmet in addition to some edits made by ESD Team 8.
