@@ -105,11 +105,11 @@ Google Maps API
 
 As *x* I want to *y* so I can *z*.
 
-## Patient
+## Client
 
-* As a Patient I want to login/signup, so that I can access the functions of the system.
-* As a Patient I want to book an appointment with a doctor/nurse so that my medical issue can be resolved.
-* As a Patient I want to be able to request a repeat prescription so that I don’t run out of my medication.
+* As a Client I want to login/signup, so that I can access the functions of the system.
+* As a Client I want to book an appointment with a doctor/nurse so that my medical issue can be resolved.
+* As a Client I want to be able to request a repeat prescription so that I don’t run out of my medication.
 
 
 ## Doctor/Nurse
