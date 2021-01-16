@@ -619,7 +619,7 @@ create table prescriptions(
 );
 
 
-create table booking_slots(
+create table appointment(
     sID int not null primary key
             generated always as identity (start with 1, increment by 1),
     FK_eID int references employee(eID),
@@ -655,7 +655,7 @@ INSERT INTO PRESCRIPTIONS(FK_PID, FK_EID, DRUG, DISSUE ,DOSAGE, COST, REISSUE) V
 INSERT INTO PRESCRIPTIONS(FK_PID, FK_PID, DRUG, DISSUE ,DOSAGE, COST, REISSUE) VALUES (1, 2, 'Medication', '2020-11-24', 100,12.99,21);
 
 -- Appointment Samples
-INSERT INTO APOINTMENT(FK_EID, FK_PID, ADATE, ATIME) VALUES (1, 1, '2020-11-24', '12:10:10');
+INSERT INTO APPOINTMENT(FK_EID, FK_PID, ADATE, ATIME) VALUES (1, 1, '2020-11-24', '12:10:10');
 ```
 
 # Links
