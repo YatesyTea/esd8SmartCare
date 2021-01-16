@@ -105,11 +105,11 @@ Google Maps API
 
 As *x* I want to *y* so I can *z*.
 
-## Client
+## Patient
 
-* As a Client I want to login/signup, so that I can access the functions of the system.
-* As a Client I want to book an appointment with a doctor/nurse so that my medical issue can be resolved.
-* As a Client I want to be able to request a repeat prescription so that I don’t run out of my medication.
+* As a Patient I want to login/signup, so that I can access the functions of the system.
+* As a Patient I want to book an appointment with a doctor/nurse so that my medical issue can be resolved.
+* As a Patient I want to be able to request a repeat prescription so that I don’t run out of my medication.
 
 
 ## Doctor/Nurse
@@ -265,11 +265,11 @@ Sessions are used to store data across page requests, as HTTP does not record an
 ### Returns
 
 
-## Feature 5: View Client Timetables
+## Feature 5: View Patient Timetables
 
 ### Description
 
-Only accessible for Admin, Doctor, and Nurse displays the timetable of all clients for a given time period.
+Only accessible for Admin, Doctor, and Nurse displays the timetable of all patients for a given time period.
 
 ### Input 
 
@@ -277,11 +277,11 @@ Only accessible for Admin, Doctor, and Nurse displays the timetable of all clien
 * NHS, or Private
 * Slot
 * Employee
-* Client
+* Patient
 
 ### Returns
 
-List of client appointments that meet the criteria.
+List of patient appointments that meet the criteria.
 
 #### Additional Details
 
@@ -294,7 +294,7 @@ This feature will link up to the google calendar API, further details are TBD.
 ### Description
 
 Doctor only is able to issue prescription. 
-Which will be assigned to a given client.
+Which will be assigned to a given patient.
 
 ### Input 
 * Name/Type of Prescription
