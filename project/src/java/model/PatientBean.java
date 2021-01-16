@@ -71,7 +71,7 @@ public class PatientBean {
         try{
             if(connect()){
                 //Format query
-                String query = "INSERT INTO CLIENTS(CNAME, CADDRESS, CTYPE, UNAME) VALUES('"+ newPatient.getName() + "','" + newPatient.getAddress() + "','" +
+                String query = "INSERT INTO PATIENTS(PNAME, PADDRESS, PTYPE, UNAME) VALUES('"+ newPatient.getName() + "','" + newPatient.getAddress() + "','" +
                         newPatient.getType() + "','" + newPatient.getUsername() + "')";
 
                 //Add to db
@@ -99,7 +99,7 @@ public class PatientBean {
         try{
             if(connect()){
                 //Get list of users
-                String query = "SELECT * FROM CLIENTS";
+                String query = "SELECT * FROM PATIENTS";
                 state = con.createStatement();
                 rs = state.executeQuery(query);
 
@@ -107,9 +107,9 @@ public class PatientBean {
                 
                 //For each row in table create user & add to list
                 while(rs.next()){
-                    String name = rs.getString("CNAME");
-                    String address = rs.getString("CADDRESS");
-                    String type = rs.getString("CTYPE");
+                    String name = rs.getString("PNAME");
+                    String address = rs.getString("PADDRESS");
+                    String type = rs.getString("PTYPE");
                     String username = rs.getString("UNAME");
 
                     Patient patient = new Patient(name, address, type, username);
@@ -140,7 +140,7 @@ public class PatientBean {
         int flag = 0;
         try{
             if(connect()){
-                String query = "DELETE FROM CLIENTS WHERE UNAME=?";
+                String query = "DELETE FROM PATIENTS WHERE UNAME=?";
 
                 ps = con.prepareStatement(query);
                 ps.setString(1, patient.getUsername());
@@ -167,7 +167,7 @@ public class PatientBean {
         int flag = 0;
         try{
             if(connect()){
-                String query = "UPDATE CLIENTS SET CNAME=?, CADDRESS=? , CTYPE=? WHERE UNAME=?";
+                String query = "UPDATE PATIENTS SET PNAME=?, PADDRESS=? , PTYPE=? WHERE UNAME=?";
 
                 ps = con.prepareStatement(query);
                 ps.setString(1, patient.getName());
@@ -189,14 +189,14 @@ public class PatientBean {
     /*
     *   Description: Retrieves a patients information from db
     *   @param: String username - the id of the patient in the table
-    *   @return: Patient - returns a patient object (CNAME, CADDRESS, CTYPE, UNAME) if the supplied username was valid
+    *   @return: Patient - returns a patient object (PNAME, PADDRESS, PTYPE, UNAME) if the supplied username was valid
     */
     public Patient getPatient(String username) throws SQLException{
         
         Patient patient = null;
         try{
             if(connect()){
-                String query = "SELECT * FROM CLIENTS WHERE UNAME=?";
+                String query = "SELECT * FROM PATIENTS WHERE UNAME=?";
 
                 ps = con.prepareStatement(query);
                 ps.setString(1, username);
@@ -204,9 +204,9 @@ public class PatientBean {
                 
                 //Check if patient was found in db
                 if(rs.next()){
-                    String name = rs.getString("CNAME");
-                    String address = rs.getString("CADDRESS");
-                    String type = rs.getString("CTYPE");
+                    String name = rs.getString("PNAMEE");
+                    String address = rs.getString("PADDRESS");
+                    String type = rs.getString("PTYPE");
 
                     patient = new Patient(name, address, type, username);
                 }
