@@ -633,13 +633,14 @@ create table booking_slots(
 -- User Samples
 INSERT INTO USERS (UNAME, PASSWD, "ROLE") VALUES ('test', 'test', 'doctor');
 INSERT INTO USERS (UNAME, PASSWD, "ROLE") VALUES ('eaydin', '12345me', 'nurse');
-INSERT INTO USERS (UNAME, PASSWD, "ROLE") VALUES ('caidan', '5432@10', '');
+INSERT INTO USERS (UNAME, PASSWD, "ROLE") VALUES ('caidan', '5432@10', 'patient');
 INSERT INTO USERS (UNAME, PASSWD, "ROLE") VALUES ('princehassan', 'prince_passwd', 'patient');
 INSERT INTO USERS (UNAME, PASSWD, "ROLE") VALUES ('admin', 'admin_passwd', 'admin');
 
 -- Employee Samples
-INSERT INTO EMPLOYEE (ENAME, EADDRESS, FK_UNAME) VALUES ('Mehmet Aydin', 'Mehmets Address, London, NW4 0BH', 'meaydin');
+INSERT INTO EMPLOYEE (ENAME, EADDRESS, FK_UNAME) VALUES ('Test', 'Tests Address, London, NW4 0BH', 'test');
 INSERT INTO EMPLOYEE (ENAME, EADDRESS, FK_UNAME) VALUES ('Emin Aydin', 'Emiin''s Address, Bristol, BS16', 'eaydin');
+INSERT INTO 
 
 -- Patient Samples
 INSERT INTO PATIENTS (PNAME, PADDRESS, PTYPE, FK_UNAME) VALUES ('Charly Aidan', '14 King Street, Aberdeen, AB24 1BR', 'NHS', 'caidan');
