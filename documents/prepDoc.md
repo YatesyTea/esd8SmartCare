@@ -35,7 +35,7 @@
 
 4 types of user (doctor, nurse, patient, admin)
 
-Doc and Nurse view patient timetables, and issue prescription.
+Doc and Nurse view   timetables, and issue prescription.
 
 Patients book online, can request repeating prescriptions.
 
@@ -225,7 +225,7 @@ Accessed via home view
 Considering the SQL supplied for the database these details will be required for signup.
 
 ```sql 
-INSERT INTO CLIENTS (CNAME, CADDRESS, CTYPE, UNAME) VALUES ('Prince Hassan', 'Non-UK street, Non-UK Town, Non_UK', 'private', 'princehassan')
+INSERT INTO patients (CNAME, CADDRESS, CTYPE, UNAME) VALUES ('Prince Hassan', 'Non-UK street, Non-UK Town, Non_UK', 'private', 'princehassan')
 ```
 
 Input: Full Name, Address, Type of Care (NHS or Private), Username, Password (All textbox).
@@ -310,11 +310,11 @@ Patient notified of prescription.
 
 
 
-## Feature 7: Client Booking
+## Feature 7: Patient Booking
 
 ### Description
 
-Client is able to book an appointment with a Doctor, which will be displayed in the daily patients timetabled for doctors and nurses to view.
+Patient is able to book an appointment with a Doctor, which will be displayed in the daily patients timetabled for doctors and nurses to view.
 
 ### Input 
 * Date and Time
@@ -432,23 +432,23 @@ View --> Handles the UI which it's told to display from the Controller, hands ac
 graph LR
 a[Home] --> b1(Login/Signup)
 	
-	b1 --> c1(Client Dashboard)
+	b1 --> c1(Patient Dashboard)
 		c1 --> pd1(View Appointments)
 		c1 --> pd2(Book Appointment)
 		c1 --> pd3(Request Repeating Prescription)
 		
 	b1 --> c2(Doctor Dashboard)
 		c2 --> sd2(Issue Prescription)
-		c2 --> sd1(View Client Timetables)
+		c2 --> sd1(View Patient Timetables)
 
 		
 	b1 --> c4(Nurse Dashboard)
-		c4 --> sd1(View Client Timetables)
+		c4 --> sd1(View Patient Timetables)
 		
 	b1 --> c3(Admin Dashboard)
 		c3 --> ad1(Produce Weekly Documents)
 		c3 --> ad2(Approve Staff User)
-		c3 --> sd1(View Client Timetables)
+		c3 --> sd1(View Patient Timetables)
 ```
 
 # Member Preferences
@@ -477,7 +477,7 @@ role String
 
 
 
-## client
+## cl
 
 cID Autogen Int
 
@@ -509,7 +509,7 @@ oID Autogen Int
 
 FK_eID
 
-FK_cID
+FK_PID
 
 oDate date
 
@@ -525,7 +525,7 @@ charge float
 
 pID Autogen Int
 
-FK_cID ref cleint.cID
+FK_PID ref cleint.cID
 
 FK_eID ref employee.eID 
 
@@ -547,7 +547,7 @@ aID Autogen Int
 
 FK_eID
 
-FK_cID
+FK_PID
 
 aDate date
 
@@ -578,7 +578,7 @@ create table users(
 	role varchar(10)
 );
 
-create table clients(
+create table patients(
 	cID int not null primary key
             generated always as identity (start with 1, increment by 1), 
 	cName varchar(50),
@@ -599,7 +599,7 @@ create table operations(
     oID int not null primary key
             generated always as identity (start with 1, increment by 1), 
     FK_eID int references employee(eID),
-    FK_cID int references clients(cID),
+    FK_PID int references patients(cID),
     oDate date,
     oTime time,
     nSlot int,
@@ -610,7 +610,7 @@ create table prescriptions(
     pID int not null primary key
             generated always as identity (start with 1, increment by 1),
     FK_eID int references employee(eID),
-    FK_cID int references clients(cID),
+    FK_PID int references patients(cID),
     drug varchar(20),
     dIssue varchar(20),
     dosage int,
@@ -623,7 +623,7 @@ create table booking_slots(
     sID int not null primary key
             generated always as identity (start with 1, increment by 1),
     FK_eID int references employee(eID),
-    FK_cID int references clients(cID),
+    FK_PID int references patients(cID),
     sDate date,
     sTime time
 );
@@ -633,28 +633,28 @@ create table booking_slots(
 -- User Samples
 INSERT INTO USERS (UNAME, PASSWD, "ROLE") VALUES ('test', 'test', 'doctor');
 INSERT INTO USERS (UNAME, PASSWD, "ROLE") VALUES ('eaydin', '12345me', 'nurse');
-INSERT INTO USERS (UNAME, PASSWD, "ROLE") VALUES ('caidan', '5432@10', 'client');
-INSERT INTO USERS (UNAME, PASSWD, "ROLE") VALUES ('princehassan', 'prince_passwd', 'client');
+INSERT INTO USERS (UNAME, PASSWD, "ROLE") VALUES ('caidan', '5432@10', '');
+INSERT INTO USERS (UNAME, PASSWD, "ROLE") VALUES ('princehassan', 'prince_passwd', 'patient');
 INSERT INTO USERS (UNAME, PASSWD, "ROLE") VALUES ('admin', 'admin_passwd', 'admin');
 
 -- Employee Samples
 INSERT INTO EMPLOYEE (ENAME, EADDRESS, FK_UNAME) VALUES ('Mehmet Aydin', 'Mehmets Address, London, NW4 0BH', 'meaydin');
 INSERT INTO EMPLOYEE (ENAME, EADDRESS, FK_UNAME) VALUES ('Emin Aydin', 'Emiin''s Address, Bristol, BS16', 'eaydin');
 
--- Client Samples
-INSERT INTO CLIENTS (CNAME, CADDRESS, CTYPE, FK_UNAME) VALUES ('Charly Aidan', '14 King Street, Aberdeen, AB24 1BR', 'NHS', 'caidan');
-INSERT INTO CLIENTS (CNAME, CADDRESS, CTYPE, FK_UNAME) VALUES ('Prince Hassan', 'Non-UK street, Non-UK Town, Non_UK', 'private', 'princehassan');
+-- Patient Samples
+INSERT INTO PATIENTS (PNAME, PADDRESS, PTYPE, FK_UNAME) VALUES ('Charly Aidan', '14 King Street, Aberdeen, AB24 1BR', 'NHS', 'caidan');
+INSERT INTO PATIENTS (PNAME, PADDRESS, PTYPE, FK_UNAME) VALUES ('Prince Hassan', 'Non-UK street, Non-UK Town, Non_UK', 'private', 'princehassan');
 
 -- Operation Samples
-INSERT INTO OPERATIONS (FK_EID, FK_CID, ODATE, OTIME, NSLOT, CHARGE) VALUES (1, 1, '2020-10-20', '19:30:10', 1, 250.25);
-INSERT INTO OPERATIONS (FK_EID, FK_CID, ODATE, OTIME, NSLOT, CHARGE) VALUES (2, 2, '2020-10-20', '19:30:10', 1, 250.25);
+INSERT INTO OPERATIONS (FK_EID, FK_PID, ODATE, OTIME, NSLOT, CHARGE) VALUES (1, 1, '2020-10-20', '19:30:10', 1, 250.25);
+INSERT INTO OPERATIONS (FK_EID, FK_PID, ODATE, OTIME, NSLOT, CHARGE) VALUES (2, 2, '2020-10-20', '19:30:10', 1, 250.25);
 
 -- Prescription Samples
-INSERT INTO PRESCRIPTIONS(FK_CID, FK_EID, DRUG, DISSUE ,DOSAGE, COST, REISSUE) VALUES (2, 2, 'Piriton', '2020-10-20', 20,9.99,7);
-INSERT INTO PRESCRIPTIONS(FK_CID, FK_CID, DRUG, DISSUE ,DOSAGE, COST, REISSUE) VALUES (1, 2, 'Medication', '2020-11-24', 100,12.99,21);
+INSERT INTO PRESCRIPTIONS(FK_PID, FK_EID, DRUG, DISSUE ,DOSAGE, COST, REISSUE) VALUES (2, 2, 'Piriton', '2020-10-20', 20,9.99,7);
+INSERT INTO PRESCRIPTIONS(FK_PID, FK_PID, DRUG, DISSUE ,DOSAGE, COST, REISSUE) VALUES (1, 2, 'Medication', '2020-11-24', 100,12.99,21);
 
 -- Appointment Samples
-INSERT INTO APOINTMENT(FK_EID, FK_CID, ADATE, ATIME) VALUES (1, 1, '2020-11-24', '12:10:10');
+INSERT INTO APOINTMENT(FK_EID, FK_PID, ADATE, ATIME) VALUES (1, 1, '2020-11-24', '12:10:10');
 ```
 
 # Links
