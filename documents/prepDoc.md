@@ -599,7 +599,7 @@ create table operations(
     oID int not null primary key
             generated always as identity (start with 1, increment by 1), 
     FK_eID int references employee(eID),
-    FK_PID int references patients(pID),
+    FK_pID int references patients(pID),
     oDate date,
     oTime time,
     nSlot int,
@@ -610,7 +610,7 @@ create table prescriptions(
     psID int not null primary key
             generated always as identity (start with 1, increment by 1),
     FK_eID int references employee(eID),
-    FK_PID int references patients(pID),
+    FK_pID int references patients(pID),
     drug varchar(20),
     dIssue varchar(20),
     dosage int,
@@ -623,7 +623,7 @@ create table appointment(
     sID int not null primary key
             generated always as identity (start with 1, increment by 1),
     FK_eID int references employee(eID),
-    FK_PID int references patients(pID),
+    FK_pID int references patients(pID),
     aDate date,
     aTime time
 );
@@ -640,7 +640,6 @@ INSERT INTO USERS (UNAME, PASSWD, "ROLE") VALUES ('admin', 'admin_passwd', 'admi
 -- Employee Samples
 INSERT INTO EMPLOYEE (ENAME, EADDRESS, FK_UNAME) VALUES ('Test', 'Tests Address, London, NW4 0BH', 'test');
 INSERT INTO EMPLOYEE (ENAME, EADDRESS, FK_UNAME) VALUES ('Emin Aydin', 'Emiin''s Address, Bristol, BS16', 'eaydin');
-INSERT INTO 
 
 -- Patient Samples
 INSERT INTO PATIENTS (PNAME, PADDRESS, PTYPE, FK_UNAME) VALUES ('Charly Aidan', '14 King Street, Aberdeen, AB24 1BR', 'NHS', 'caidan');
@@ -648,11 +647,9 @@ INSERT INTO PATIENTS (PNAME, PADDRESS, PTYPE, FK_UNAME) VALUES ('Prince Hassan',
 
 -- Operation Samples
 INSERT INTO OPERATIONS (FK_EID, FK_PID, ODATE, OTIME, NSLOT, CHARGE) VALUES (1, 1, '2020-10-20', '19:30:10', 1, 250.25);
-INSERT INTO OPERATIONS (FK_EID, FK_PID, ODATE, OTIME, NSLOT, CHARGE) VALUES (2, 2, '2020-10-20', '19:30:10', 1, 250.25);
 
 -- Prescription Samples
-INSERT INTO PRESCRIPTIONS(FK_eID, FK_pID, DRUG, DISSUE ,DOSAGE, COST, REISSUE) VALUES (2, 2, 'Piriton', '2020-10-20', 20,9.99,7);
-INSERT INTO PRESCRIPTIONS(FK_eID, FK_pID, DRUG, DISSUE ,DOSAGE, COST, REISSUE) VALUES (1, 2, 'Medication', '2020-11-24', 100,12.99,21);
+INSERT INTO PRESCRIPTIONS(FK_eID, FK_pID, DRUG, DISSUE ,DOSAGE, COST, REISSUE) VALUES (1, 1, 'Piriton', '2020-10-20', 20,9.99,7);
 
 -- Appointment Samples
 INSERT INTO APPOINTMENT(FK_EID, FK_PID, ADATE, ATIME) VALUES (1, 1, '2020-11-24', '12:10:10');
