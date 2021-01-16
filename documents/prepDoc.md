@@ -523,7 +523,7 @@ charge float
 
 ## prescription
 
-pID Autogen Int
+psID Autogen Int
 
 FK_PID ref cleint.cID
 
@@ -579,11 +579,11 @@ create table users(
 );
 
 create table patients(
-	cID int not null primary key
+	pID int not null primary key
             generated always as identity (start with 1, increment by 1), 
-	cName varchar(50),
-	cAddress varchar(100),
-	cType varchar(10),
+	pName varchar(50),
+	pAddress varchar(100),
+	pType varchar(10),
 	FK_uName varchar(20) references users(uname)
 );
 
@@ -607,7 +607,7 @@ create table operations(
 );
 
 create table prescriptions(
-    pID int not null primary key
+    psID int not null primary key
             generated always as identity (start with 1, increment by 1),
     FK_eID int references employee(eID),
     FK_PID int references patients(pID),
