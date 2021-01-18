@@ -17,8 +17,9 @@
         <form class="box" action="InvoiceServlet.do" method="POST">
             <h1>Generate Invoice</h1>
             
-            <input type="text" placeholder="Enter Patient ID" name="pid" required>
+            <input type="text" placeholder="Op ID" name="id" required>
             <input type="text" placeholder="Doctors Name" name="eid" required>
+            <input type="text" placeholder="Enter Patient ID" name="pid" required>
             <!__<input type="text" placeholder="Surgery Type" name="Surgery" required>_>
             <input type="date" placeholder="Date (FORMAT YYYY/MM/DD)" name="date" required>
             <input type="text" placeholder ="Cost" name="cost" required>
