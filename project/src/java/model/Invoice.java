@@ -5,21 +5,28 @@
  */
 package model;
 
-import java.util.Date;
-
 /**
  *
  * @author carl
  */
-public class Charges {
+public class Invoice {
     
-    private int id, patient_id;
+    private int id, patient_id, employee_id;
+
+    public int getEmployee_id() {
+        return employee_id;
+    }
+
+    public void setEmployee_id(int employee_id) {
+        this.employee_id = employee_id;
+    }
     private String  date;
     private double cost;
 
-    public Charges(int id, int patient_id, String date, double cost) {
+    public Invoice(int id, int patient_id, int employee_id, String date, double cost) {
         this.id = id;
         this.patient_id = patient_id;
+        this.employee_id = employee_id;
         this.cost = cost;
         this.date = date;
     }
