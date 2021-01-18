@@ -13,14 +13,14 @@ import java.util.Date;
  */
 public class Charges {
     
-    private int id, client_id;
+    private int id, patient_id, employee_id;
     private String  date;
-    private double amount;
+    private double cost;
 
-    public Charges(int id, int client_id, String date, double amount) {
+    public Charges(int id, int patient_id, String date, double cost) {
         this.id = id;
-        this.client_id = client_id;
-        this.amount = amount;
+        this.patient_id = patient_id;
+        this.cost = cost;
         this.date = date;
     }
 
@@ -32,13 +32,22 @@ public class Charges {
         this.id = id;
     }
 
-    public int getClient_id() {
-        return client_id;
+    public int getPatient_id() {
+        return patient_id;
     }
 
-    public void setClient_id(int client_id) {
-        this.client_id = client_id;
+    public void setPatient_id(int patient_id) {
+        this.patient_id = patient_id;
     }
+
+    public int getEmployee_id() {
+        return employee_id;
+    }
+
+    public void setEmployee_id(int employee_id) {
+        this.employee_id = employee_id;
+    }
+
 
     public String getDate() {
         return date;
@@ -48,16 +57,16 @@ public class Charges {
         this.date = date;
     }
 
-    public double getAmount() {
-        return amount;
+    public double getCost() {
+        return cost;
     }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
+    public void setCost(double cost) {
+        this.cost = cost;
     }
     
     public String display(){
-        return "id: " + this.id + " Client: " + this.client_id + " date: " 
-                + this.date + " amount: " + this.amount;
+        return "id: " + this.id + " Client: " + this.patient_id + " date: " 
+                + this.date + " amount: " + this.cost;
     }
 }
