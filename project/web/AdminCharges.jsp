@@ -33,8 +33,9 @@
                         out.println("<tr>");
                         out.println("<td>" + charges.get(i).getId() + "</td>");
                         //out.println("<td>" + charges.get(i).getClient_id + "</td>");
+                        //out.println("<td>" + charges.get(i).getEmployee_id + "</td>");
                         out.println("<td>" + charges.get(i).getDate() + "</td>");
-                        out.println("<td>" + charges.get(i).getAmount() + "</td>");
+                        out.println("<td>" + charges.get(i).getCost() + "</td>");
                         out.println("</tr>");
                     }
                 %>
