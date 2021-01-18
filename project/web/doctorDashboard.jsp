@@ -26,6 +26,12 @@
                     </button> 
                 </div>
                 <div class= "content b">
+                    <h1>Generate Invoice</h1>
+                    <button onclick="location.href= 'generateInvoice.jsp';">
+                        Generate Invoice
+                    </button> 
+                </div>
+                <div class= "content c">
                     <h1>View Client Timetables</h1>
                 </div>
             </div>
