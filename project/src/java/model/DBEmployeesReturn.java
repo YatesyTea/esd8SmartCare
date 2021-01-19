@@ -7,6 +7,7 @@ package model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -23,6 +24,35 @@ public class DBEmployeesReturn {
     private Statement state;
     private ResultSet rs;
 
+    private static String url;
+    private static String user;
+    private static String password;
+    
+    private boolean connect() throws SQLException{
+        try{
+            this.con = DriverManager.getConnection(this.url, this.user, this.password);
+            return true;
+        
+        } catch (Exception e){
+            System.out.print(e);
+        }
+        return false;
+        
+    }
+    
+    private boolean disconnect(){
+        try{
+            this.con.close();
+            return true;
+        
+        } catch (Exception e){
+            System.out.print(e);
+            return false;
+        }
+        
+    }
+    
+    
     public ArrayList<Employees> getEmployee() {
         ArrayList<Employees> result = new ArrayList<Employees>();
         
@@ -49,5 +79,5 @@ public class DBEmployeesReturn {
 
         }
         return result;
-    }
+    }    
 }
