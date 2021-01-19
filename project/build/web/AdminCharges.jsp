@@ -32,9 +32,9 @@
                     for (int i = 0; i < charges.size(); i++) {
                         out.println("<tr>");
                         out.println("<td>" + charges.get(i).getId() + "</td>");
-                        //out.println("<td>" + charges.get(i).getClient_id + "</td>");
+                        //out.println("<td>" + charges.get(i).getpatient_id + "</td>");
                         out.println("<td>" + charges.get(i).getDate() + "</td>");
-                        out.println("<td>" + charges.get(i).getAmount() + "</td>");
+                        out.println("<td>" + charges.get(i).getCost() + "</td>");
                         out.println("</tr>");
                     }
                 %>

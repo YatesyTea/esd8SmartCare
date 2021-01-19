@@ -6,60 +6,47 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.PrescriptionBean;
-import model.Prescription;
-import controller.UsersServlet;
-import static model.PrescriptionBean.checkValid;
-import java.util.Date;  
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-
+import model.DBInvoice;
+import static model.DBInvoice.checkValid;
+import model.Invoice;
 
 /**
  *
- * @author fdent
+ * @author carl
  */
-public class PrescriptionServlet extends HttpServlet {
+@WebServlet(name = "InvoiceController", urlPatterns = {"/InvoiceController"})
+public class InvoiceController extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     * @throws java.text.ParseException
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+   protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
         response.setContentType("text/html;charset=UTF-8");
-        PrescriptionBean pb = new PrescriptionBean();
+        DBInvoice pb = new DBInvoice();
              
         //Create parameter variables using inputs taken from sign up form
-        String d = request.getParameter("drug");
-        int pid = Integer.parseInt(request.getParameter("pid"));    //get the entered login information 
+        //int id = Integer.parseInt("id");
+        int eid = Integer.parseInt(request.getParameter("eid"));
+        int pid = Integer.parseInt(request.getParameter("pid"));
+        String sur = request.getParameter("surgery");
+        String dI = request.getParameter("date");   
         float c = Float.parseFloat(request.getParameter("cost"));
-        String dI = request.getParameter("date");
-        int dsg = Integer.parseInt(request.getParameter("dosage"));
-        int reI = Integer.parseInt(request.getParameter("reissue"));
-        int eid = 1; 
+        
         
         String valid = checkValid(pid,eid);
-        Prescription prescription1 = new Prescription(eid,pid,d,dI,dsg,c,reI);
-        //System.out.print(prescription1);
+        Invoice invoice1 = new Invoice(eid,pid,sur,dI,c);
+        System.out.print(invoice1);
         
         if (valid != null) {
-           pb.addPrescription(prescription1);
+           pb.addInvoice(invoice1);
             RequestDispatcher view = request.getRequestDispatcher("doctorDashboard.jsp");
             view.forward(request, response);
         }
@@ -69,9 +56,8 @@ public class PrescriptionServlet extends HttpServlet {
         }
        
         }
-     
 
-  // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -83,11 +69,11 @@ public class PrescriptionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (ParseException ex) {
-            Logger.getLogger(PrescriptionServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       try {
+           processRequest(request, response);
+       } catch (ParseException ex) {
+           Logger.getLogger(InvoiceController.class.getName()).log(Level.SEVERE, null, ex);
+       }
     }
 
     /**
@@ -101,11 +87,11 @@ public class PrescriptionServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (ParseException ex) {
-            Logger.getLogger(PrescriptionServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       try {
+           processRequest(request, response);
+       } catch (ParseException ex) {
+           Logger.getLogger(InvoiceController.class.getName()).log(Level.SEVERE, null, ex);
+       }
     }
 
     /**

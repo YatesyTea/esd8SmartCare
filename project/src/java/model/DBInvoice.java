@@ -14,23 +14,15 @@ import java.sql.Statement;
 
 /**
  *
- * @author fdent
+ * @author carl
  */
-public class PrescriptionBean {
-    
+public class DBInvoice {
     
     private Connection con;
     private Statement state;
     private ResultSet rs;
-    
     private PreparedStatement ps;
     
-    /**
-     *
-     * @param patientName
-     * @param doctorName
-     * @return
-     */
     public static String checkValid(int pid, int eid){
         String valid = "valid";
         
@@ -60,7 +52,9 @@ public class PrescriptionBean {
         
     }
     
-        public int addPrescription(Prescription newPrescription){
+    public int addInvoice(Invoice newInvoice){
+        
+        //System.out.print(newInvoice.getEmployee_id() + "','" + newInvoice.getPatient_id() + "'," + newInvoice.getSurgery() + "," + newInvoice.getDate() + "," + newInvoice.getCost()+ ")";
         
         int flag = 0;
         try{
@@ -68,8 +62,8 @@ public class PrescriptionBean {
             con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
             
             //Format query to insert prescription info into DB.
-            String query = "INSERT INTO PRESCRIPTIONS(FK_PID, FK_EID, DRUG, DISSUE, DOSAGE, COST , REISSUE) VALUES("+ newPrescription.getPid() + "," + newPrescription.getEid() + ",'" + newPrescription.getDrug() + "','" + newPrescription.getDate() + "'," 
-                    + newPrescription.getDosage() + "," + newPrescription.getCost()+ "," + newPrescription.getReissue()+")";
+            String query = "INSERT INTO OPERATIONS(FK_EID, FK_PID,OTYPE, ODATE, CHARGE) VALUES(" + newInvoice.getEmployee_id() + "," + newInvoice.getPatient_id() + ",'" + newInvoice.getSurgery() + "','"
+                    + newInvoice.getDate() + "'," + newInvoice.getCost()+ ")";
             
             //Add to db
             state = con.createStatement();
@@ -84,4 +78,5 @@ public class PrescriptionBean {
         
         return flag;
     }
+    
 }

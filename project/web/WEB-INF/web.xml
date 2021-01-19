@@ -21,7 +21,7 @@
         <servlet-class>controller.ViewPrescriptionServlet</servlet-class>
     </servlet>
     <servlet>
-       <servlet-name>AdminEmployeesController</servlet-name>
+        <servlet-name>AdminEmployeesController</servlet-name>
         <servlet-class>controller.AdminEmployeesController</servlet-class>
     </servlet>
     <servlet>
@@ -31,6 +31,14 @@
     <servlet>
         <servlet-name>removeEmployeeServlet</servlet-name>
         <servlet-class>controller.removeEmployeeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InvoiceController</servlet-name>
+        <servlet-class>controller.InvoiceController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReportServlet</servlet-name>
+        <servlet-class>controller.ReportServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AdminEmployeesController</servlet-name>
@@ -63,6 +71,14 @@
     <servlet-mapping>
         <servlet-name>ViewPrescriptionServlet</servlet-name>
         <url-pattern>/ViewPrescriptionServlet.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InvoiceController</servlet-name>
+        <url-pattern>/InvoiceController.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportServlet</servlet-name>
+        <url-pattern>/ReportServlet.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
