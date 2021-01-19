@@ -15,11 +15,10 @@ public class Invoice {
     private String  date, surgery;
     private double cost;
 
-    public Invoice(int id, int employee_id, int patient_id, String date, String surgery, double cost) {
-        this.id = id;
+    public Invoice(int employee_id, int patient_id, String date, String surgery, double cost) {
+        //this.id = id;
         this.employee_id = employee_id;
         this.patient_id = patient_id;
-        
         this.surgery = surgery;
         this.cost = cost;
         this.date = date;
@@ -31,14 +30,6 @@ public class Invoice {
 
     public void setSurgery(String surgery) {
         this.surgery = surgery;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getPatient_id() {
@@ -74,7 +65,7 @@ public class Invoice {
     }
     
     public String display(){
-        return  "id: " + this.id + " Client: " + this.patient_id + " date: " 
+        return  " Client: " + this.patient_id + " date: " 
                 + this.date + " amount: " + this.cost; 
     }
 }

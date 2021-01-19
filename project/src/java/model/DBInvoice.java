@@ -29,7 +29,7 @@ public class DBInvoice {
         try {
             Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
            
-            PreparedStatement ps = con.prepareStatement("SELECT PID FROM PATIENTS WHERE PATIENT>PID=" + pid + "");
+            PreparedStatement ps = con.prepareStatement("SELECT PID FROM PATIENTS WHERE PATIENT.PID=" + pid + "");
       
             //Lookup user in db
             ResultSet rs = ps.executeQuery();
@@ -54,13 +54,14 @@ public class DBInvoice {
     
     public int addInvoice(Invoice newInvoice){
         
+        
         int flag = 0;
         try{
             //Connect to DB.
             con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
             
             //Format query to insert prescription info into DB.
-            String query = "INSERT INTO OPERATIONS(ID, EID, PID, DATE, COST) VALUES("+ newInvoice.getId() + ",'" + newInvoice.getEmployee_id() + "','" + newInvoice.getPatient_id() + "'," 
+            String query = "INSERT INTO OPERATIONS(FK_EID, FK_PID,OTYPE, ODATE, CHARGE) VALUES(" + ",'" + newInvoice.getEmployee_id() + "','" + newInvoice.getPatient_id() + "'," + newInvoice.getSurgery() + ","
                     + newInvoice.getDate() + "," + newInvoice.getCost()+ ")";
             
             //Add to db
