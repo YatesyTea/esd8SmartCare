@@ -11,8 +11,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.PrescriptionBean;
 import model.Prescription;
+import controller.UsersServlet;
 import static model.PrescriptionBean.checkValid;
 import java.util.Date;  
 import java.text.ParseException;
@@ -50,11 +52,11 @@ public class PrescriptionServlet extends HttpServlet {
         String dI = request.getParameter("date");
         int dsg = Integer.parseInt(request.getParameter("dosage"));
         int reI = Integer.parseInt(request.getParameter("reissue"));
-        int eid = 2;
+        int eid = 1; 
         
         String valid = checkValid(pid,eid);
-        Prescription prescription1 = new Prescription(pid,d,dI,c,dsg,reI,eid);
-        System.out.print(prescription1);
+        Prescription prescription1 = new Prescription(eid,pid,d,dI,dsg,c,reI);
+        //System.out.print(prescription1);
         
         if (valid != null) {
            pb.addPrescription(prescription1);

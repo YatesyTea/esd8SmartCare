@@ -71,7 +71,7 @@ public class PatientBean {
         try{
             if(connect()){
                 //Format query
-                String query = "INSERT INTO PATIENTS(PNAME, PADDRESS, PTYPE, UNAME) VALUES('"+ newPatient.getName() + "','" + newPatient.getAddress() + "','" +
+                String query = "INSERT INTO PATIENTS(PNAME, PADDRESS, PTYPE, FK_UNAME) VALUES('"+ newPatient.getName() + "','" + newPatient.getAddress() + "','" +
                         newPatient.getType() + "','" + newPatient.getUsername() + "')";
 
                 //Add to db

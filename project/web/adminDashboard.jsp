@@ -31,14 +31,19 @@
                     
                 </div>
                 <div class= "content c">
-                    <h1>Manage Staff</h1>
-                    
+                    <h1>Manage Staff</h1> 
                     <form method="post" action="AdminEmployeesController.do"><p style="text-align:center">
                     <input id="textboxid" type="SUBMIT" value="Employees" style="align-self: center">
                     </p></form>
+ 
+                </div>
+                <div class= "content c">
+                    <h1>Produce Weekly Report</h1>
                     
-                    
-                    
+                    <form method="post" action="ReportServlet.do"><p style="text-align:center">
+                    <input id="textboxid" type="SUBMIT" value="Weekly Report" style="align-self: center">
+                    </p></form>
+
                 </div>
             </div>
         </div>

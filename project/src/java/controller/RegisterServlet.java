@@ -47,7 +47,7 @@ public class RegisterServlet extends HttpServlet {
         String a = request.getParameter("address");
         String p1 = request.getParameter("password1");
         String type = request.getParameter("type");
-        String role = "client";
+        String role = "patient";
         
         /*Create new instance of User and Patient using their appropriate 
          attributes in order to insert them into the database*/

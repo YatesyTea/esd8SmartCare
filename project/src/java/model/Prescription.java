@@ -13,16 +13,15 @@ import java.util.*;
  */
 public class Prescription {
     
-    
+    private int eid;
     private int pid;
     private String drug;
     private String date;
     private float cost;
     private int dosage;
     private int reissue;
-    private int eid;
 
-    public Prescription(int pid, String drug, String date, float cost, int dosage, int reissue,int eid) {
+    public Prescription(int eid,int pid, String drug, String date, int dosage, float cost,int reissue) {
         
         this.pid = pid;
         this.drug = drug;
