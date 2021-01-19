@@ -23,6 +23,8 @@ public class DBEmployeesReturn {
     private Connection con;
     private Statement state;
     private ResultSet rs;
+    
+    private PreparedStatement ps;
 
     private static String url;
     private static String user;
@@ -75,6 +77,28 @@ public class DBEmployeesReturn {
         
         return flag;     
 
+    }
+    
+    public int deleteEmployee(Employees employee) throws SQLException{
+        int flag = 0;
+        try{
+            if(connect()){
+                String query = "DELETE FROM EMPLOYEE WHERE EID=?";
+
+                ps = con.prepareStatement(query);
+                ps.setString(1, employee.getId());
+                flag = ps.executeUpdate();
+
+                ps.close();
+                disconnect();
+
+            }            
+        } catch (SQLException e) {
+            System.err.println("Error: " + e);
+            
+        }//try
+        
+        return flag;
     }
     
     
