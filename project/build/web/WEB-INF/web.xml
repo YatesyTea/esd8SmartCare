@@ -28,6 +28,10 @@
         <servlet-name>AdminChargesController</servlet-name>
         <servlet-class>controller.AdminChargesController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InvoiceController</servlet-name>
+        <servlet-class>controller.InvoiceController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AdminEmployeesController</servlet-name>
         <url-pattern>/AdminEmployeesController.do</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>ViewPrescriptionServlet</servlet-name>
         <url-pattern>/ViewPrescriptionServlet.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InvoiceController</servlet-name>
+        <url-pattern>/InvoiceController.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -29,7 +29,7 @@ public class DBInvoice {
         try {
             Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
            
-            PreparedStatement ps = con.prepareStatement("SELECT PID FROM PATIENTS WHERE PATIENT.PID=" + pid + "");
+            PreparedStatement ps = con.prepareStatement("SELECT PID FROM PATIENTS WHERE PATIENTS.PID=" + pid + "");
       
             //Lookup user in db
             ResultSet rs = ps.executeQuery();
@@ -54,6 +54,7 @@ public class DBInvoice {
     
     public int addInvoice(Invoice newInvoice){
         
+        //System.out.print(newInvoice.getEmployee_id() + "','" + newInvoice.getPatient_id() + "'," + newInvoice.getSurgery() + "," + newInvoice.getDate() + "," + newInvoice.getCost()+ ")";
         
         int flag = 0;
         try{
@@ -61,8 +62,8 @@ public class DBInvoice {
             con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
             
             //Format query to insert prescription info into DB.
-            String query = "INSERT INTO OPERATIONS(FK_EID, FK_PID,OTYPE, ODATE, CHARGE) VALUES(" + ",'" + newInvoice.getEmployee_id() + "','" + newInvoice.getPatient_id() + "'," + newInvoice.getSurgery() + ","
-                    + newInvoice.getDate() + "," + newInvoice.getCost()+ ")";
+            String query = "INSERT INTO OPERATIONS(FK_EID, FK_PID,OTYPE, ODATE, CHARGE) VALUES(" + newInvoice.getEmployee_id() + "," + newInvoice.getPatient_id() + ",'" + newInvoice.getSurgery() + "','"
+                    + newInvoice.getDate() + "'," + newInvoice.getCost()+ ")";
             
             //Add to db
             state = con.createStatement();

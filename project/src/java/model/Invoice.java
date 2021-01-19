@@ -15,7 +15,7 @@ public class Invoice {
     private String  date, surgery;
     private double cost;
 
-    public Invoice(int employee_id, int patient_id, String date, String surgery, double cost) {
+    public Invoice(int employee_id, int patient_id, String surgery, String date,  double cost) {
         //this.id = id;
         this.employee_id = employee_id;
         this.patient_id = patient_id;

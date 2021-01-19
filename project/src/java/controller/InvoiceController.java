@@ -35,14 +35,14 @@ public class InvoiceController extends HttpServlet {
         //Create parameter variables using inputs taken from sign up form
         //int id = Integer.parseInt("id");
         int eid = Integer.parseInt(request.getParameter("eid"));
-        int pid = Integer.parseInt("pid");
-        String sur = request.getParameter(request.getParameter("surgery"));
+        int pid = Integer.parseInt(request.getParameter("pid"));
+        String sur = request.getParameter("surgery");
         String dI = request.getParameter("date");   
         float c = Float.parseFloat(request.getParameter("cost"));
         
         
         String valid = checkValid(pid,eid);
-        Invoice invoice1 = new Invoice(eid,pid,dI,sur,c);
+        Invoice invoice1 = new Invoice(eid,pid,sur,dI,c);
         System.out.print(invoice1);
         
         if (valid != null) {
