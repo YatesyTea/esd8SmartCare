@@ -29,7 +29,14 @@ public class DBEmployeesReturn {
     private static String url;
     private static String user;
     private static String password;
-    
+
+    public DBEmployeesReturn(String db, String user, String password) {
+       this.url = db;
+       this.user = user;
+       this.password = password;
+       
+    }
+   
     private boolean connect() throws SQLException{
         try{
             this.con = DriverManager.getConnection(this.url, this.user, this.password);
@@ -79,14 +86,14 @@ public class DBEmployeesReturn {
 
     }
     
-    public int deleteEmployee(Employees employee) throws SQLException{
+    public int deleteEmployee(String eid) throws SQLException{
         int flag = 0;
         try{
             if(connect()){
                 String query = "DELETE FROM EMPLOYEE WHERE EID=?";
 
                 ps = con.prepareStatement(query);
-                ps.setString(1, employee.getId());
+                ps.setString(1, eid);
                 flag = ps.executeUpdate();
 
                 ps.close();

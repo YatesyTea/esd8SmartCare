@@ -47,7 +47,7 @@ public class DBEmployeesReturnTest {
         
         String id = "2";
         String expResult = "2";
-        String result = instance.getEmployee().get(0).getId();
+        String result = instance.getAllEmployee().get(0).getId();
         
         assertEquals(expResult, result);  
     }
@@ -59,7 +59,7 @@ public class DBEmployeesReturnTest {
 
         String name = "totallyrealname";
         ArrayList<Employees> expResult = null;
-        ArrayList<Employees> result = instance.getEmployee();
+        ArrayList<Employees> result = instance.getAllEmployee();
 
         assertEquals(expResult, result);
     }

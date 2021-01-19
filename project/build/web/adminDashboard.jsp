@@ -1,9 +1,3 @@
-<%-- 
-    Document   : adminLogin
-    Created on : 28-Nov-2020, 17:31:41
-    Author     : samue
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -30,7 +24,7 @@
                 </div>
                 <div class= "content c">
                     <h1>Manage Staff</h1> 
-                    <form method="post" action="AdminEmployeesController.do"><p style="text-align:center">
+                    <form method="get" action="AdminEmployeesController.do"><p style="text-align:center">
                     <input id="textboxid" type="SUBMIT" value="Employees" style="align-self: center">
                     </p></form>
  
