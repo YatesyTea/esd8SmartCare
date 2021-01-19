@@ -13,13 +13,13 @@ import java.util.Date;
  */
 public class Charges {
     
-    private int id, client_id;
+    private int id, patient_id;
     private String  date;
     private double amount;
 
-    public Charges(int id, int client_id, String date, double amount) {
+    public Charges(int id, int patient_id, String date, double amount) {
         this.id = id;
-        this.client_id = client_id;
+        this.patient_id = patient_id;
         this.amount = amount;
         this.date = date;
     }
@@ -32,12 +32,12 @@ public class Charges {
         this.id = id;
     }
 
-    public int getClient_id() {
-        return client_id;
+    public int getPatient_id() {
+        return patient_id;
     }
 
-    public void setClient_id(int client_id) {
-        this.client_id = client_id;
+    public void setPatient_id(int patient_id) {
+        this.patient_id = patient_id;
     }
 
     public String getDate() {
@@ -57,7 +57,7 @@ public class Charges {
     }
     
     public String display(){
-        return "id: " + this.id + " Client: " + this.client_id + " date: " 
+        return "id: " + this.id + " Patient: " + this.patient_id + " date: " 
                 + this.date + " amount: " + this.amount;
     }
 }

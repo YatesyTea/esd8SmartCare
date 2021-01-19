@@ -55,7 +55,7 @@ public class DBCharges {
     
     }
 // Dont know if this will work but would need new database table to put payments or charges into
-//    public String makeClaim(String ID, String client_ID, double amount) throws SQLException, ParseException {
+//    public String makeClaim(String ID, String patietnt_ID, double amount) throws SQLException, ParseException {
 //        try {
 //            
 //            Class.forName("org.apache.derby.jdbc.ClientDriver");
@@ -64,7 +64,7 @@ public class DBCharges {
 //
 //            LocalDate todayLocalDate = LocalDate.now(ZoneId.of("Europe/London"));
 //
-//            String query = " insert into charges (id, client_id, date, amount)" + " values (?, ?, ?, ?, ?)";
+//            String query = " insert into charges (id, patient_id, date, amount)" + " values (?, ?, ?, ?, ?)";
 //       
 //
 //            PreparedStatement Stmt = con.prepareStatement(query);

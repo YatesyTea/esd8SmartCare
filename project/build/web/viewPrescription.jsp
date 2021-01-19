@@ -22,7 +22,6 @@
         <table>
             <tr>
                 <th>Prescription Type</th>
-                <th>Name</th>
                 <th>Date Issued</th>
                 <th>Dosage</th>
                 <th>Issued By</th>
@@ -31,11 +30,10 @@
             <%
                 for (int i = 0; i < prescription.size(); i++) {
                     out.println("<tr>");
-                    out.println("<td>" + prescription.get(i).getType() + "</td>");
-                    out.println("<td>" + prescription.get(i).getPatientName() + "</td>");
+                    out.println("<td>" + prescription.get(i).getDrug() + "</td>");
                     out.println("<td>" + prescription.get(i).getDate() + "</td>");
                     out.println("<td>" + prescription.get(i).getDosage() + "</td>");
-                    out.println("<td>" + prescription.get(i).getEmployee() + "</td>");
+                    out.println("<td>" + prescription.get(i).getCost() + "</td>");
                     out.println("</tr>");
                 }
             %>

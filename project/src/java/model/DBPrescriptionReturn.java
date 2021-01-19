@@ -31,11 +31,11 @@ public class DBPrescriptionReturn {
         Class.forName("org.apache.derby.jdbc.ClientDriver");
         con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
         state = con.createStatement();
-        rs = state.executeQuery("SELECT CID, DRUG, DISSUE ,DOSAGE, COST, REISSUE, EID FROM PRESCRIPTIONS");
+        rs = state.executeQuery("SELECT FK_EID, FK_PID, DRUG, DISSUE ,DOSAGE, COST, REISSUE FROM PRESCRIPTIONS");
 
-        //while (rs.next()) {
-          //  result.add(new Prescription(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getFloat(5), rs.getInt(6), rs.getInt(7)));
-        //}
+        while (rs.next()) {
+            result.add(new Prescription(rs.getInt(1), rs.getInt(2),rs.getString(3),rs.getString(4),rs.getInt(5), rs.getFloat(6), rs.getInt(7)));
+        }
         
         rs.close();
         state.close();
