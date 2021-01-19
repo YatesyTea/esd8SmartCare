@@ -101,6 +101,30 @@ public class DBEmployeesReturn {
         return flag;
     }
     
+    public int updateEmployee(Employees employee) throws SQLException{
+    
+        int flag = 0;
+        try{
+            if(connect()){
+                String query = "UPDATE EMPLOYEE SET ENAME=?, EADDRESS=? WHERE EID=?";
+                
+                ps = con.prepareStatement(query);
+                ps.setString(1, employee.getName());
+                ps.setString(2, employee.getAddress());
+
+                flag = ps.executeUpdate();
+                ps.close();
+                disconnect();
+
+                return flag;
+            }
+        } catch (SQLException e) {
+            System.err.println("Error: " + e);
+        }//
+        
+        return flag;
+    }
+    
     
     public ArrayList<Employees> getEmployee() {
         ArrayList<Employees> result = new ArrayList<Employees>();
