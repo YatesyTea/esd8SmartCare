@@ -29,6 +29,10 @@
         <servlet-class>controller.AdminChargesController</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>removeEmployeeServlet</servlet-name>
+        <servlet-class>controller.removeEmployeeServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>InvoiceController</servlet-name>
         <servlet-class>controller.InvoiceController</servlet-class>
     </servlet>
@@ -43,6 +47,10 @@
     <servlet-mapping>
         <servlet-name>AdminChargesController</servlet-name>
         <url-pattern>/AdminChargesController.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>removeEmployeeServlet</servlet-name>
+        <url-pattern>/removeEmployeeServlet.do</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>usersServlet</servlet-name>

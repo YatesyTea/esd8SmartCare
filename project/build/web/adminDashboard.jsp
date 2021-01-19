@@ -24,11 +24,9 @@
                 </div>
                 <div class= "content b">
                     <h1>Documents</h1>
-                    
-                    <form method="post" action="AdminChargesController.do"><p style="text-align:center">
+                    <form method="get" action="AdminChargesController.do"><p style="text-align:center">
                     <input id="textboxid" type="SUBMIT" value="Charges" style="align-self: center">
                     </p></form>
-                    
                 </div>
                 <div class= "content c">
                     <h1>Manage Staff</h1> 
@@ -37,13 +35,11 @@
                     </p></form>
  
                 </div>
-                <div class= "content c">
+                <div class= "content d">
                     <h1>Produce Weekly Report</h1>
-                    
                     <form method="post" action="ReportServlet.do"><p style="text-align:center">
                     <input id="textboxid" type="SUBMIT" value="Weekly Report" style="align-self: center">
                     </p></form>
-
                 </div>
             </div>
         </div>
