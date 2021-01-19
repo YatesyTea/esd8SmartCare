@@ -125,29 +125,58 @@ public class DBEmployeesReturn {
         return flag;
     }
     
-    
-    public ArrayList<Employees> getEmployee() {
-        ArrayList<Employees> result = new ArrayList<Employees>();
+        public Employees getEmployee(String id) throws SQLException{
         
-        
-        
-        try {
-            
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
-            state = con.createStatement();
-            rs = state.executeQuery("SELECT * FROM EMPLOYEE");
-            
-            while (rs.next()) {
+        Employees employee = null;
+        try{
+            if(connect()){
+                String query = "SELECT * FROM EMPLOYEE WHERE EID=?";
+
+                ps = con.prepareStatement(query);
+                ps.setString(1, id);
+                rs = ps.executeQuery();
                 
-                result.add(new Employees(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+                //Check if patient was found in db
+                if(rs.next()){
+                    String name = rs.getString("ENAME");
+                    String address = rs.getString("EADDRESS");
+                    String username = rs.getString("UNAME");
+
+                    employee = new Employees(id, name, address, username);
+                }
+                
+                rs.close(); ps.close();
+                disconnect();
                 
             }
+        } catch (SQLException e) {
+            System.err.println("Error: " + e);
+
+        }//try
+        
+        return employee;
+    }
+    
+    
+    
+    
+    public ArrayList<Employees> getAllEmployee() {
+        ArrayList<Employees> result = new ArrayList<Employees>();
+        
+        try {
+            if (connect()){
+                state = con.createStatement();
+                rs = state.executeQuery("SELECT * FROM EMPLOYEE");
             
-            rs.close();
-            state.close();
-            con.close();
-        } catch (ClassNotFoundException | SQLException e) {
+                while (rs.next()) {
+                    result.add(new Employees(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+                
+                }
+                rs.close();
+                state.close();
+                con.close();
+            }
+        } catch (SQLException e) {
             System.err.println("Error: " + e);
 
         }
