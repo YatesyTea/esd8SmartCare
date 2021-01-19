@@ -79,8 +79,8 @@ public class ChargesTest {
     }
 
     @Test
-    public void testSetClient_Id() {
-        System.out.println("Test Set Client_id");
+    public void testSetPatient_Id() {
+        System.out.println("Test Set Patient id");
         Charges instance = charge;
 
         instance.setPatient_id(2);

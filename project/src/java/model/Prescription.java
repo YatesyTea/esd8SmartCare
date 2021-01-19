@@ -13,18 +13,17 @@ import java.util.*;
  */
 public class Prescription {
     
-    
-    private int cid;
+    private int eid;
+    private int pid;
     private String drug;
     private String date;
     private float cost;
     private int dosage;
     private int reissue;
-    private int eid;
 
-    public Prescription(int cid, String drug, String date, float cost, int dosage, int reissue,int eid) {
+    public Prescription(int eid,int pid, String drug, String date, int dosage, float cost,int reissue) {
         
-        this.cid = cid;
+        this.pid = pid;
         this.drug = drug;
         this.date = date;
         this.cost = cost;
@@ -34,8 +33,8 @@ public class Prescription {
         
     }
     
-    public int getCid() {
-        return cid;
+    public int getPid() {
+        return pid;
     }
 
     public String getDrug() {
@@ -61,8 +60,8 @@ public class Prescription {
         return eid;
     }
 
-    public void setCid(int cid) {
-        this.cid = cid;
+    public void setCid(int pid) {
+        this.pid = pid;
     }
     
     public void setDrug(String drug){

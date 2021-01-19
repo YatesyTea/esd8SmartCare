@@ -56,12 +56,12 @@ public class UsersServlet extends HttpServlet {
                 session.setMaxInactiveInterval(10 * 60);
                 RequestDispatcher view = request.getRequestDispatcher("nurseDashboard.jsp");
                 view.forward(request, response);
-            }else if ("client".equals(role)){
+            }else if ("patient".equals(role)){
                 HttpSession session = request.getSession();
-                session.setAttribute("client", role);
+                session.setAttribute("patient", role);
                 session.setAttribute("uname",u);
                 session.setMaxInactiveInterval(10 * 60);
-                RequestDispatcher view = request.getRequestDispatcher("clientDashboard.jsp");
+                RequestDispatcher view = request.getRequestDispatcher("patientDashboard.jsp");
                 view.forward(request, response);
             }else{
                 HttpSession session = request.getSession();

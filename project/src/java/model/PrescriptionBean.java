@@ -31,13 +31,13 @@ public class PrescriptionBean {
      * @param doctorName
      * @return
      */
-    public static String checkValid(int cid, int eid){
+    public static String checkValid(int pid, int eid){
         String valid = "valid";
         
         try {
             Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
            
-            PreparedStatement ps = con.prepareStatement("SELECT CID FROM CLIENTS WHERE CLIENTS.CID=" + cid + "");
+            PreparedStatement ps = con.prepareStatement("SELECT PID FROM PATIENTS WHERE PATIENTS.PID=" + pid + "");
       
             //Lookup user in db
             ResultSet rs = ps.executeQuery();
@@ -68,8 +68,8 @@ public class PrescriptionBean {
             con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
             
             //Format query to insert prescription info into DB.
-            String query = "INSERT INTO PRESCRIPTIONS(CID, DRUG, DISSUE, DOSAGE, COST , REISSUE, EID) VALUES("+ newPrescription.getCid() + ",'" + newPrescription.getDrug() + "','" + newPrescription.getDate() + "'," 
-                    + newPrescription.getDosage() + "," + newPrescription.getCost()+ "," + newPrescription.getReissue()+ "," + newPrescription.getEid() +")";
+            String query = "INSERT INTO PRESCRIPTIONS(FK_PID, FK_EID, DRUG, DISSUE, DOSAGE, COST , REISSUE) VALUES("+ newPrescription.getPid() + "," + newPrescription.getEid() + ",'" + newPrescription.getDrug() + "','" + newPrescription.getDate() + "'," 
+                    + newPrescription.getDosage() + "," + newPrescription.getCost()+ "," + newPrescription.getReissue()+")";
             
             //Add to db
             state = con.createStatement();
