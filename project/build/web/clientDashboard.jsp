@@ -33,7 +33,7 @@
                 <div class= "content d">
                     <h1>View Charges</h1>
                     
-                    <form method="post" action="AdminChargesController.do"><p style="text-align:center">
+                    <form method="post" action="ClientChargesController.do"><p style="text-align:center">
                     <input id="textboxid" type="SUBMIT" value="Charges" style="align-self: center">
                     </p></form>
                     
