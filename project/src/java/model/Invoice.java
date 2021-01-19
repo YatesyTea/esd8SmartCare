@@ -5,31 +5,31 @@
  */
 package model;
 
-import java.util.Date;
-
 /**
  *
  * @author carl
  */
-public class Charges {
+public class Invoice {
     
-    private int id, patient_id;
-    private String  date;
+    private int id, patient_id, employee_id;
+    private String  date, surgery;
     private double cost;
 
-    public Charges(int id, int patient_id, String date, double cost) {
-        this.id = id;
+    public Invoice(int employee_id, int patient_id, String surgery, String date,  double cost) {
+        //this.id = id;
+        this.employee_id = employee_id;
         this.patient_id = patient_id;
+        this.surgery = surgery;
         this.cost = cost;
         this.date = date;
     }
 
-    public int getId() {
-        return id;
+    public String getSurgery() {
+        return surgery;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setSurgery(String surgery) {
+        this.surgery = surgery;
     }
 
     public int getPatient_id() {
@@ -39,7 +39,15 @@ public class Charges {
     public void setPatient_id(int patient_id) {
         this.patient_id = patient_id;
     }
+    
+    public int getEmployee_id() {
+        return employee_id;
+    }
 
+    public void setEmployee_id(int employee_id) {
+        this.employee_id = employee_id;
+    }
+    
     public String getDate() {
         return date;
     }
@@ -57,7 +65,7 @@ public class Charges {
     }
     
     public String display(){
-        return "id: " + this.id + " Client: " + this.patient_id + " date: " 
-                + this.date + " amount: " + this.cost;
+        return  " Client: " + this.patient_id + " date: " 
+                + this.date + " amount: " + this.cost; 
     }
 }

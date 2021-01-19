@@ -122,7 +122,7 @@ public class ChargesTest {
         Charges instance = charge;
 
         double expResult = 1;
-        double result = instance.getAmount();
+        double result = instance.getCost();
 
         assertEquals(expResult, result, 0.001);
     }
@@ -133,10 +133,10 @@ public class ChargesTest {
         Charges instance = charge;
         
         double testAmount = 2.52;
-        instance.setAmount(testAmount);
+        instance.setCost(testAmount);
 
         double expResult = testAmount;
-        double result = instance.getAmount();
+        double result = instance.getCost();
 
         assertEquals(expResult, result, 0.001);
     }

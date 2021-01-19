@@ -1,6 +1,6 @@
 <%-- 
-    Document   : AdminCharges
-    Created on : 15-Dec-2020, 19:45:43
+    Document   : PatientCharges
+    Created on : 19-Jan-2021, 14:14:38
     Author     : carl
 --%>
 
@@ -14,7 +14,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1 id="textid">Admin Charges</h1>
+        <h1 id="textid">Patient Charges</h1>
         
         <%
             ArrayList<Charges> charges = (ArrayList<Charges>)request.getAttribute("charges");
@@ -22,17 +22,15 @@
         
             <table>
                 <tr>
-                    <th>ID</th>
-                    <th>Client ID</th>
-                    <th>Date</th>
+                    <th>Patient ID</th>
+                    <th>Date Issued</th>
                     <th>Amount</th>
                 </tr>
                 
                 <% 
                     for (int i = 0; i < charges.size(); i++) {
                         out.println("<tr>");
-                        out.println("<td>" + charges.get(i).getId() + "</td>");
-                        //out.println("<td>" + charges.get(i).getpatient_id + "</td>");
+                        out.println("<td>" + charges.get(i).getPatient_id() + "</td>");
                         out.println("<td>" + charges.get(i).getDate() + "</td>");
                         out.println("<td>" + charges.get(i).getCost() + "</td>");
                         out.println("</tr>");
