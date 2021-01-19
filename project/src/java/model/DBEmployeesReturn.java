@@ -52,6 +52,31 @@ public class DBEmployeesReturn {
         
     }
     
+    public int addEmployee(Employees newEmployee){
+        
+        int flag = 0;
+        try{
+            if(connect()){
+                //Format query
+                String query = "INSERT INTO EMPLOYEE(EID, ENAME, EADDRESS, UNAME) VALUES('"+ newEmployee.getId() + "','" + newEmployee.getName() + "','" +
+                        newEmployee.getAddress() + "','" + newEmployee.getDob() + "')";
+
+                //Add to db
+                state = con.createStatement();
+                flag = state.executeUpdate(query);
+
+                state.close();
+                disconnect();   
+            }
+        } catch (SQLException e) {
+            System.err.println("Error: " + e);
+
+        }//try
+        
+        return flag;     
+
+    }
+    
     
     public ArrayList<Employees> getEmployee() {
         ArrayList<Employees> result = new ArrayList<Employees>();
