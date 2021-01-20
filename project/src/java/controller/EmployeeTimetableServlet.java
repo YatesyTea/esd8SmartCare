@@ -43,18 +43,29 @@ public class EmployeeTimetableServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             
-            Cookie[] cookie = request.getCookies();
+            String employeeID = null;
             
-            String employeeID = cookie[0].getValue();
+            for (Cookie c: request.getCookies()){
+                if(c.getName().equals("test")){
+                    employeeID = c.getValue();
+                }
+            }
+            
+            System.out.println(employeeID);
+            int eid = Integer.parseInt(employeeID);
+            
+            System.out.println(eid);
             
             AppointmentBean b = new AppointmentBean("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
             
             ArrayList<Appointment> appointments;
-            appointments = b.getAllAppointmentByID(employeeID, "employee");
+            //appointments = b.getAllAppointments();
+            appointments = b.getAllAppointmentByID(eid, "employee");
+            System.out.println(appointments);
                     
             request.setAttribute("appointments", appointments);    
         
-            RequestDispatcher view = request.getRequestDispatcher("patientTimetable.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("EmployeeTimetable.jsp");
             view.forward(request, response);
             
                     

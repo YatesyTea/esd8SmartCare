@@ -97,7 +97,7 @@ public class AppointmentBean {
                 //For each row in table create user & add to list
                 while(rs.next()){
                     String eID = rs.getString("FK_EID");
-                    String cID = rs.getString("FK_CID");
+                    String cID = rs.getString("FK_PID");
                     String sDate = rs.getString("ADATE");
                     String sTime = rs.getString("ATIME");
 
@@ -120,25 +120,26 @@ public class AppointmentBean {
         
     }
     
-    public ArrayList<Appointment> getAllAppointmentByID(String id, String userType)throws SQLException{
+    public ArrayList<Appointment> getAllAppointmentByID(int id, String userType)throws SQLException{
         int flag = 0;
-        
+        System.out.println(userType);
         try{
             if(connect()){
                 //Get list of users
-                if (userType == "Employee"){
-                
-                    String query = "SELECT * FROM APPOINTMENT WHERE FK_EID=" + id;
-                    state = con.prepareStatement(query);
-                    rs = state.executeQuery(query);
+                if (userType == "employee"){
+                    String query = "SELECT * FROM APPOINTMENT WHERE FK_EID=?";
+                    ps = con.prepareStatement(query);
+                    ps.setInt(1, id);
+                    
+                    rs = ps.executeQuery();
         
                   
                 }
                 else{
-                    String query = "SELECT * FROM APPOINTMENT WHERE FK_PID=" + id;
-                    state = con.prepareStatement(query);
-                    rs = state.executeQuery(query);
-                
+                    String query = "SELECT * FROM APPOINTMENT WHERE FK_PID=?";
+                    ps.setInt(1, id);
+                    
+                    rs = ps.executeQuery(query);
                 }
                 
                 ArrayList<Appointment> listAppointment = new ArrayList<>();
@@ -154,7 +155,7 @@ public class AppointmentBean {
 
                     }
 
-                rs.close(); state.close();
+                rs.close(); ps.close();
                 disconnect();
 
                 return listAppointment;            
