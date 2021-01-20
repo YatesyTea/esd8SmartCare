@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Cookie;
 
 import model.UsersBean;
 
@@ -39,7 +40,14 @@ public class UsersServlet extends HttpServlet {
 
         String role = ub.checkLogin(u, p);      //get the login role
 
+        
         if (role != null) { //check if user name and password is valid
+             String name = "test";
+             int ID = ub.getEID(u);
+             String ID1 = Integer.toString(ID);
+             Cookie cookie = new Cookie(name, ID1);
+             System.out.println(ID1);
+             response.addCookie(cookie);
    
            //Redirect user based on role in db
             if ("admin".equals(role)){
