@@ -1,21 +1,22 @@
 <%-- 
-    Document   : RegisterUser
-    Created on : 28-Nov-2020, 18:05:08
-    Author     : carl
+    Document   : adminCreateEmployee
+    Created on : 20-Jan-2021, 22:16:46
+    Author     : Yates
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
+    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="style/style.css">
         <link rel="shorcut icon" type="image/png" href="image/favicon.png">
-        <title>SmartCare - Sign Up</title>
+        <title>SmartCare - Create Employee</title>
     </head>
-    <body>
-
-        <form class="box" action="RegisterServlet.do" method="POST">
+</head>
+<body>
+    <form class="box" action="CreateEmployeeServlet.do" method="POST">
             <h1>Sign Up</h1>
             <h2>By Filling In Your Details</h2>
 
@@ -31,13 +32,11 @@
 
             <input type="password" placeholder="Confirm Password" name="password1" id="confirmPassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
 
-            <label for="type">Patient Type:</label>
-            <select name ="type" id ="patient-type">
-                <option value="NHS">NHS</option>
-                <option value="private">Private</option>
+            <label for="type">Employee Type:</label>
+            <select name ="type" id ="role_type">
+                <option value="doctor">Doctor</option>
+                <option value="nurse">Nurse</option>
             </select>
-            <input type="submit" value="Register">
-
-        </form>
-    </body>
+            <input type="submit" value="Create Employee">
+</body>
 </html>
