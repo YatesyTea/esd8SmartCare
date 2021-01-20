@@ -24,19 +24,22 @@
         
         <table>
                 <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Address</th>
-                    <th>DOB</th>
+                    <th>Employee</th>
+                    <th>Patient</th>
+                    <th>Date</th>
+                    <th>Time</th>
                 </tr>
                 <% for (Appointment a : appointments)  { %>
-                <form action= "AdminEmployeesController.do" method="POST">
+                <form action= "EmployeeTimetableServlet.do" method="POST">
                 <tr>
                     <td><%=a.geteID()%></td>
                     <td><%=a.getcID()%></td>
                     <td><%=a.getAppointmentDate()%></td>
                     <td><%=a.getAppointmentTime()%></td>
-                    <td ><input type="Submit" value="Suspend"/></td>
+                    <td ><input type="Submit" value="Edit"/></td>
+                    <td ><input type="Submit" value="Remove"/></td>
+                    <input type="hidden" name="id" value="<%=a.geteID()%>"/>
+                    
                 </tr>
                 
                 </form>
