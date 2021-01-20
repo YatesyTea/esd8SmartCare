@@ -256,7 +256,8 @@ public class UsersBean {
         
         return user;
     }
-     public static int getEID(String un){
+    
+    public static int getEID(String un){
       
         int id1 = 5;
         try {
@@ -288,6 +289,7 @@ public class UsersBean {
             Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
            
             PreparedStatement ps = con.prepareStatement("SELECT PID FROM PATIENTS WHERE FK_UNAME=?");
+
             
             ps.setString(1, un);
             //Lookup user in db
@@ -305,6 +307,31 @@ public class UsersBean {
             System.out.print(e);
         }
         return id1;
- }
+    }
     
+     public static int getPID(String un){
+      
+        int idp1 = 0;
+        try {
+            Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
+           
+            PreparedStatement ps = con.prepareStatement("SELECT PID FROM PATIENTS WHERE FK_UNAME=?");
+            
+            ps.setString(1, un);
+            //Lookup user in db
+            ResultSet rs = ps.executeQuery();
+            
+            //If user was found return role
+            if(rs.next()){
+               
+              idp1 = rs.getInt(1);
+              
+            }
+            
+        }
+        catch (Exception e){
+            System.out.print(e);
+        }
+        return idp1;
+    }
 }

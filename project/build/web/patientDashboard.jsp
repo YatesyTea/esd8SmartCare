@@ -29,14 +29,13 @@
                     <h1>Prescriptions</h1>
                     <form method="post" action="ViewPrescriptionServlet.do"><p style="text-align:center">
                     <input id="textboxid" type="SUBMIT" value="View Prescriptions" style="align-self: center">
-                </div>
+                        </p></form>
+                </div>                
                 <div class= "content d">
                     <h1>View Charges</h1>
-                    
-                    <form method="post" action="PatientChargesController.do"><p style="text-align:center">
+                    <form method="post" action="PatientChargeController.do"><p style="text-align:center">
                     <input id="textboxid" type="SUBMIT" value="Charges" style="align-self: center">
-                    </p></form>
-                    
+                    </p></form>                   
                 </div>
             </div>
         </div>

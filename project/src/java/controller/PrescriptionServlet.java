@@ -57,7 +57,7 @@ public class PrescriptionServlet extends HttpServlet {
 
         String employeeID = null;
         for (Cookie c: request.getCookies()){
-                if(c.getName().equals("test")){
+                if(c.getName().equals("patient")){
                     employeeID = c.getValue();
                 }
             }
