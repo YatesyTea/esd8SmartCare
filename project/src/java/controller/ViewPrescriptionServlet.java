@@ -38,13 +38,14 @@ public class ViewPrescriptionServlet extends HttpServlet {
         
         String patientID = null;
         for (Cookie c: request.getCookies()){
-                if(c.getName().equals("test")){
+                if(c.getName().equals("patient")){
                     patientID = c.getValue();
                 }
             }
         
         System.out.println("employeeID");
-        int pid = Integer.parseInt(patientID);        
+        int pid = Integer.parseInt(patientID);
+        
         DBPrescriptionReturn vpres = new DBPrescriptionReturn();
         ArrayList<Prescription> prescription;
         prescription = vpres.getPrescription(pid);

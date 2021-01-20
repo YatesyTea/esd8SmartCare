@@ -70,12 +70,6 @@ public class UsersServlet extends HttpServlet {
                 System.out.println(ID1);
                 response.addCookie(cookie);
                 RequestDispatcher view = request.getRequestDispatcher("nurseDashboard.jsp");
-                String name = "test";
-                int ID = ub.getEID(u);
-                String ID1 = Integer.toString(ID);
-                Cookie cookie = new Cookie(name, ID1);
-                System.out.println("Nurse ID Value:" + ID1);
-                response.addCookie(cookie);
                 view.forward(request, response);
             }else if ("patient".equals(role)){
                 HttpSession session = request.getSession();
