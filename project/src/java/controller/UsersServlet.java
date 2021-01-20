@@ -50,13 +50,6 @@ public class UsersServlet extends HttpServlet {
             System.out.println(ID1);
             response.addCookie(cookie);
              
-            String namep = "patient";
-            int IDp = ub.getPID(u);
-            String IDp1 = Integer.toString(IDp);
-            Cookie cookie1 = new Cookie(namep, IDp1);
-            System.out.println(IDp1);
-            response.addCookie(cookie1);
-             
    
            //Redirect user based on role in db
             if ("admin".equals(role)){
@@ -78,6 +71,13 @@ public class UsersServlet extends HttpServlet {
                 session.setAttribute("patient", role);
                 session.setAttribute("uname",u);
                 session.setMaxInactiveInterval(10 * 60);
+                String namep = "patient";
+                int IDp = ub.getPID(u);
+                String IDp1 = Integer.toString(IDp);
+                Cookie cookie1 = new Cookie(namep, IDp1);
+                System.out.println(IDp1);
+                response.addCookie(cookie1);
+                System.out.println(cookie1);
                 RequestDispatcher view = request.getRequestDispatcher("patientDashboard.jsp");
                 view.forward(request, response);
             }else{

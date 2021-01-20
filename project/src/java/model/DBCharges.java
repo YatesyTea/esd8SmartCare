@@ -31,20 +31,16 @@ public class DBCharges {
     private ResultSet rs;
     
     
-    public ArrayList<Charges> getCharges() {
+    public ArrayList<Charges> getCharges(int pid) {
         ArrayList<Charges> result = new ArrayList<Charges>();
         //UsersBean ub = new UsersBean("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");    //call loginbean class
         
-//        Cookie[] cookies = request.getCookies();
-//        String pid1 = cookies[1].getValue();
-//        int pid = Integer.parseInt(pid1);
-
         try {
             
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
             state = con.createStatement();
-            rs = state.executeQuery("SELECT * FROM OPERATIONS");
+            rs = state.executeQuery("SELECT FK_EID, FK_PID, OTYPE, ODATE, OTIME, NSLOT, CHARGE FROM OPERATIONS WHERE FK_PID=?");
             
             while (rs.next()) {
                 

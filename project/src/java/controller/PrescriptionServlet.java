@@ -58,6 +58,7 @@ public class PrescriptionServlet extends HttpServlet {
         Cookie[] cookies = request.getCookies();
         String eid1 = cookies[0].getValue();
         int eid = Integer.parseInt(eid1);
+        System.out.println("Employee id = " + eid);
         
         String valid = checkValid(pid,eid);
         Prescription prescription1 = new Prescription(eid,pid,d,dI,dsg,c,reI);
