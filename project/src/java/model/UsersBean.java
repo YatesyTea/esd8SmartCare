@@ -58,7 +58,7 @@ public class UsersBean {
        
         try {
             if(connect()){
-                PreparedStatement ps = con.prepareStatement("SELECT ROLES from USERS WHERE uname=? and passwd=?");
+                PreparedStatement ps = con.prepareStatement("SELECT ROLE from USERS WHERE uname=? and passwd=?");
                 ps.setString(1, username);      //Format query
                 ps.setString(2, password);        
       
@@ -256,7 +256,8 @@ public class UsersBean {
         
         return user;
     }
-     public static int getEID(String un){
+    
+    public static int getEID(String un){
       
         int id1 = 5;
         try {
@@ -280,6 +281,31 @@ public class UsersBean {
             System.out.print(e);
         }
         return id1;
- }
+    }
     
+     public static int getPID(String un){
+      
+        int id1 = 5;
+        try {
+            Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
+           
+            PreparedStatement ps = con.prepareStatement("SELECT PID FROM EMPLOYEE WHERE UNAME=?");
+            
+            ps.setString(1, un);
+            //Lookup user in db
+            ResultSet rs = ps.executeQuery();
+            
+            //If user was found return role
+            if(rs.next()){
+               
+              id1 = rs.getInt(1);
+              
+            }
+            
+        }
+        catch (Exception e){
+            System.out.print(e);
+        }
+        return id1;
+    }
 }

@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Cookie;
 
 import model.UsersBean;
+import model.DBCharges;
 
 
 public class UsersServlet extends HttpServlet {
@@ -42,12 +43,20 @@ public class UsersServlet extends HttpServlet {
 
         
         if (role != null) { //check if user name and password is valid
-             String name = "test";
-             int ID = ub.getEID(u);
-             String ID1 = Integer.toString(ID);
-             Cookie cookie = new Cookie(name, ID1);
-             System.out.println(ID1);
-             response.addCookie(cookie);
+            String name = "test";
+            int ID = ub.getEID(u);
+            String ID1 = Integer.toString(ID);
+            Cookie cookie = new Cookie(name, ID1);
+            System.out.println(ID1);
+            response.addCookie(cookie);
+             
+            String namep = "patient";
+            int IDp = ub.getPID(u);
+            String IDp1 = Integer.toString(IDp);
+            Cookie cookie1 = new Cookie(namep, IDp1);
+            System.out.println(IDp1);
+            response.addCookie(cookie1);
+             
    
            //Redirect user based on role in db
             if ("admin".equals(role)){

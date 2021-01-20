@@ -40,6 +40,10 @@
         <servlet-name>ReportServlet</servlet-name>
         <servlet-class>controller.ReportServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PatientChargeController</servlet-name>
+        <servlet-class>controller.PatientChargeController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AdminEmployeesController</servlet-name>
         <url-pattern>/AdminEmployeesController.do</url-pattern>
@@ -79,6 +83,10 @@
     <servlet-mapping>
         <servlet-name>ReportServlet</servlet-name>
         <url-pattern>/ReportServlet.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PatientChargeController</servlet-name>
+        <url-pattern>/PatientChargeController.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
