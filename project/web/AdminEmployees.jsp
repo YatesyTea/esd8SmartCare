@@ -21,7 +21,7 @@
         %>
         
         
-        <form action= "removeEmployeeServlet.do" method="POST">
+        
         <table>
                 <tr>
                     <th>ID</th>
@@ -30,17 +30,17 @@
                     <th>DOB</th>
                 </tr>
                 <% for (Employees e : employee)  { %>
+                <form action= "AdminEmployeesController.do" method="POST">
                 <tr>
                     <td><%=e.getId()%></td>
                     <td><%=e.getName()%></td>
                     <td><%=e.getAddress()%></td>
                     <td><%=e.getDob()%></td>
-                    <td ><input type="Submit" value="Suspend" name="remove"/></td>
-                    
-                <% }%>
+                    <td ><input type="Submit" value="Suspend"/></td>
                 </tr>
-
+                <input type="hidden" name="id" value="<%=e.getId()%>"/>
+                </form>
+                <% }%>
             </table>
-        </form>
     </body>
 </html>

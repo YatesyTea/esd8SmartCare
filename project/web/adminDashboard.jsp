@@ -24,7 +24,7 @@
                 </div>
                 <div class= "content c">
                     <h1>Manage Staff</h1> 
-                    <form method="post" action="AdminEmployeesController.do"><p style="text-align:center">
+                    <form method="get" action="AdminEmployeesController.do"><p style="text-align:center">
                     <input id="textboxid" type="SUBMIT" value="Employees" style="align-self: center">
                     </p></form>
  
