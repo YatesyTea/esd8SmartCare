@@ -27,10 +27,16 @@ public class PatientChargeController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        Cookie[] cookie1 = request.getCookies();
-        String pid1 = cookie1[1].getValue();
+//        Cookie[] cookie = request.getCookies();
+//        String pid1 = cookie1[0].getValue();
+//        int pid = Integer.parseInt(pid1);
+//        System.out.println(cookie1[0] + " PatientID:");
+        
+        Cookie[] cookies = request.getCookies();
+        String pid1 = cookies[1].getValue();
+        System.out.println(pid1);
         int pid = Integer.parseInt(pid1);
-        System.out.println(cookie1[1] + " PatientID:");
+        System.out.println("Patient id = " + pid);
         
         
         DBCharges chr = new DBCharges();       

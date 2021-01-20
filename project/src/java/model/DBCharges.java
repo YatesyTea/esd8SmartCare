@@ -40,11 +40,11 @@ public class DBCharges {
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
             state = con.createStatement();
-            rs = state.executeQuery("SELECT FK_EID, FK_PID, OTYPE, ODATE, OTIME, NSLOT, CHARGE FROM OPERATIONS WHERE FK_PID=?");
+            rs = state.executeQuery("SELECT * FROM OPERATIONS WHERE FK_PID=" + pid + "");
             
             while (rs.next()) {
                 
-                result.add(new Charges(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getDouble(4)));
+                result.add(new Charges(rs.getInt(1), rs.getInt(3), rs.getString(5), rs.getDouble(8)));
                 
             }
             
