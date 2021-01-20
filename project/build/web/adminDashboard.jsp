@@ -1,9 +1,3 @@
-<%-- 
-    Document   : adminLogin
-    Created on : 28-Nov-2020, 17:31:41
-    Author     : samue
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

@@ -26,9 +26,9 @@ public class AdminEmployeesController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
      
         DBEmployeesReturn Emp = new DBEmployeesReturn();
-        ArrayList<Employees> empolyees;
-        empolyees = Emp.getEmployee();
-        request.setAttribute("employees", empolyees);
+        ArrayList<Employees> employees;
+        employees = Emp.getAllEmployee();
+        request.setAttribute("employees", employees);
         
         RequestDispatcher view = request.getRequestDispatcher("AdminEmployees.jsp");
         view.forward(request, response);
