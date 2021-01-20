@@ -51,6 +51,31 @@ public class BookingBean {
         }
         
     }
+
+    public int addBooking(Booking newBooking){
+        
+        int flag = 0;
+        try{
+            if(connect()){
+                //Format query
+                String query = "INSERT INTO BOOKING_SLOTS(EID, CID, SDATE, STIME) VALUES('"+ newBooking.geteID() + "','" + newBooking.getcID() + "','" +
+                        newBooking.getBookingDate() + "','" + newBooking.getBookingTime() + "')";
+
+                //Add to db
+                state = con.createStatement();
+                flag = state.executeUpdate(query);
+
+                state.close();
+                disconnect();   
+            }
+        } catch (SQLException e) {
+            System.err.println("Error: " + e);
+
+        }//try
+        
+        return flag;
+    }
+    
     
     
 }
