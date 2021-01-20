@@ -21,7 +21,7 @@
             <input type="text" placeholder="Drug Name" name="drug" required>
             <input type="text" placeholder="Enter Dosage" name="dosage" required>
             <input type="text" placeholder ="Cost" name="cost" required>
-            <input type="text" placeholder="Date Prescribed (FORMAT YYYY/MM/DD)" name="date" required>
+            <input type="text" placeholder="Date Prescribed (FORMAT YYYY-MM-DD)" name="date" required>
             <input type="text" placeholder="Repeating" name="reissue" required>
             
             <input type="submit" value="Issue Prescription">

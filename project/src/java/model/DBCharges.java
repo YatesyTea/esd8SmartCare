@@ -54,6 +54,7 @@ public class DBCharges {
         return result;
     
     }
+    
 // Dont know if this will work but would need new database table to put payments or charges into
 //    public String makeClaim(String ID, String patietnt_ID, double amount) throws SQLException, ParseException {
 //        try {

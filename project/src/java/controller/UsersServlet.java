@@ -42,13 +42,6 @@ public class UsersServlet extends HttpServlet {
 
         
         if (role != null) { //check if user name and password is valid
-             String name = "test";
-             int ID = ub.getEID(u);
-             String ID1 = Integer.toString(ID);
-             Cookie cookie = new Cookie(name, ID1);
-             System.out.println(ID1);
-             response.addCookie(cookie);
-   
            //Redirect user based on role in db
             if ("admin".equals(role)){
                 HttpSession session = request.getSession();
@@ -63,12 +56,24 @@ public class UsersServlet extends HttpServlet {
                 session.setAttribute("uname",u);
                 session.setMaxInactiveInterval(10 * 60);
                 RequestDispatcher view = request.getRequestDispatcher("nurseDashboard.jsp");
+                String name = "test";
+                int ID = ub.getEID(u);
+                String ID1 = Integer.toString(ID);
+                Cookie cookie = new Cookie(name, ID1);
+                System.out.println("Nurse ID Value:" + ID1);
+                response.addCookie(cookie);
                 view.forward(request, response);
             }else if ("patient".equals(role)){
                 HttpSession session = request.getSession();
                 session.setAttribute("patient", role);
                 session.setAttribute("uname",u);
                 session.setMaxInactiveInterval(10 * 60);
+                String name = "test";
+                int ID = ub.getPID(u);
+                String ID1 = Integer.toString(ID);
+                Cookie cookie = new Cookie(name, ID1);
+                System.out.println("Patient ID Value:" + ID1);
+                response.addCookie(cookie);
                 RequestDispatcher view = request.getRequestDispatcher("patientDashboard.jsp");
                 view.forward(request, response);
             }else{
@@ -76,6 +81,12 @@ public class UsersServlet extends HttpServlet {
                 session.setAttribute("doctor", role);
                 session.setAttribute("uname",u);
                 session.setMaxInactiveInterval(10 * 60);
+                String name = "test";
+                int ID = ub.getEID(u);
+                String ID1 = Integer.toString(ID);
+                Cookie cookie = new Cookie(name, ID1);
+                System.out.println("Doctor ID Value:" + ID1);
+                response.addCookie(cookie);
                 RequestDispatcher view = request.getRequestDispatcher("doctorDashboard.jsp");
                 view.forward(request, response);
             }  

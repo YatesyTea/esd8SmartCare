@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
@@ -77,6 +78,31 @@ public class DBInvoice {
         }//try
         
         return flag;
+    }
+    public ArrayList<Invoice> getOperationReport(String date1,String date2) {
+        ArrayList<Invoice> result = new ArrayList<Invoice>();
+        
+        
+        try {
+            
+            Class.forName("org.apache.derby.jdbc.ClientDriver");
+            con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
+            state = con.createStatement();
+            rs = state.executeQuery("SELECT FK_EID, FK_PID, OTYPE, ODATE, CHARGE FROM OPERATIONS WHERE ODATE BETWEEN '"+ date1 + "' AND '"+ date2+"'");
+            while (rs.next()) {
+                
+                result.add(new Invoice(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4),rs.getFloat(5)));
+                
+            }
+            rs.close();
+            state.close();
+            con.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            System.err.println("Error: " + e);
+
+        }
+        return result;
+    
     }
     
 }
