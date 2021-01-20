@@ -21,7 +21,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import controller.UsersServlet;
+import javax.servlet.http.Cookie;
+import model.UsersBean;
 
 
 /**
@@ -52,7 +54,10 @@ public class PrescriptionServlet extends HttpServlet {
         String dI = request.getParameter("date");
         int dsg = Integer.parseInt(request.getParameter("dosage"));
         int reI = Integer.parseInt(request.getParameter("reissue"));
-        int eid = 1; 
+
+        Cookie[] cookies = request.getCookies();
+        String eid1 = cookies[0].getValue();
+        int eid = Integer.parseInt(eid1);
         
         String valid = checkValid(pid,eid);
         Prescription prescription1 = new Prescription(eid,pid,d,dI,dsg,c,reI);
