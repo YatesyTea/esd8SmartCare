@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,9 +36,18 @@ public class ViewPrescriptionServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
+        String patientID = null;
+        for (Cookie c: request.getCookies()){
+                if(c.getName().equals("test")){
+                    patientID = c.getValue();
+                }
+            }
+        
+        System.out.println("employeeID");
+        int pid = Integer.parseInt(patientID);        
         DBPrescriptionReturn vpres = new DBPrescriptionReturn();
         ArrayList<Prescription> prescription;
-        prescription = vpres.getPrescription();
+        prescription = vpres.getPrescription(pid);
         request.setAttribute("prescription",prescription);
         
         RequestDispatcher view = request.getRequestDispatcher("viewPrescription.jsp");

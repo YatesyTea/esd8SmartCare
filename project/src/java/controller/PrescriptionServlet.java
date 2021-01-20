@@ -50,19 +50,23 @@ public class PrescriptionServlet extends HttpServlet {
         //Create parameter variables using inputs taken from sign up form
         String d = request.getParameter("drug");
         int pid = Integer.parseInt(request.getParameter("pid"));    //get the entered login information 
-        float c = Float.parseFloat(request.getParameter("cost"));
+        float cost = Float.parseFloat(request.getParameter("cost"));
         String dI = request.getParameter("date");
         int dsg = Integer.parseInt(request.getParameter("dosage"));
         int reI = Integer.parseInt(request.getParameter("reissue"));
 
-        Cookie[] cookies = request.getCookies();
-        String eid1 = cookies[1].getValue();
-        System.out.println(eid1);
-        int eid = Integer.parseInt(eid1);
-        System.out.println("Employee id = " + eid);
+        String employeeID = null;
+        for (Cookie c: request.getCookies()){
+                if(c.getName().equals("patient")){
+                    employeeID = c.getValue();
+                }
+            }
+        
+        System.out.println("employeeID");
+        int eid = Integer.parseInt(employeeID);
         
         String valid = checkValid(pid,eid);
-        Prescription prescription1 = new Prescription(eid,pid,d,dI,dsg,c,reI);
+        Prescription prescription1 = new Prescription(eid,pid,d,dI,dsg,cost,reI);
         //System.out.print(prescription1);
         
         if (valid != null) {

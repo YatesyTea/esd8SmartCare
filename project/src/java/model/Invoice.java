@@ -13,9 +13,9 @@ public class Invoice {
     
     private int id, patient_id, employee_id;
     private String  date, surgery;
-    private double cost;
+    private float cost;
 
-    public Invoice(int employee_id, int patient_id, String surgery, String date,  double cost) {
+    public Invoice(int employee_id, int patient_id, String surgery, String date,  float cost) {
         //this.id = id;
         this.employee_id = employee_id;
         this.patient_id = patient_id;
@@ -56,11 +56,11 @@ public class Invoice {
         this.date = date;
     }
 
-    public double getCost() {
+    public float getCost() {
         return cost;
     }
 
-    public void setCost(double cost) {
+    public void setCost(float cost) {
         this.cost = cost;
     }
     

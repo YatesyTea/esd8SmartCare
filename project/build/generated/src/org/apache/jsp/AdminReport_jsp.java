@@ -4,6 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 import model.Prescription;
+import model.Invoice;
 import java.util.ArrayList;
 
 public final class AdminReport_jsp extends org.apache.jasper.runtime.HttpJspBase
@@ -47,6 +48,8 @@ public final class AdminReport_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
@@ -57,33 +60,74 @@ public final class AdminReport_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        ");
 
             ArrayList<Prescription> prescription = (ArrayList<Prescription>)request.getAttribute("prescription");
+            ArrayList<Invoice> operations = (ArrayList<Invoice>)request.getAttribute("operation");
         
       out.write("\n");
       out.write("        <h1>Weekly Report</h1>\n");
       out.write("        <h1>Charges</h1>\n");
       out.write("        <h2>Prescriptions</h2>\n");
-      out.write("        <table>\n");
+      out.write("         <table>\n");
       out.write("            <tr>\n");
-      out.write("                <th>Prescription Type</th>\n");
-      out.write("                <th>Date Issued</th>\n");
-      out.write("                <th>Cost</th>\n");
+      out.write("                <th>|Prescription|</th>\n");
+      out.write("                <th>Date Issued|</th>\n");
+      out.write("                <th>Cost|</th>\n");
       out.write("            </tr>\n");
       out.write("            \n");
       out.write("            ");
 
+                float prescriptionTotal = 0;
                 for (int i = 0; i < prescription.size(); i++) {
                     out.println("<tr>");
                     out.println("<td>" + prescription.get(i).getDrug() + "</td>");
                     out.println("<td>" + prescription.get(i).getDate() + "</td>");
                     out.println("<td>" + prescription.get(i).getCost() + "</td>");
                     out.println("</tr>");
+                    prescriptionTotal = prescriptionTotal + prescription.get(i).getCost() ;
+                }   
+            
+      out.write("\n");
+      out.write("        </table>\n");
+      out.write("            ");
+
+                out.println("<tr>" + "Total Prescription Turnover: " + prescriptionTotal + "</tr>");
+            
+      out.write("\n");
+      out.write("        <h2>Operations</h2>\n");
+      out.write("        <table>\n");
+      out.write("            <tr>\n");
+      out.write("                <th>|Surgery|</th>\n");
+      out.write("                <th>Date Issued|</th>\n");
+      out.write("                <th>Cost|</th>\n");
+      out.write("            </tr>\n");
+      out.write("            \n");
+      out.write("            ");
+
+                float operationsTotal = 0;
+                for (int j = 0; j < operations.size(); j++) {
+                    out.println("<tr>");
+                    out.println("<td>" + operations.get(j).getSurgery() + "</td>");
+                    out.println("<td>" + operations.get(j).getDate() + "</td>");
+                    out.println("<td>" + operations.get(j).getCost() + "</td>");
+                    out.println("</tr>");
+                    operationsTotal = operationsTotal + operations.get(j).getCost() ;
                 }
             
       out.write("\n");
       out.write("        </table>\n");
-      out.write("        <h2>Surgeries</h2>\n");
+      out.write("        ");
+
+                out.println("<tr>" + "Total Operations Turnover: " + operationsTotal + "</tr>");
+            
+      out.write("\n");
       out.write("        <h1>Payments</h1>\n");
       out.write("        <h1>Weekly Turnover</h1>\n");
+      out.write("        ");
+
+                float totalTurnover = 0;
+                totalTurnover = operationsTotal + prescriptionTotal;
+                out.println("<tr>" + "Total Operations Turnover: " + totalTurnover + "</tr>");
+            
+      out.write("\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {

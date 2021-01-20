@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.DBPrescriptionReturn;
 import model.Prescription;
+import model.DBInvoice;
+import model.Invoice;
+
 
 /**
  *
@@ -34,10 +37,18 @@ public class ReportServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String edate = request.getParameter("date1");
+        String sdate = request.getParameter("date2");
         DBPrescriptionReturn vpres = new DBPrescriptionReturn();
         ArrayList<Prescription> prescription;
-        prescription = vpres.getPrescription();
+        prescription = vpres.getPrescriptionReport(edate,sdate);
         request.setAttribute("prescription",prescription);
+        
+        DBInvoice chr = new DBInvoice();
+        ArrayList<Invoice>operation;
+        operation = chr.getOperationReport(edate,sdate);
+        request.setAttribute("operation", operation);
+        
         RequestDispatcher view = request.getRequestDispatcher("AdminReport.jsp");
         view.forward(request,response);
         

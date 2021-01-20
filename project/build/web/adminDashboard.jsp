@@ -27,11 +27,12 @@
                     <form method="get" action="AdminEmployeesController.do"><p style="text-align:center">
                     <input id="textboxid" type="SUBMIT" value="Employees" style="align-self: center">
                     </p></form>
- 
                 </div>
                 <div class= "content d">
                     <h1>Produce Weekly Report</h1>
                     <form method="post" action="ReportServlet.do"><p style="text-align:center">
+                    <input type="text" placeholder="Start Date(FORMAT YYYY-MM-DD)" name="date1" style="align-self: center"required>
+                    <input type="text" placeholder="End Date (FORMAT YYYY-MM-DD)" name="date2" style="align-self: center"required>
                     <input id="textboxid" type="SUBMIT" value="Weekly Report" style="align-self: center">
                     </p></form>
                 </div>
