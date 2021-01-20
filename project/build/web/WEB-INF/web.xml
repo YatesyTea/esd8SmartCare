@@ -33,6 +33,10 @@
         <servlet-class>controller.removeEmployeeServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>EmployeeTimetableServlet</servlet-name>
+        <servlet-class>controller.EmployeeTimetableServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>InvoiceController</servlet-name>
         <servlet-class>controller.InvoiceController</servlet-class>
     </servlet>
@@ -43,6 +47,10 @@
     <servlet-mapping>
         <servlet-name>AdminEmployeesController</servlet-name>
         <url-pattern>/AdminEmployeesController.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EmployeeTimetableServlet</servlet-name>
+        <url-pattern>/EmployeeTimetableServlet.do</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>PatientChargeController</servlet-name>

@@ -12,18 +12,18 @@ import java.sql.Time;
  *
  * @author Reece
  */
-public class Booking {
+public class Appointment {
     
     private String eID;         //Employee ID
     private String cID;         //Client ID
-    private String bookingDate;
-    private String bookingTime;
+    private String AppointmentDate;
+    private String AppointmentTime;
 
-    public Booking(String eID, String cID, String bookingDate, String bookingTime) {
+    public Appointment(String eID, String cID, String bookingDate, String bookingTime) {
         this.eID = eID;
         this.cID = cID;
-        this.bookingDate = bookingDate;
-        this.bookingTime = bookingTime;
+        this.AppointmentDate = bookingDate;
+        this.AppointmentTime = bookingTime;
     }
 
     public String geteID() {
@@ -42,20 +42,20 @@ public class Booking {
         this.cID = cID;
     }
 
-    public String getBookingDate() {
-        return bookingDate;
+    public String getAppointmentDate() {
+        return AppointmentDate;
     }
 
-    public void setBookingDate(String bookingDate) {
-        this.bookingDate = bookingDate;
+    public void setAppointmentDate(String appointmentDate) {
+        this.AppointmentDate = appointmentDate;
     }
 
-    public String getBookingTime() {
-        return bookingTime;
+    public String getAppointmentTime() {
+        return AppointmentTime;
     }
 
-    public void setBookingTime(String bookingTime) {
-        this.bookingTime = bookingTime;
+    public void setAppointmentTime(String appointmentTime) {
+        this.AppointmentTime = appointmentTime;
     }
 
   

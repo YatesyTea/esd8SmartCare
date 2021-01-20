@@ -17,7 +17,7 @@ import java.util.ArrayList;
  *
  * @author Reece
  */
-public class BookingBean {
+public class AppointmentBean {
 
     private Connection con;
     private Statement state;
@@ -28,6 +28,12 @@ public class BookingBean {
     private static String url;
     private static String user;
     private static String password;
+
+    public AppointmentBean(String url, String user, String password) {
+        this.url = url;
+        this.user = user;
+        this.password = password;
+    }
     
     private boolean connect() throws SQLException{
         try{
@@ -53,14 +59,14 @@ public class BookingBean {
         
     }
 
-    public int addBooking(Booking newBooking){
+    public int addAppointment(Appointment newAppointment){
         
         int flag = 0;
         try{
             if(connect()){
                 //Format query
-                String query = "INSERT INTO BOOKING_SLOTS(EID, CID, SDATE, STIME) VALUES('"+ newBooking.geteID() + "','" + newBooking.getcID() + "','" +
-                        newBooking.getBookingDate() + "','" + newBooking.getBookingTime() + "')";
+                String query = "INSERT INTO APPOINTMENT(FK_EID, FK_PID, ADATE, ATIME) VALUES('"+ newAppointment.geteID() + "','" + newAppointment.getcID() + "','" +
+                        newAppointment.getAppointmentDate() + "','" + newAppointment.getAppointmentTime() + "')";
 
                 //Add to db
                 state = con.createStatement();
@@ -77,33 +83,33 @@ public class BookingBean {
         return flag;
     }
     
-    public ArrayList<Booking> getAllBookings()throws SQLException{
+    public ArrayList<Appointment> getAllAppointments()throws SQLException{
     
         try{
             if(connect()){
                 //Get list of users
-                String query = "SELECT * FROM BOOKING_SLOTS";
+                String query = "SELECT * FROM APPOINTMENT";
                 state = con.createStatement();
                 rs = state.executeQuery(query);
 
-                ArrayList<Booking> listBooking = new ArrayList<>();
+                ArrayList<Appointment> listAppointment = new ArrayList<>();
                 
                 //For each row in table create user & add to list
                 while(rs.next()){
-                    String eID = rs.getString("EID");
-                    String cID = rs.getString("CID");
-                    String sDate = rs.getString("SDATE");
-                    String sTime = rs.getString("STIME");
+                    String eID = rs.getString("FK_EID");
+                    String cID = rs.getString("FK_CID");
+                    String sDate = rs.getString("ADATE");
+                    String sTime = rs.getString("ATIME");
 
-                    Booking booking = new Booking(eID, cID, sDate, sTime);
-                    listBooking.add(booking);
+                    Appointment appointment = new Appointment(eID, cID, sDate, sTime);
+                    listAppointment.add(appointment);
 
                 }
 
                 rs.close(); state.close();
                 disconnect();
 
-                return listBooking;            
+                return listAppointment;            
             }
         } catch (SQLException e) {
             System.err.println("Error: " + e);
@@ -114,7 +120,7 @@ public class BookingBean {
         
     }
     
-    public ArrayList<Booking> getAllBookingsByID(String id, String userType)throws SQLException{
+    public ArrayList<Appointment> getAllAppointmentByID(String id, String userType)throws SQLException{
         int flag = 0;
         
         try{
@@ -122,36 +128,36 @@ public class BookingBean {
                 //Get list of users
                 if (userType == "Employee"){
                 
-                    String query = "SELECT * FROM BOOKING_SLOTS WHERE EID=" + id;
+                    String query = "SELECT * FROM APPOINTMENT WHERE FK_EID=" + id;
                     state = con.prepareStatement(query);
                     rs = state.executeQuery(query);
         
                   
                 }
                 else{
-                    String query = "SELECT * FROM BOOKING_SLOTS WHERE CID=" + id;
+                    String query = "SELECT * FROM APPOINTMENT WHERE FK_PID=" + id;
                     state = con.prepareStatement(query);
                     rs = state.executeQuery(query);
                 
                 }
                 
-                ArrayList<Booking> listBooking = new ArrayList<>();
+                ArrayList<Appointment> listAppointment = new ArrayList<>();
                     
                     while(rs.next()){
-                        String eID = rs.getString("EID");
-                        String cID = rs.getString("CID");
-                        String sDate = rs.getString("SDATE");
-                        String sTime = rs.getString("STIME");
+                        String eID = rs.getString("FK_EID");
+                        String cID = rs.getString("FK_PID");
+                        String sDate = rs.getString("ADATE");
+                        String sTime = rs.getString("ATIME");
 
-                        Booking booking = new Booking(eID, cID, sDate, sTime);
-                        listBooking.add(booking);
+                        Appointment appointment = new Appointment(eID, cID, sDate, sTime);
+                        listAppointment.add(appointment);
 
                     }
 
                 rs.close(); state.close();
                 disconnect();
 
-                return listBooking;            
+                return listAppointment;            
             }
         } catch (SQLException e) {
             System.err.println("Error: " + e);
@@ -162,14 +168,14 @@ public class BookingBean {
         
     }
     
-    public int deleteBooking(String bookingID) throws SQLException{
+    public int deleteAppointment(String appointmentID) throws SQLException{
         int flag = 0;
         try{
             if(connect()){
-                String query = "DELETE FROM BOOKING_SLOTS WHERE SID=?";
+                String query = "DELETE FROM APPOINTMENT WHERE SID=?";
 
                 ps = con.prepareStatement(query);
-                ps.setString(1, bookingID);
+                ps.setString(1, appointmentID);
                 flag = ps.executeUpdate();
 
                 ps.close();
@@ -184,18 +190,18 @@ public class BookingBean {
         return flag;
     }
     
-    public int updateBooking(Booking booking, String bookingID) throws SQLException{
+    public int updateAppointment(Appointment appointment, String appointmentID) throws SQLException{
         int flag = 0;
         try{
             if(connect()){
-                String query = "UPDATE BOOKING_SLOTS SET EID=?, CID=?, SDATE=?, STIME=? WHERE SID=?";
+                String query = "UPDATE APPOINTMENT SET FK_EID=?, FK_PID=?, ADATE=?, ATIME=? WHERE SID=?";
 
                 ps = con.prepareStatement(query);
-                ps.setString(1, booking.geteID());
-                ps.setString(2, booking.getcID());
-                ps.setString(3, booking.getBookingDate());
-                ps.setString(4, booking.getBookingTime());
-                ps.setString(5, bookingID);
+                ps.setString(1, appointment.geteID());
+                ps.setString(2, appointment.getcID());
+                ps.setString(3, appointment.getAppointmentDate());
+                ps.setString(4, appointment.getAppointmentTime());
+                ps.setString(5, appointmentID);
                 
                 flag = ps.executeUpdate();
                 ps.close();

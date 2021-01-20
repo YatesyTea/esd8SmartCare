@@ -15,7 +15,7 @@
             <div class="box content">
                 <div class= "content a">
                     <h1>View Patient Timetables</h1>
-                    <form method="get" action="PatientTimetableServlet.do"><p style="text-align:center">
+                    <form method="get" action="EmployeeTimetableServlet.do"><p style="text-align:center">
                     <input id="textboxid" type="SUBMIT" value="Patient Timetable" style="align-self: center">
                     </p></form>
                 </div>
