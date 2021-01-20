@@ -33,8 +33,8 @@ public class PatientChargeController extends HttpServlet {
 //        System.out.println(cookie1[0] + " PatientID:");
         
         Cookie[] cookies = request.getCookies();
-        String pid1 = cookies[0].getValue();
-        System.out.println(pid1);
+        String pid1 = cookies[1].getValue();
+        System.out.println(pid1 + ",,,");
         int pid = Integer.parseInt(pid1);
         
         System.out.println("Patient id = " + pid);       
