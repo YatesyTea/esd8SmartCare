@@ -56,7 +56,8 @@ public class PrescriptionServlet extends HttpServlet {
         int reI = Integer.parseInt(request.getParameter("reissue"));
 
         Cookie[] cookies = request.getCookies();
-        String eid1 = cookies[0].getValue();
+        String eid1 = cookies[1].getValue();
+        System.out.println(eid1);
         int eid = Integer.parseInt(eid1);
         System.out.println("Employee id = " + eid);
         
