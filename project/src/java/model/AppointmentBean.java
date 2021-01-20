@@ -96,12 +96,13 @@ public class AppointmentBean {
                 
                 //For each row in table create user & add to list
                 while(rs.next()){
+                    String sID = rs.getString("SID");
                     String eID = rs.getString("FK_EID");
                     String cID = rs.getString("FK_PID");
                     String sDate = rs.getString("ADATE");
                     String sTime = rs.getString("ATIME");
 
-                    Appointment appointment = new Appointment(eID, cID, sDate, sTime);
+                    Appointment appointment = new Appointment(sID, eID, cID, sDate, sTime);
                     listAppointment.add(appointment);
 
                 }
@@ -145,12 +146,13 @@ public class AppointmentBean {
                 ArrayList<Appointment> listAppointment = new ArrayList<>();
                     
                     while(rs.next()){
+                        String sID = rs.getString("SID");
                         String eID = rs.getString("FK_EID");
                         String cID = rs.getString("FK_PID");
                         String sDate = rs.getString("ADATE");
                         String sTime = rs.getString("ATIME");
 
-                        Appointment appointment = new Appointment(eID, cID, sDate, sTime);
+                        Appointment appointment = new Appointment(sID, eID, cID, sDate, sTime);
                         listAppointment.add(appointment);
 
                     }

@@ -14,10 +14,19 @@ import java.sql.Time;
  */
 public class Appointment {
     
+    private String sID;
     private String eID;         //Employee ID
     private String cID;         //Client ID
     private String AppointmentDate;
     private String AppointmentTime;
+
+    public Appointment(String sID, String eID, String cID, String AppointmentDate, String AppointmentTime) {
+        this.sID = sID;
+        this.eID = eID;
+        this.cID = cID;
+        this.AppointmentDate = AppointmentDate;
+        this.AppointmentTime = AppointmentTime;
+    }
 
     public Appointment(String eID, String cID, String bookingDate, String bookingTime) {
         this.eID = eID;
@@ -58,7 +67,15 @@ public class Appointment {
         this.AppointmentTime = appointmentTime;
     }
 
-  
+    public String getsID() {
+        return sID;
+    }
+
+    public void setsID(String sID) {
+        this.sID = sID;
+    }
+
+
     
     
 }

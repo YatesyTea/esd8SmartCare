@@ -44,6 +44,13 @@ public class EmployeeTimetableServlet extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             
             String employeeID = null;
+            AppointmentBean b = new AppointmentBean("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
+            
+            if (request.getMethod().equals("POST")){
+                String sid = request.getParameter("id");
+                
+                b.deleteAppointment(sid);
+            }
             
             for (Cookie c: request.getCookies()){
                 if(c.getName().equals("test")){
@@ -51,20 +58,13 @@ public class EmployeeTimetableServlet extends HttpServlet {
                 }
             }
             
-            System.out.println(employeeID);
             int eid = Integer.parseInt(employeeID);
             
-            System.out.println(eid);
-            
-            AppointmentBean b = new AppointmentBean("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
             
             ArrayList<Appointment> appointments;
-            //appointments = b.getAllAppointments();
             appointments = b.getAllAppointmentByID(eid, "employee");
-            System.out.println(appointments);
-                    
+            
             request.setAttribute("appointments", appointments);    
-        
             RequestDispatcher view = request.getRequestDispatcher("EmployeeTimetable.jsp");
             view.forward(request, response);
             
