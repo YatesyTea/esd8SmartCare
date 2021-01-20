@@ -285,7 +285,7 @@ public class UsersBean {
     
      public static int getPID(String un){
       
-        int id1 = 5;
+        int idp1 = 0;
         try {
             Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
            
@@ -298,7 +298,7 @@ public class UsersBean {
             //If user was found return role
             if(rs.next()){
                
-              id1 = rs.getInt(1);
+              idp1 = rs.getInt(1);
               
             }
             
@@ -306,6 +306,6 @@ public class UsersBean {
         catch (Exception e){
             System.out.print(e);
         }
-        return id1;
+        return idp1;
     }
 }
