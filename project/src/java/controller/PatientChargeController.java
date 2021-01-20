@@ -32,10 +32,15 @@ public class PatientChargeController extends HttpServlet {
 //        int pid = Integer.parseInt(pid1);
 //        System.out.println(cookie1[0] + " PatientID:");
         
-        Cookie[] cookies = request.getCookies();
-        String pid1 = cookies[1].getValue();
-        System.out.println(pid1 + ",,,");
-        int pid = Integer.parseInt(pid1);
+        String patientID = null;
+        
+        for (Cookie c: request.getCookies()){
+                if(c.getName().equals("patient")){
+                    patientID = c.getValue();
+                }
+            }        
+        
+        int pid = Integer.parseInt(patientID);
         
         System.out.println("Patient id = " + pid);       
         
