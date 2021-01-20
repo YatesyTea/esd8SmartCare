@@ -68,25 +68,25 @@ public class ChargesTest {
     }
 
     @Test
-    public void testGetClient_Id() {
-        System.out.println("Test Get Client Id");
+    public void testGetPatient_Id() {
+        System.out.println("Test Get Patient Id");
         Charges instance = charge;
 
         int expResult = 1;
-        int result = instance.getClient_id();
+        int result = instance.getPatient_id();
 
         assertEquals(expResult, result);
     }
 
     @Test
-    public void testSetClient_Id() {
-        System.out.println("Test Set Client_id");
+    public void testSetPatient_Id() {
+        System.out.println("Test Set Patient id");
         Charges instance = charge;
 
-        instance.setClient_id(2);
+        instance.setPatient_id(2);
 
         int expResult = 2;
-        int result = instance.getClient_id();
+        int result = instance.getPatient_id();
 
         assertEquals(expResult, result);
     }
@@ -122,7 +122,7 @@ public class ChargesTest {
         Charges instance = charge;
 
         double expResult = 1;
-        double result = instance.getAmount();
+        double result = instance.getCost();
 
         assertEquals(expResult, result, 0.001);
     }
@@ -133,10 +133,10 @@ public class ChargesTest {
         Charges instance = charge;
         
         double testAmount = 2.52;
-        instance.setAmount(testAmount);
+        instance.setCost(testAmount);
 
         double expResult = testAmount;
-        double result = instance.getAmount();
+        double result = instance.getCost();
 
         assertEquals(expResult, result, 0.001);
     }

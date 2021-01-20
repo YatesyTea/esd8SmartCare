@@ -1,7 +1,7 @@
 <%-- 
-    Document   : clientLogin
-    Created on : 29-Nov-2020, 19:45:17
-    Author     : samue
+    Document   : patientDashboard
+    Created on : 19-Jan-2021, 15:47:31
+    Author     : carl
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -29,6 +29,14 @@
                     <h1>Prescriptions</h1>
                     <form method="post" action="ViewPrescriptionServlet.do"><p style="text-align:center">
                     <input id="textboxid" type="SUBMIT" value="View Prescriptions" style="align-self: center">
+                </div>
+                <div class= "content d">
+                    <h1>View Charges</h1>
+                    
+                    <form method="post" action="PatientChargesController.do"><p style="text-align:center">
+                    <input id="textboxid" type="SUBMIT" value="Charges" style="align-self: center">
+                    </p></form>
+                    
                 </div>
             </div>
         </div>
