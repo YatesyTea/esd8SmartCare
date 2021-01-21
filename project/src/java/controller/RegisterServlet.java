@@ -16,8 +16,6 @@ import model.PatientBean;
 import model.Patient;
 import model.UsersBean;
 import model.Users;
-        
-
 
 /**
  *
@@ -39,7 +37,7 @@ public class RegisterServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PatientBean pb = new PatientBean("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
         UsersBean ub = new UsersBean("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
-        
+
         //Create parameter variables using inputs taken from sign up form
         String n = request.getParameter("name");
         String u = request.getParameter("username");    //get the entered login information 
@@ -48,14 +46,16 @@ public class RegisterServlet extends HttpServlet {
         String p1 = request.getParameter("password1");
         String type = request.getParameter("type");
         String role = "patient";
-        
+
         /*Create new instance of User and Patient using their appropriate 
          attributes in order to insert them into the database*/
-        Users user1 = new Users(u,p,role);
+        Users user1 = new Users(u, p, role);
         ub.addUser(user1);
-        Patient patient1 = new Patient(n,a,type,u);
+        Patient patient1 = new Patient(n, a, type, u);
         pb.addPatient(patient1);
-        
+
+        RequestDispatcher view = request.getRequestDispatcher("patientDashboard.jsp");
+        view.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
