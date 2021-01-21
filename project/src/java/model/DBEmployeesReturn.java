@@ -90,7 +90,7 @@ public class DBEmployeesReturn {
         int flag = 0;
         try{
             if(connect()){
-                String query = "DELETE FROM EMPLOYEE WHERE EID=?";
+                String query = "DELETE FROM EMPLOYEE WHERE FK_UNAME=?";
 
                 ps = con.prepareStatement(query);
                 ps.setString(1, eid);
