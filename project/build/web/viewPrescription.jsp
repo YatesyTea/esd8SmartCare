@@ -21,9 +21,10 @@
 
         <table>
             <tr>
-                <th>Prescription Type</th>
+                <th>Prescription Type|</th>
                 <th>Date Issued</th>
-                <th>Dosage</th>
+                <th>|Dosage|</th>
+                <th>Cost|</th>
                 <th>Issued By</th>
             </tr>
 
@@ -34,6 +35,7 @@
                     out.println("<td>" + prescription.get(i).getDate() + "</td>");
                     out.println("<td>" + prescription.get(i).getDosage() + "</td>");
                     out.println("<td>" + prescription.get(i).getCost() + "</td>");
+                    out.println("<td>" + prescription.get(i).getEname() + "</td>");
                     out.println("</tr>");
                 }
             %>
