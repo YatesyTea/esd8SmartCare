@@ -20,10 +20,9 @@
             ArrayList<Appointment> appointments = (ArrayList<Appointment>)request.getAttribute("appointments");
         %>
         
-        <form action="" method "GET">
+        <form action="" method="GET">
               <input type="Submit" name="new" value="Request Appointment"/>
         </form>
-        
         
         <table>
                 <tr>
