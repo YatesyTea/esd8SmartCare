@@ -24,21 +24,21 @@
         
         <table>
                 <tr>
-                    <th>ID</th>
                     <th>Name</th>
                     <th>Address</th>
                     <th>DOB</th>
+                    <th>Username</th>
                 </tr>
                 <% for (Employees e : employee)  { %>
                 <form action= "AdminEmployeesController.do" method="POST">
                 <tr>
-                    <td><%=e.getId()%></td>
                     <td><%=e.getName()%></td>
                     <td><%=e.getAddress()%></td>
                     <td><%=e.getDob()%></td>
+                    <td><%=e.getUname()%></td>
                     <td ><input type="Submit" value="Suspend"/></td>
                 </tr>
-                <input type="hidden" name="id" value="<%=e.getId()%>"/>
+                <input type="hidden" name="id" value="<%=e.getUname()%>"/>
                 </form>
                 <% }%>
             </table>
