@@ -634,19 +634,25 @@ create table appointment(
 -- If you want to populate the database here are some samples provided by Mehmet in addition to some edits made by ESD Team 8.
 
 -- User Samples
-INSERT INTO USERS (UNAME, PASSWD, "ROLE") VALUES ('test', 'test', 'doctor');
-INSERT INTO USERS (UNAME, PASSWD, "ROLE") VALUES ('eaydin', '12345me', 'nurse');
+INSERT INTO USERS (UNAME, PASSWD, "ROLE") VALUES ('drfirst', 'test', 'doctor');
+INSERT INTO USERS (UNAME, PASSWD, "ROLE") VALUES ('msbest', '12345me', 'nurse');
 INSERT INTO USERS (UNAME, PASSWD, "ROLE") VALUES ('caidan', '5432@10', 'patient');
 INSERT INTO USERS (UNAME, PASSWD, "ROLE") VALUES ('princehassan', 'prince_passwd', 'patient');
+INSERT INTO USERS (UNAME, PASSWD, "ROLE") VALUES ('rsmith', 'smithy', 'patient');
+INSERT INTO USERS (UNAME, PASSWD, "ROLE") VALUES ('lbrown', 'browny', 'patient');
+INSERT INTO USERS (UNAME, PASSWD, "ROLE") VALUES ('mrhesitant', 'meirl', 'patient');
 INSERT INTO USERS (UNAME, PASSWD, "ROLE") VALUES ('admin', 'admin_passwd', 'admin');
 
 -- Employee Samples
-INSERT INTO EMPLOYEE (ENAME, EADDRESS, EDOB, FK_UNAME) VALUES ('Test', 'Tests Address, London, NW4 0BH', '1970-05-12','test');
-INSERT INTO EMPLOYEE (ENAME, EADDRESS, EDOB, FK_UNAME) VALUES ('Emin Aydin', 'Emiin''s Address, Bristol, BS16', '1975-08-14', 'eaydin');
+INSERT INTO EMPLOYEE (ENAME, EADDRESS, EDOB, FK_UNAME) VALUES ('Dr First', 'Tests Address, London, NW4 0BH', '1970-05-12','drfirst');
+INSERT INTO EMPLOYEE (ENAME, EADDRESS, EDOB, FK_UNAME) VALUES ('Ms Best', 'Emiin''s Address, Bristol, BS16', '1975-08-14', 'msbest');
 
 -- Patient Samples
-INSERT INTO PATIENTS (PNAME, PADDRESS, PTYPE, PDOB, FK_UNAME) VALUES ('Charly Aidan', '14 King Street, Aberdeen, AB24 1BR', 'NHS','1990-08-12', 'caidan');
+INSERT INTO PATIENTS (PNAME, PADDRESS, PTYPE, PDOB, FK_UNAME) VALUES ('Charly Aidan', '13 King Street, Aberdeen, AB24 1BR', 'NHS','1990-08-15', 'caidan');
 INSERT INTO PATIENTS (PNAME, PADDRESS, PTYPE, PDOB, FK_UNAME) VALUES ('Prince Hassan', 'Non-UK street, Non-UK Town, Non_UK', 'private', '1965-02-21','princehassan');
+INSERT INTO PATIENTS (PNAME, PADDRESS, PTYPE, PDOB, FK_UNAME) VALUES ('Rob Smith', '14 King Street, Aberdeen, AB24 1BR', 'NHS','1991-03-12', 'rsmith');
+INSERT INTO PATIENTS (PNAME, PADDRESS, PTYPE, PDOB, FK_UNAME) VALUES ('Liz Brown', 'Non-UK street, Non-UK Town, Non_UK', 'private', '1967-09-21','lbrown');
+INSERT INTO PATIENTS (PNAME, PADDRESS, PTYPE, PDOB, FK_UNAME) VALUES ('Hesitant', '14 King Street, Aberdeen, AB24 1BR', 'NHS','1978-04-12', 'mrhesitant');
 
 -- Operation Samples
 INSERT INTO OPERATIONS (FK_EID, FK_PID, OTYPE, ODATE, OTIME, NSLOT, CHARGE) VALUES (1, 1, 'Back','2021-01-19', '19:30:10', 1, 250.25);
