@@ -646,7 +646,7 @@ INSERT INTO EMPLOYEE (ENAME, EADDRESS, EDOB, FK_UNAME) VALUES ('Emin Aydin', 'Em
 
 -- Patient Samples
 INSERT INTO PATIENTS (PNAME, PADDRESS, PTYPE, PDOB, FK_UNAME) VALUES ('Charly Aidan', '14 King Street, Aberdeen, AB24 1BR', 'NHS','1990-08-12', 'caidan');
-INSERT INTO PATIENTS (PNAME, PADDRESS, PTYPE, PDOB, FK_UNAME) VALUES ('Prince Hassan', 'Non-UK street, Non-UK Town, Non_UK', 'private', 1965-02-21','princehassan');
+INSERT INTO PATIENTS (PNAME, PADDRESS, PTYPE, PDOB, FK_UNAME) VALUES ('Prince Hassan', 'Non-UK street, Non-UK Town, Non_UK', 'private', '1965-02-21','princehassan');
 
 -- Operation Samples
 INSERT INTO OPERATIONS (FK_EID, FK_PID, OTYPE, ODATE, OTIME, NSLOT, CHARGE) VALUES (1, 1, 'Back','2021-01-19', '19:30:10', 1, 250.25);
