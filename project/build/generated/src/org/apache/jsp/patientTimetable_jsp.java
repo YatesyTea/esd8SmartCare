@@ -3,10 +3,10 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
-import model.Charges;
+import model.Appointment;
 import java.util.ArrayList;
 
-public final class PatientCharges_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class patientTimetable_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -54,37 +54,60 @@ public final class PatientCharges_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <title>JSP Page</title>\n");
       out.write("    </head>\n");
-      out.write("    <body>\n");
-      out.write("        <h1 id=\"textid\">Patient Charges</h1>\n");
-      out.write("        \n");
+      out.write("   <body>\n");
+      out.write("        <h1 id=\"textid\">Timetable</h1>\n");
+      out.write("\n");
       out.write("        ");
 
-            ArrayList<Charges> charges = (ArrayList<Charges>)request.getAttribute("charges");
+            ArrayList<Appointment> appointments = (ArrayList<Appointment>)request.getAttribute("appointments");
         
       out.write("\n");
       out.write("        \n");
-      out.write("            <table>\n");
+      out.write("        <form action=\"\" method \"GET\">\n");
+      out.write("              <input type=\"Submit\" name=\"new\" value=\"Request Appointment\"/>\n");
+      out.write("        </form>\n");
+      out.write("        \n");
+      out.write("        \n");
+      out.write("        <table>\n");
       out.write("                <tr>\n");
-      out.write("                    <th>Patient ID</th>\n");
-      out.write("                    <th>Date Issued</th>\n");
-      out.write("                    <th>Amount</th>\n");
+      out.write("                    <th>Employee</th>\n");
+      out.write("                    <th>Patient</th>\n");
+      out.write("                    <th>Date</th>\n");
+      out.write("                    <th>Time</th>\n");
+      out.write("                </tr>\n");
+      out.write("                ");
+ for (Appointment a : appointments)  { 
+      out.write("\n");
+      out.write("                <form action= \"EmployeeTimetableServlet.do\" method=\"POST\">\n");
+      out.write("                <tr>\n");
+      out.write("                    <td>");
+      out.print(a.geteID());
+      out.write("</td>\n");
+      out.write("                    <td>");
+      out.print(a.getcID());
+      out.write("</td>\n");
+      out.write("                    <td>");
+      out.print(a.getAppointmentDate());
+      out.write("</td>\n");
+      out.write("                    <td>");
+      out.print(a.getAppointmentTime());
+      out.write("</td>\n");
+      out.write("                    <td ><input type=\"Submit\" name=\"action\" value=\"Cancel\"/></td>\n");
+      out.write("                    \n");
+      out.write("                    <input type=\"hidden\" name=\"id\" value=\"");
+      out.print(a.getsID());
+      out.write("\"/>\n");
+      out.write("                    \n");
+      out.write("                    \n");
       out.write("                </tr>\n");
       out.write("                \n");
+      out.write("                </form>\n");
       out.write("                ");
- 
-                    for (int i = 0; i < charges.size(); i++) {
-                        out.println("<tr>");
-                        out.println("<td>" + charges.get(i).getPatient_id() + "</td>");
-                        out.println("<td>" + charges.get(i).getDate() + "</td>");
-                        out.println("<td>" + charges.get(i).getCost() + "</td>");
-                        out.println("</tr>");
-                    }
-                
+ }
       out.write("\n");
-      out.write("                \n");
       out.write("            </table>\n");
       out.write("    </body>\n");
-      out.write("</html>");
+      out.write("</html>\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
