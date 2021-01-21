@@ -21,8 +21,9 @@ public class Prescription {
     private int dosage;
     private int reissue;
     private String type;
+    private String ename;
 
-    public Prescription(int eid,int pid, String drug, String date, int dosage, float cost,int reissue, String type) {
+    public Prescription(int eid,int pid, String drug, String date, int dosage, float cost,int reissue, String type, String ename) {
         
         this.pid = pid;
         this.drug = drug;
@@ -32,6 +33,7 @@ public class Prescription {
         this.reissue = reissue;
         this.eid = eid;
         this.type = type;
+        this.ename = ename;
         
     }
     
@@ -65,6 +67,9 @@ public class Prescription {
      public String getType() {
         return type;
     }
+     public String getEname() {
+        return ename;
+    }
 
 
     public void setCid(int pid) {
@@ -96,5 +101,9 @@ public class Prescription {
     public void setType(String type) {
         this.type = type;
     }
+    public void setEname(String ename) {
+        this.ename = ename;
+    }
+
 
 }

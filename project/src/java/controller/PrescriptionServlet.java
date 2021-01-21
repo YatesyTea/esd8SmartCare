@@ -65,9 +65,10 @@ public class PrescriptionServlet extends HttpServlet {
         
         System.out.println("employeeID");
         int eid = Integer.parseInt(employeeID);
+        String ename = "placeholder";
         
         String valid = checkValid(pid,eid);
-        Prescription prescription1 = new Prescription(eid,pid,d,dI,dsg,cost,reI, type);
+        Prescription prescription1 = new Prescription(eid,pid,d,dI,dsg,cost,reI,type, ename);
         //System.out.print(prescription1);
         
         if (valid != null) {

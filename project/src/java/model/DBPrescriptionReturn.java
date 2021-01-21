@@ -27,7 +27,7 @@ public class DBPrescriptionReturn {
         ArrayList<Prescription> result = new ArrayList<Prescription>();
         
     try {
-
+        String ename= "Pepega";
         Class.forName("org.apache.derby.jdbc.ClientDriver");
         con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
         state = con.createStatement();
@@ -39,7 +39,7 @@ public class DBPrescriptionReturn {
         
 
         while (rs.next()) {
-            result.add(new Prescription(rs.getInt(1), rs.getInt(2),rs.getString(3),rs.getString(4),rs.getInt(5), rs.getFloat(6), rs.getInt(7), rs.getString(8)));
+            result.add(new Prescription(rs.getInt(1), rs.getInt(2),rs.getString(3),rs.getString(4),rs.getInt(5), rs.getFloat(6), rs.getInt(7), rs.getString(8), ename));
         }
         
         rs.close();
@@ -59,10 +59,14 @@ public class DBPrescriptionReturn {
         Class.forName("org.apache.derby.jdbc.ClientDriver");
         con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
         state = con.createStatement();
-        rs = state.executeQuery("SELECT FK_EID, FK_PID, DRUG, DISSUE ,DOSAGE, COST, REISSUE FROM PRESCRIPTIONS WHERE FK_PID=" + pid + "");
-        
+        rs = state.executeQuery("SELECT PRESCRIPTIONS.FK_PID, PRESCRIPTIONS.FK_EID, "
+                + "PRESCRIPTIONS.DRUG,PRESCRIPTIONS.DISSUE,PRESCRIPTIONS.DOSAGE, "
+                + "PRESCRIPTIONS.COST, PRESCRIPTIONS.REISSUE, EMPLOYEE.ENAME  "
+                + "FROM PRESCRIPTIONS INNER JOIN EMPLOYEE ON PRESCRIPTIONS.FK_EID=EMPLOYEE.EID "
+                + "WHERE PRESCRIPTIONS.FK_PID="+ pid +"");
+
         while (rs.next()) {
-            result.add(new Prescription(rs.getInt(1), rs.getInt(2),rs.getString(3),rs.getString(4),rs.getInt(5), rs.getFloat(6), rs.getInt(7), type));
+            result.add(new Prescription(rs.getInt(1), rs.getInt(2),rs.getString(3),rs.getString(4),rs.getInt(5), rs.getFloat(6), rs.getInt(7), type, rs.getString(8)));
         }
         
         rs.close();
