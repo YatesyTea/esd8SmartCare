@@ -22,6 +22,8 @@
             <input type="text" placeholder="Enter Name" name="name" id ="nameid" required>
 
             <input type="text" placeholder="Enter Address" name="address" id="address" required>
+            
+            <input type="date" placeholder="Enter DOB" name="dob" id="dob" required>
 
             <input type="text" placeholder="Enter Username" name="username" id ="unameid" required>
 

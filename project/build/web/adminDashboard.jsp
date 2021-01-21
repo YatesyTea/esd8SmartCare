@@ -22,14 +22,18 @@
                 <div class= "content b">
                     <h1>Documents</h1>
                     <form method="get" action="AdminChargesController.do"><p style="text-align:center">
-                    <input id="textboxid" type="SUBMIT" value="Charges" style="align-self: center">
-                    </p></form>
+                            <input id="textboxid" type="SUBMIT" value="Charges" style="align-self: center">
+                        </p></form>
                 </div>
                 <div class= "content c">
                     <h1>Manage Staff</h1> 
                     <form method="get" action="AdminEmployeesController.do"><p style="text-align:center">
-                    <input id="textboxid" type="SUBMIT" value="Employees" style="align-self: center">
-                    </p></form>
+                            <input id="textboxid" type="SUBMIT" value="Employees" style="align-self: center">
+                        </p></form>
+                    <button onclick="location.href = 'adminCreateEmployee.jsp';">
+                        Create Employee
+                    </button>
+
                 </div>
                 <div class= "content d">
                     <h1>Produce Weekly Report</h1>
