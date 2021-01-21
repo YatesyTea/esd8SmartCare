@@ -22,11 +22,8 @@
                 <div class= "content a">
                     <h1>Appointments</h1>
                     <form method="get" action="PatientAppointmentsServlet.do"><p style="text-align:center">
-                            <input id="textboxid" type="SUBMIT" value="View Appointments" style="align-self: center">
+                            <input id="textboxid" type="SUBMIT" value="Appointments" style="align-self: center">
                         </p></form>
-                    <form method="post" action="ClientBookingServlet.do"><p style="text-align:center">
-                            <input id="textboxid" type="SUBMIT" value="Book appintment" style="align-self: center">
-                        </p></form> 
                 </div>
                 <div class= "content b">
                     <h1>View Charges</h1>
@@ -38,7 +35,7 @@
                 <div class= "content c">
                     <h1>Prescriptions</h1>
                     <form method="post" action="ViewPrescriptionServlet.do"><p style="text-align:center">
-                            <input id="textboxid" type="SUBMIT" value="View Prescriptions" style="align-self: center">
+                            <input id="textboxid" type="SUBMIT" value="Prescriptions" style="align-self: center">
                         </p></form>
                 </div>                             
             </div>
