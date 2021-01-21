@@ -42,30 +42,30 @@ public class EmployeesTest {
         employee = null;
     }
     
-    @Test
-    public void testgetId() {
-        System.out.println("Get ID");
-        Employees instance = employee;
+//    @Test
+//    public void testgetId() {
+//        System.out.println("Get ID");
+//        Employees instance = employee;
+//
+//        String expResult = "12";
+//        String result = instance.getId();
+//
+//        assertEquals(expResult, result);
+//    }
 
-        String expResult = "12";
-        String result = instance.getId();
-
-        assertEquals(expResult, result);
-    }
-
-    @Test
-    public void testsetId() {
-        System.out.println("Set Username");
-        Employees instance = employee;
-
-        String uname = "1223";
-        instance.setId(uname);
-
-        String expResult = "1223";
-        String result = instance.getId();
-
-        assertEquals(expResult, result);
-    }
+//    @Test
+//    public void testsetId() {
+//        System.out.println("Set Username");
+//        Employees instance = employee;
+//
+//        String uname = "1223";
+//        instance.setId(uname);
+//
+//        String expResult = "1223";
+//        String result = instance.getId();
+//
+//        assertEquals(expResult, result);
+//    }
 
     @Test
     public void testgetName() {
