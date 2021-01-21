@@ -23,7 +23,10 @@
                     <h1>Issue Prescription</h1>
                 </div>
                 <div class= "content b">
-                    <h1>View Client Timetables</h1>
+                    <h1>View Patient Timetables</h1>
+                    <form method="get" action="EmployeeTimetableServlet.do"><p style="text-align:center">
+                    <input id="textboxid" type="SUBMIT" value="Patient Timetable" style="align-self: center">
+                    </p></form>
                 </div>
             </div>
         </div>

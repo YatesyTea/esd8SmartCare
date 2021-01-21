@@ -28,9 +28,17 @@
         <servlet-name>PatientChargeController</servlet-name>
         <servlet-class>controller.PatientChargeController</servlet-class>
     </servlet>
+        <servlet>
+        <servlet-name>PatientAppointmentsServlet</servlet-name>
+        <servlet-class>controller.PatientAppointmentsServlet</servlet-class>
+    </servlet>
     <servlet>
         <servlet-name>removeEmployeeServlet</servlet-name>
         <servlet-class>controller.removeEmployeeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EmployeeTimetableServlet</servlet-name>
+        <servlet-class>controller.EmployeeTimetableServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>InvoiceController</servlet-name>
@@ -47,6 +55,14 @@
     <servlet-mapping>
         <servlet-name>AdminEmployeesController</servlet-name>
         <url-pattern>/AdminEmployeesController.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EmployeeTimetableServlet</servlet-name>
+        <url-pattern>/EmployeeTimetableServlet.do</url-pattern>
+    </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>PatientAppointmentsServlet</servlet-name>
+        <url-pattern>/PatientAppointmentsServlet.do</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>PatientChargeController</servlet-name>

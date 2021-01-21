@@ -6,22 +6,27 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.DBPrescriptionReturn;
-import model.Prescription;
-
+import model.Appointment;
+import model.AppointmentBean;
 
 /**
  *
- * @author fdent
+ * @author Reece
  */
-public class ViewPrescriptionServlet extends HttpServlet {
+@WebServlet(name = "PatientAppointmentsServlet", urlPatterns = {"/PatientAppointmentsServlet.do"})
+public class PatientAppointmentsServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,26 +38,45 @@ public class ViewPrescriptionServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        String patientID = null;
-        for (Cookie c: request.getCookies()){
+        try (PrintWriter out = response.getWriter()) {
+            
+            String patientID = null;
+            AppointmentBean b = new AppointmentBean("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
+            Appointment a;
+            
+            if (request.getMethod().equals("POST")){
+                
+                String action = request.getParameter("action");
+                int sid = Integer.parseInt(request.getParameter("id"));
+                
+                if (action.equals("Cancel")){
+                    b.deleteAppointment(sid);
+                    
+                }
+                
+            }
+            
+            //Get user id
+            for (Cookie c: request.getCookies()){
                 if(c.getName().equals("patient")){
                     patientID = c.getValue();
+
                 }
             }
-        
-        System.out.println("employeeID");
-        int pid = Integer.parseInt(patientID);
-        
-        DBPrescriptionReturn vpres = new DBPrescriptionReturn();
-        ArrayList<Prescription> prescription;
-        prescription = vpres.getPrescription(pid);
-        request.setAttribute("prescription",prescription);
-        
-        RequestDispatcher view = request.getRequestDispatcher("viewPrescription.jsp");
-        view.forward(request,response);
+            
+            //Convert to int
+            int pid = Integer.parseInt(patientID);
+            System.out.println("PID " + pid);
+            ArrayList<Appointment> appointments;
+            appointments = b.getAllAppointmentByID(pid, "patient");
+            
+            request.setAttribute("appointments", appointments);    
+            RequestDispatcher view = request.getRequestDispatcher("patientTimetable.jsp");
+            view.forward(request, response);
+            
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -67,7 +91,11 @@ public class ViewPrescriptionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(PatientAppointmentsServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -81,7 +109,11 @@ public class ViewPrescriptionServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(PatientAppointmentsServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

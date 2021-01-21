@@ -281,15 +281,15 @@ public class UsersBean {
             System.out.print(e);
         }
         return id1;
-    }
-    
+ } 
      public static int getPID(String un){
       
-        int idp1 = 0;
+        int id1 = 5;
         try {
             Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
            
             PreparedStatement ps = con.prepareStatement("SELECT PID FROM PATIENTS WHERE FK_UNAME=?");
+
             
             ps.setString(1, un);
             //Lookup user in db
@@ -298,7 +298,7 @@ public class UsersBean {
             //If user was found return role
             if(rs.next()){
                
-              idp1 = rs.getInt(1);
+              id1 = rs.getInt(1);
               
             }
             
@@ -306,6 +306,7 @@ public class UsersBean {
         catch (Exception e){
             System.out.print(e);
         }
-        return idp1;
+        return id1;
     }
+    
 }

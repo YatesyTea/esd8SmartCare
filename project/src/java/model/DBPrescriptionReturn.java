@@ -23,7 +23,7 @@ public class DBPrescriptionReturn {
     private Statement state;
     private ResultSet rs;
 
-    public ArrayList<Prescription> getPrescription() {
+    public ArrayList<Prescription> getPrescriptionReport(String date1,String date2) {
         ArrayList<Prescription> result = new ArrayList<Prescription>();
         
     try {
@@ -31,10 +31,38 @@ public class DBPrescriptionReturn {
         Class.forName("org.apache.derby.jdbc.ClientDriver");
         con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
         state = con.createStatement();
-        rs = state.executeQuery("SELECT FK_EID, FK_PID, DRUG, DISSUE ,DOSAGE, COST, REISSUE FROM PRESCRIPTIONS");
+        rs = state.executeQuery("SELECT PRESCRIPTIONS.FK_PID, PRESCRIPTIONS.FK_EID, "
+                + "PRESCRIPTIONS.DRUG,PRESCRIPTIONS.DISSUE, PRESCRIPTIONS.DOSAGE, "
+                + "PRESCRIPTIONS.COST, PRESCRIPTIONS.REISSUE, PATIENTS.PTYPE  "
+                + "FROM PRESCRIPTIONS INNER JOIN PATIENTS ON PRESCRIPTIONS.FK_PID=PATIENTS.PID "
+                + "WHERE DISSUE BETWEEN '"+ date1 + "' AND '"+ date2+"'");
+        
 
         while (rs.next()) {
-            result.add(new Prescription(rs.getInt(1), rs.getInt(2),rs.getString(3),rs.getString(4),rs.getInt(5), rs.getFloat(6), rs.getInt(7)));
+            result.add(new Prescription(rs.getInt(1), rs.getInt(2),rs.getString(3),rs.getString(4),rs.getInt(5), rs.getFloat(6), rs.getInt(7), rs.getString(8)));
+        }
+        
+        rs.close();
+        state.close();
+        con.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            System.err.println("Error: " + e);
+
+        }
+        return result;
+    }
+        public ArrayList<Prescription> getPrescription(int pid) {
+        ArrayList<Prescription> result = new ArrayList<Prescription>();
+        
+    try {
+        String type = "NHS";
+        Class.forName("org.apache.derby.jdbc.ClientDriver");
+        con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
+        state = con.createStatement();
+        rs = state.executeQuery("SELECT FK_EID, FK_PID, DRUG, DISSUE ,DOSAGE, COST, REISSUE FROM PRESCRIPTIONS WHERE FK_PID=" + pid + "");
+        
+        while (rs.next()) {
+            result.add(new Prescription(rs.getInt(1), rs.getInt(2),rs.getString(3),rs.getString(4),rs.getInt(5), rs.getFloat(6), rs.getInt(7), type));
         }
         
         rs.close();

@@ -30,7 +30,7 @@ import model.UsersBean;
  *
  * @author fdent
  */
-public class PrescriptionServlet extends HttpServlet {
+public class ClientBookingServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -45,40 +45,7 @@ public class PrescriptionServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
         response.setContentType("text/html;charset=UTF-8");
-        PrescriptionBean pb = new PrescriptionBean();
-             
-        //Create parameter variables using inputs taken from sign up form
-        String d = request.getParameter("drug");
-        int pid = Integer.parseInt(request.getParameter("pid"));    //get the entered login information 
-        float cost = Float.parseFloat(request.getParameter("cost"));
-        String dI = request.getParameter("date");
-        int dsg = Integer.parseInt(request.getParameter("dosage"));
-        int reI = Integer.parseInt(request.getParameter("reissue"));
-        String type = "NHS";
-
-        String employeeID = null;
-        for (Cookie c: request.getCookies()){
-                if(c.getName().equals("patient")){
-                    employeeID = c.getValue();
-                }
-            }
-        
-        System.out.println("employeeID");
-        int eid = Integer.parseInt(employeeID);
-        
-        String valid = checkValid(pid,eid);
-        Prescription prescription1 = new Prescription(eid,pid,d,dI,dsg,cost,reI, type);
-        //System.out.print(prescription1);
-        
-        if (valid != null) {
-           pb.addPrescription(prescription1);
-            RequestDispatcher view = request.getRequestDispatcher("doctorDashboard.jsp");
-            view.forward(request, response);
-        }
-        else {
-           RequestDispatcher view = request.getRequestDispatcher("index.jsp");
-           view.forward(request, response);
-        }
+    
        
         }
      
@@ -98,7 +65,7 @@ public class PrescriptionServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ParseException ex) {
-            Logger.getLogger(PrescriptionServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ClientBookingServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -116,7 +83,7 @@ public class PrescriptionServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ParseException ex) {
-            Logger.getLogger(PrescriptionServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ClientBookingServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

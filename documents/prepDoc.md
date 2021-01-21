@@ -584,6 +584,7 @@ create table patients(
 	pName varchar(50),
 	pAddress varchar(100),
 	pType varchar(10),
+	pDob date,
 	FK_uName varchar(20) references users(uname)
 );
 
@@ -592,6 +593,7 @@ create table employee(
             generated always as identity (start with 1, increment by 1), 
 	eName varchar(50),
 	eAddress varchar(100),
+	eDob date,
 	FK_uName varchar(20) references users(uname)
 );
 
@@ -600,6 +602,7 @@ create table operations(
             generated always as identity (start with 1, increment by 1), 
     FK_eID int references employee(eID),
     FK_pID int references patients(pID),
+    oType varchar(20),
     oDate date,
     oTime time,
     nSlot int,
@@ -612,7 +615,7 @@ create table prescriptions(
     FK_eID int references employee(eID),
     FK_pID int references patients(pID),
     drug varchar(20),
-    dIssue varchar(20),
+    dIssue date,
     dosage int,
     cost float,
     reIssue int
@@ -638,18 +641,20 @@ INSERT INTO USERS (UNAME, PASSWD, "ROLE") VALUES ('princehassan', 'prince_passwd
 INSERT INTO USERS (UNAME, PASSWD, "ROLE") VALUES ('admin', 'admin_passwd', 'admin');
 
 -- Employee Samples
-INSERT INTO EMPLOYEE (ENAME, EADDRESS, FK_UNAME) VALUES ('Test', 'Tests Address, London, NW4 0BH', 'test');
-INSERT INTO EMPLOYEE (ENAME, EADDRESS, FK_UNAME) VALUES ('Emin Aydin', 'Emiin''s Address, Bristol, BS16', 'eaydin');
+INSERT INTO EMPLOYEE (ENAME, EADDRESS, EDOB, FK_UNAME) VALUES ('Test', 'Tests Address, London, NW4 0BH', '1970-05-12','test');
+INSERT INTO EMPLOYEE (ENAME, EADDRESS, EDOB, FK_UNAME) VALUES ('Emin Aydin', 'Emiin''s Address, Bristol, BS16', '1975-08-14', 'eaydin');
 
 -- Patient Samples
-INSERT INTO PATIENTS (PNAME, PADDRESS, PTYPE, FK_UNAME) VALUES ('Charly Aidan', '14 King Street, Aberdeen, AB24 1BR', 'NHS', 'caidan');
-INSERT INTO PATIENTS (PNAME, PADDRESS, PTYPE, FK_UNAME) VALUES ('Prince Hassan', 'Non-UK street, Non-UK Town, Non_UK', 'private', 'princehassan');
+INSERT INTO PATIENTS (PNAME, PADDRESS, PTYPE, PDOB, FK_UNAME) VALUES ('Charly Aidan', '14 King Street, Aberdeen, AB24 1BR', 'NHS','1990-08-12', 'caidan');
+INSERT INTO PATIENTS (PNAME, PADDRESS, PTYPE, PDOB, FK_UNAME) VALUES ('Prince Hassan', 'Non-UK street, Non-UK Town, Non_UK', 'private', '1965-02-21','princehassan');
 
 -- Operation Samples
-INSERT INTO OPERATIONS (FK_EID, FK_PID, ODATE, OTIME, NSLOT, CHARGE) VALUES (1, 1, '2020-10-20', '19:30:10', 1, 250.25);
+INSERT INTO OPERATIONS (FK_EID, FK_PID, OTYPE, ODATE, OTIME, NSLOT, CHARGE) VALUES (1, 1, 'Back','2021-01-19', '19:30:10', 1, 250.25);
+INSERT INTO OPERATIONS (FK_EID, FK_PID, OTYPE, ODATE, OTIME, NSLOT, CHARGE) VALUES (1, 2, 'Leg','2021-01-22', '12:30:10', 1, 100.25);
 
 -- Prescription Samples
-INSERT INTO PRESCRIPTIONS(FK_eID, FK_pID, DRUG, DISSUE ,DOSAGE, COST, REISSUE) VALUES (1, 1, 'Piriton', '2020-10-20', 20,9.99,7);
+INSERT INTO PRESCRIPTIONS(FK_eID, FK_pID, DRUG, DISSUE ,DOSAGE, COST, REISSUE) VALUES (1, 1, 'Piriton', '2021-01-19', 10,4.99,14);
+INSERT INTO PRESCRIPTIONS(FK_eID, FK_pID, DRUG, DISSUE ,DOSAGE, COST, REISSUE) VALUES (1, 2, 'Antibiotics', '2021-01-20', 20,9.99,7);
 
 -- Appointment Samples
 INSERT INTO APPOINTMENT(FK_EID, FK_PID, ADATE, ATIME) VALUES (1, 1, '2020-11-24', '12:10:10');

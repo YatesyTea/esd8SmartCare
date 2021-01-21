@@ -21,6 +21,9 @@
             <div class="box content">
                 <div class= "content a">
                     <h1>View Appointments</h1>
+                    <form method="get" action="PatientAppointmentsServlet.do"><p style="text-align:center">
+                    <input id="textboxid" type="SUBMIT" value="View Appointments" style="align-self: center">
+                    </p></form>
                 </div>
                 <div class= "content b">
                     <h1>Book Appointment</h1>
