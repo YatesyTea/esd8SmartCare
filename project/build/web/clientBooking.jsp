@@ -31,7 +31,7 @@
                 <option value="nurse">Nurse</option>
             </select>
             
-            <input type="text" placeholder="Enter a date" name="date" id ="unameid" required>
+             <input type="text" placeholder="Date (FORMAT YYYY/MM/DD)" name="date" required>
             
               <input type="text" placeholder="Enter a time" name="time" id ="unameid" required>
               
