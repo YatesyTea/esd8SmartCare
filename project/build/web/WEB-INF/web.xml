@@ -28,7 +28,7 @@
         <servlet-name>PatientChargeController</servlet-name>
         <servlet-class>controller.PatientChargeController</servlet-class>
     </servlet>
-        <servlet>
+    <servlet>
         <servlet-name>PatientAppointmentsServlet</servlet-name>
         <servlet-class>controller.PatientAppointmentsServlet</servlet-class>
     </servlet>
@@ -52,6 +52,10 @@
         <servlet-name>AddEmployeeServlet</servlet-name>
         <servlet-class>controller.AddEmployeeServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdminPatientsServlet</servlet-name>
+        <servlet-class>controller.AdminPatientsServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AdminEmployeesController</servlet-name>
         <url-pattern>/AdminEmployeesController.do</url-pattern>
@@ -60,7 +64,7 @@
         <servlet-name>EmployeeTimetableServlet</servlet-name>
         <url-pattern>/EmployeeTimetableServlet.do</url-pattern>
     </servlet-mapping>
-     <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>PatientAppointmentsServlet</servlet-name>
         <url-pattern>/PatientAppointmentsServlet.do</url-pattern>
     </servlet-mapping>
@@ -103,6 +107,10 @@
     <servlet-mapping>
         <servlet-name>AddEmployeeServlet</servlet-name>
         <url-pattern>/AddEmployeeServlet.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminPatientsServlet</servlet-name>
+        <url-pattern>/AdminPatientsServlet.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

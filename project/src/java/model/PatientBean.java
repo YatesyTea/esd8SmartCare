@@ -62,7 +62,7 @@ public class PatientBean {
     
     /*
         Desc: Adds new patient to db
-        @param: newPatient - Patient object (NAME,ADDRESS,TYPE,UNAME)
+        @param: newPatient - Patient object (NAME,ADDRESS,TYPE,FK_UNAME)
         @returns: int (flag) - returns an integer (1) based on whether a user was added to the db
     */
     public int addPatient(Patient newPatient){
@@ -71,8 +71,8 @@ public class PatientBean {
         try{
             if(connect()){
                 //Format query
-                String query = "INSERT INTO PATIENTS(PNAME, PADDRESS, PTYPE, FK_UNAME) VALUES('"+ newPatient.getName() + "','" + newPatient.getAddress() + "','" +
-                        newPatient.getType() + "','" + newPatient.getUsername() + "')";
+                String query = "INSERT INTO PATIENTS(PNAME, PADDRESS, PTYPE, FK_UNAME, PDOB) VALUES('"+ newPatient.getName() + "','" + newPatient.getAddress() + "','" +
+                        newPatient.getType() + "','" + newPatient.getUsername() + "','" + newPatient.getDob() + "')";
 
                 //Add to db
                 state = con.createStatement();
@@ -110,9 +110,10 @@ public class PatientBean {
                     String name = rs.getString("PNAME");
                     String address = rs.getString("PADDRESS");
                     String type = rs.getString("PTYPE");
-                    String username = rs.getString("UNAME");
+                    String username = rs.getString("FK_UNAME");
+                    String dob = rs.getString("PDOB");
 
-                    Patient patient = new Patient(name, address, type, username);
+                    Patient patient = new Patient(name, address, type, username, dob);
                     listPatient.add(patient);
 
                 }
@@ -140,7 +141,7 @@ public class PatientBean {
         int flag = 0;
         try{
             if(connect()){
-                String query = "DELETE FROM PATIENTS WHERE UNAME=?";
+                String query = "DELETE FROM PATIENTS WHERE FK_UNAME=?";
 
                 ps = con.prepareStatement(query);
                 ps.setString(1, patient.getUsername());
@@ -167,7 +168,7 @@ public class PatientBean {
         int flag = 0;
         try{
             if(connect()){
-                String query = "UPDATE PATIENTS SET PNAME=?, PADDRESS=? , PTYPE=? WHERE UNAME=?";
+                String query = "UPDATE PATIENTS SET PNAME=?, PADDRESS=? , PTYPE=? WHERE FK_UNAME=?";
 
                 ps = con.prepareStatement(query);
                 ps.setString(1, patient.getName());
@@ -196,7 +197,7 @@ public class PatientBean {
         Patient patient = null;
         try{
             if(connect()){
-                String query = "SELECT * FROM PATIENTS WHERE UNAME=?";
+                String query = "SELECT * FROM PATIENTS WHERE FK_UNAME=?";
 
                 ps = con.prepareStatement(query);
                 ps.setString(1, username);
@@ -207,8 +208,9 @@ public class PatientBean {
                     String name = rs.getString("PNAMEE");
                     String address = rs.getString("PADDRESS");
                     String type = rs.getString("PTYPE");
+                    String dob = rs.getString("PDOB");
 
-                    patient = new Patient(name, address, type, username);
+                    patient = new Patient(name, address, type, username, dob);
                 }
                 
                 rs.close(); ps.close();

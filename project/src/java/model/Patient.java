@@ -10,18 +10,20 @@ package model;
  * @author Reece
  */
 public class Patient {
-    
+
     private String name;
     private String address;
     private String type;
     private String username;
+    private String dob;
 
-    public Patient(String name, String address, String type, String username) {
+    public Patient(String name, String address, String type, String username, String dob) {
         this.name = name;
         this.address = address;
         this.type = type;
         this.username = username;
-        
+        this.dob = dob;
+
     }
 
     public String getName() {
@@ -52,5 +54,16 @@ public class Patient {
         return username;
     }
 
-    
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
+
+    public String display() {
+        return " name: " + this.name + " address: "
+                + this.address + " dob: " + this.dob + " type: " + this.type;
+    }
 }
