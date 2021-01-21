@@ -25,14 +25,16 @@
 
             <input type="text" placeholder="Enter Username" name="username" id ="unameid" required>
 
-            <label for="prefrance">Doctor or Nurse</label>
-            <select name ="prefrance" id ="patient-prefrance">
+            <label for="choice">Doctor or Nurse</label>
+            <select name ="choice" id ="patient-prefrance">
                 <option value="doctor">Doctor</option>
                 <option value="nurse">Nurse</option>
             </select>
             
-            <input type="text" placeholder="Select a date and time" name="date/time" id ="unameid" required>
+            <input type="text" placeholder="Enter a date" name="date" id ="unameid" required>
             
+              <input type="text" placeholder="Enter a time" name="time" id ="unameid" required>
+              
             <input type="submit" value="submit">
 
         </form>
