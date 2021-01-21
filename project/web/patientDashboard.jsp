@@ -40,6 +40,13 @@
                     <input id="textboxid" type="SUBMIT" value="Charges" style="align-self: center">
                     </p></form>                   
                 </div>
+                </div>                
+                <div class= "content e">
+                    <h1>Book appointment</h1>
+                    <form method="post" action="ClientBookingServlet.do"><p style="text-align:center">
+                    <input id="textboxid" type="SUBMIT" value="Book appintment" style="align-self: center">
+                    </p></form>                   
+                </div>
             </div>
         </div>
     </body>
