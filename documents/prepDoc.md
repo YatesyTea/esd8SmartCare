@@ -619,7 +619,6 @@ create table prescriptions(
     dosage int,
     cost float,
     reIssue int,
-    approved varchar(20)
 );
 
 
