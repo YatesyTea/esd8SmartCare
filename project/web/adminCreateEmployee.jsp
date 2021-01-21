@@ -16,27 +16,31 @@
     </head>
 </head>
 <body>
-    <form class="box" action="CreateEmployeeServlet.do" method="POST">
-            <h1>Sign Up</h1>
-            <h2>By Filling In Your Details</h2>
+    <form class="box" action="AddEmployeeServlet.do" method="POST">
+        <h1>Create Employee</h1>
+        <h2>By Filling In These Details</h2>
 
-            <input type="text" placeholder="Enter Name" name="name" id ="nameid" required>
+        <input type="text" placeholder="Enter Name" name="name" id ="nameid" required>
 
-            <input type="text" placeholder="Enter Address" name="address" id="address" required>
-            
-            <input type="date" placeholder="Enter DOB" name="dob" id="dob" required>
+        <input type="text" placeholder="Enter Address" name="address" id="address" required>
 
-            <input type="text" placeholder="Enter Username" name="username" id ="unameid" required>
+        <input type="date" placeholder="Enter DOB" name="dob" id="dob" required>
 
-            <input type="password" placeholder="Enter Password" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"required>
+        <input type="text" placeholder="Enter Username" name="username" id ="unameid" required>
 
-            <input type="password" placeholder="Confirm Password" name="password1" id="confirmPassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+        <input type="password" placeholder="Enter Password" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"required>
 
-            <label for="type">Employee Type:</label>
-            <select name ="type" id ="role_type">
-                <option value="doctor">Doctor</option>
-                <option value="nurse">Nurse</option>
-            </select>
-            <input type="submit" value="Create Employee">
+        <input type="password" placeholder="Confirm Password" name="password1" id="confirmPassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+
+        <label for="role">Employee Type:</label>
+        <select name ="role" id ="role">
+            <option value="doctor">Doctor</option>
+            <option value="nurse">Nurse</option>
+        </select>
+        <input type="submit" value="Create Employee">
+
+        <button onclick="location.href = 'adminDashboard.jsp';">
+            Back to Dashboard
+        </button>
 </body>
 </html>

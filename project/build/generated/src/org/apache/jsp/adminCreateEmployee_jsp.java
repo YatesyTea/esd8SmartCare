@@ -56,8 +56,8 @@ public final class adminCreateEmployee_jsp extends org.apache.jasper.runtime.Htt
       out.write("</head>\n");
       out.write("<body>\n");
       out.write("    <form class=\"box\" action=\"CreateEmployeeServlet.do\" method=\"POST\">\n");
-      out.write("            <h1>Sign Up</h1>\n");
-      out.write("            <h2>By Filling In Your Details</h2>\n");
+      out.write("            <h1>Create Employee</h1>\n");
+      out.write("            <h2>By Filling In These Details</h2>\n");
       out.write("\n");
       out.write("            <input type=\"text\" placeholder=\"Enter Name\" name=\"name\" id =\"nameid\" required>\n");
       out.write("\n");

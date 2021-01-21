@@ -10,21 +10,15 @@ package model;
  * @author carl
  */
 public class Employees {
-    private String id, name, address, dob, type;
 
-    public Employees(String id, String name, String address, String dob) {
-        this.id = id;
+    private String name, address, dob, type, uname;
+
+    public Employees(String name, String address, String dob, String uname) {
+
         this.name = name;
         this.address = address;
         this.dob = dob;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+        this.uname = uname;
     }
 
     public String getName() {
@@ -50,11 +44,17 @@ public class Employees {
     public void setDob(String dob) {
         this.dob = dob;
     }
-   
-    public String display(){
-        return "id: " + this.id + " name: " + this.name + " address: " 
+
+    public String getUname() {
+        return uname;
+    }
+
+    public void setUname(String uname) {
+        this.uname = uname;
+    }
+
+    public String display() {
+        return " name: " + this.name + " address: "
                 + this.address + " dob: " + this.dob + " type: " + this.type;
     }
 }
-    
-
