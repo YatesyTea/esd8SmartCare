@@ -20,8 +20,9 @@ public class Prescription {
     private float cost;
     private int dosage;
     private int reissue;
+    private String type;
 
-    public Prescription(int eid,int pid, String drug, String date, int dosage, float cost,int reissue) {
+    public Prescription(int eid,int pid, String drug, String date, int dosage, float cost,int reissue, String type) {
         
         this.pid = pid;
         this.drug = drug;
@@ -30,6 +31,7 @@ public class Prescription {
         this.dosage = dosage;
         this.reissue = reissue;
         this.eid = eid;
+        this.type = type;
         
     }
     
@@ -59,6 +61,11 @@ public class Prescription {
      public int getEid() {
         return eid;
     }
+     
+     public String getType() {
+        return type;
+    }
+
 
     public void setCid(int pid) {
         this.pid = pid;
@@ -83,8 +90,11 @@ public class Prescription {
         this.reissue = reissue;
     }
     
-     public void setEid(int eid) {
+    public void setEid(int eid) {
         this.eid = eid;
+    }
+    public void setType(String type) {
+        this.type = type;
     }
 
 }
