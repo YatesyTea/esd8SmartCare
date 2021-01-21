@@ -137,10 +137,13 @@ public class AppointmentBean {
                   
                 }
                 else{
+                    System.out.println("Called patient!!");
+                    System.out.println(id);
                     String query = "SELECT * FROM APPOINTMENT WHERE FK_PID=?";
+                    ps = con.prepareStatement(query);
                     ps.setInt(1, id);
                     
-                    rs = ps.executeQuery(query);
+                    rs = ps.executeQuery();
                 }
                 
                 ArrayList<Appointment> listAppointment = new ArrayList<>();
@@ -151,6 +154,7 @@ public class AppointmentBean {
                         String cID = rs.getString("FK_PID");
                         String sDate = rs.getString("ADATE");
                         String sTime = rs.getString("ATIME");
+                        System.out.println(sID);
 
                         Appointment appointment = new Appointment(sID, eID, cID, sDate, sTime);
                         listAppointment.add(appointment);
