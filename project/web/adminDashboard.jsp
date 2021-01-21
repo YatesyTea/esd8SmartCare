@@ -32,6 +32,10 @@
                     <form method="get" action="AdminEmployeesController.do"><p style="text-align:center">
                             <input id="textboxid" type="SUBMIT" value="Employees" style="align-self: center">
                         </p></form>
+                    <h1>Manage Patients</h1> 
+                    <form method="get" action="AdminPatientsServlet.do"><p style="text-align:center">
+                            <input id="textboxid" type="SUBMIT" value="Patients" style="align-self: center">
+                        </p></form>
 
                 </div>
             </div>
