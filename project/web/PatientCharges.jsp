@@ -22,6 +22,7 @@
         
             <table>
                 <tr>
+                    <th>ID</th>
                     <th>Patient ID</th>
                     <th>Date Issued</th>
                     <th>Amount</th>
@@ -30,6 +31,7 @@
                 <% 
                     for (int i = 0; i < charges.size(); i++) {
                         out.println("<tr>");
+                        out.println("<td>" + charges.get(i).getId() + "</td>");
                         out.println("<td>" + charges.get(i).getPatient_id() + "</td>");
                         out.println("<td>" + charges.get(i).getDate() + "</td>");
                         out.println("<td>" + charges.get(i).getCost() + "</td>");

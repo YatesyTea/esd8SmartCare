@@ -256,7 +256,8 @@ public class UsersBean {
         
         return user;
     }
-     public static int getEID(String un){
+    
+    public static int getEID(String un){
       
         int id1 = 5;
         try {
@@ -288,6 +289,7 @@ public class UsersBean {
             Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
            
             PreparedStatement ps = con.prepareStatement("SELECT PID FROM PATIENTS WHERE FK_UNAME=?");
+
             
             ps.setString(1, un);
             //Lookup user in db
@@ -305,6 +307,6 @@ public class UsersBean {
             System.out.print(e);
         }
         return id1;
- }
+    }
     
 }
