@@ -7,6 +7,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -37,7 +38,7 @@ public class AddEmployeeServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         DBEmployeesReturn eb = new DBEmployeesReturn("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
         UsersBean ub = new UsersBean("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
-        
+
         //Create parameter variables using inputs taken from sign up form
         String n = request.getParameter("name");
         String d = request.getParameter("dob");
@@ -46,14 +47,17 @@ public class AddEmployeeServlet extends HttpServlet {
         String p1 = request.getParameter("password1");
         String a = request.getParameter("address");
         String role = request.getParameter("role");
-        
+
         /*Create new instance of User and Employee using their appropriate 
          attributes in order to insert them into the database*/
-        Users user1 = new Users(u,p,role);
+        Users user1 = new Users(u, p, role);
         ub.addUser(user1);
-        Employees employee1 = new Employees(n,a,d,u);
+        Employees employee1 = new Employees(n, a, d, u);
         eb.addEmployee(employee1);
+        RequestDispatcher view = request.getRequestDispatcher("adminDashboard.jsp");
+        view.forward(request, response);
     }    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *
