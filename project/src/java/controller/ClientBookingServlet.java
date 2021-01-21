@@ -6,24 +6,14 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.PrescriptionBean;
-import model.Prescription;
-import controller.UsersServlet;
-import static model.PrescriptionBean.checkValid;
-import java.util.Date;  
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import controller.UsersServlet;
-import javax.servlet.http.Cookie;
-import model.UsersBean;
+//import model.AppointmentBean;
+import model.Users;
 
 
 /**
@@ -42,12 +32,22 @@ public class ClientBookingServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      * @throws java.text.ParseException
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, ParseException {
+   protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-    
+       // AppointmentBean ab = new AppointmentBean("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
        
-        }
+        
+        
+        String n = request.getParameter("name");
+        String u = request.getParameter("username");     
+        String a = request.getParameter("address");
+        String choice = request.getParameter("choice");
+        String t = request.getParameter("time");
+        String d = request.getParameter("date");
+        
+       
+       
      
 
   // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -96,5 +96,5 @@ public class ClientBookingServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
+   }
 }
