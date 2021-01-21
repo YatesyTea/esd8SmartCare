@@ -19,7 +19,7 @@
             <h1>Book an appointment </h1>
             <h2>By Filling In Your Details</h2>
 
-            <input type="text" placeholder="Enter Name" name="name" id ="nameid" required>
+            <input type="text" placeholder="Enter ID" name="name" id ="nameid" required>
 
             <input type="text" placeholder="Enter Address" name="address" id="address" required>
 
@@ -31,7 +31,7 @@
                 <option value="nurse">Nurse</option>
             </select>
             
-            <input type="text" placeholder="Select a date" name="date" id ="unameid" required>
+            <input type="text" placeholder="Select a date and time" name="date/time" id ="unameid" required>
             
             <input type="submit" value="submit">
 
