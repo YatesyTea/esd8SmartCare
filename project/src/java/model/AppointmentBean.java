@@ -171,14 +171,14 @@ public class AppointmentBean {
         
     }
     
-    public int deleteAppointment(String appointmentID) throws SQLException{
+    public int deleteAppointment(int appointmentID) throws SQLException{
         int flag = 0;
         try{
             if(connect()){
                 String query = "DELETE FROM APPOINTMENT WHERE SID=?";
 
                 ps = con.prepareStatement(query);
-                ps.setString(1, appointmentID);
+                ps.setInt(1, appointmentID);
                 flag = ps.executeUpdate();
 
                 ps.close();
@@ -215,6 +215,44 @@ public class AppointmentBean {
         }//try
         
         return flag;
+    }
+    
+    public Appointment getAppointment(int sid) throws SQLException{
+        Appointment a = null;
+        
+        try{
+            if(connect()){
+                String query = "SELECT * FROM APPOINTMENT WHERE SID=?";
+            
+                ps = con.prepareStatement(query);
+            
+                ps.setInt(1, sid);
+                ps.executeQuery();
+                
+                if(rs.next()){
+                    String sID = rs.getString("SID");
+                    String eID = rs.getString("FK_EID");
+                    String cID = rs.getString("FK_PID");
+                    String sDate = rs.getString("ADATE");
+                    String sTime = rs.getString("ATIME");
+                    
+                    a = new Appointment(sID, eID, cID, sDate, sTime);
+                    
+                }
+                
+                ps.close();
+                disconnect();   
+                
+                return a;
+                
+            }
+            
+        } catch (SQLException e) {
+            System.err.println("Error: " + e);    
+        }//try
+        
+        return null;
+    
     }
     
     

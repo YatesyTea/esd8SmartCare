@@ -36,8 +36,10 @@
                     <td><%=a.getcID()%></td>
                     <td><%=a.getAppointmentDate()%></td>
                     <td><%=a.getAppointmentTime()%></td>
-                    <td ><input type="Submit" value="Cancel"/></td>
+                    <td ><input type="Submit" name="action" value="Edit"/></td>
+                    <td ><input type="Submit" name="action" value="Cancel"/></td>
                     <input type="hidden" name="id" value="<%=a.getsID()%>"/>
+                    
                     
                 </tr>
                 

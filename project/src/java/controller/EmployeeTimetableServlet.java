@@ -45,22 +45,33 @@ public class EmployeeTimetableServlet extends HttpServlet {
             
             String employeeID = null;
             AppointmentBean b = new AppointmentBean("jdbc:derby://localhost:1527/smartcare", "administrator", "admin");
+            Appointment a;
             
             if (request.getMethod().equals("POST")){
-                String sid = request.getParameter("id");
                 
-                b.deleteAppointment(sid);
+                String action = request.getParameter("action");
+                int sid = Integer.parseInt(request.getParameter("id"));
+                
+                if (action.equals("Edit")){
+                    a = b.getAppointment(sid);
+                    
+                }
+                else if (action.equals("Cancel")){
+                    b.deleteAppointment(sid);
+                }
+                
             }
             
+            
+            //Get user id
             for (Cookie c: request.getCookies()){
                 if(c.getName().equals("test")){
                     employeeID = c.getValue();
                 }
             }
             
+            //Convert to int
             int eid = Integer.parseInt(employeeID);
-            
-            
             ArrayList<Appointment> appointments;
             appointments = b.getAllAppointmentByID(eid, "employee");
             
