@@ -67,7 +67,7 @@ public class DBEmployeesReturn {
         try{
             if(connect()){
                 //Format query
-                String query = "INSERT INTO EMPLOYEE(ENAME, EADDRESS, DOB, UNAME) VALUES('" + newEmployee.getName() + "','" +
+                String query = "INSERT INTO EMPLOYEE(ENAME, EADDRESS, EDOB, FK_UNAME) VALUES('" + newEmployee.getName() + "','" +
                         newEmployee.getAddress() + "','" + newEmployee.getDob() + "','" + newEmployee.getUname() + "' )";
 
                 //Add to db
