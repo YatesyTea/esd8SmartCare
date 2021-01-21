@@ -54,6 +54,7 @@ public class PrescriptionServlet extends HttpServlet {
         String dI = request.getParameter("date");
         int dsg = Integer.parseInt(request.getParameter("dosage"));
         int reI = Integer.parseInt(request.getParameter("reissue"));
+        String type = "NHS";
 
         String employeeID = null;
         for (Cookie c: request.getCookies()){
@@ -66,7 +67,7 @@ public class PrescriptionServlet extends HttpServlet {
         int eid = Integer.parseInt(employeeID);
         
         String valid = checkValid(pid,eid);
-        Prescription prescription1 = new Prescription(eid,pid,d,dI,dsg,cost,reI);
+        Prescription prescription1 = new Prescription(eid,pid,d,dI,dsg,cost,reI, type);
         //System.out.print(prescription1);
         
         if (valid != null) {

@@ -39,10 +39,11 @@ public class InvoiceController extends HttpServlet {
         String sur = request.getParameter("surgery");
         String dI = request.getParameter("date");   
         float c = Float.parseFloat(request.getParameter("cost"));
+        String type = "NHS";
         
         
         String valid = checkValid(pid,eid);
-        Invoice invoice1 = new Invoice(eid,pid,sur,dI,c);
+        Invoice invoice1 = new Invoice(eid,pid,sur,dI,c,type);
         System.out.print(invoice1);
         
         if (valid != null) {

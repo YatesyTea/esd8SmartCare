@@ -25,25 +25,37 @@
         <h2>Prescriptions</h2>
          <table>
             <tr>
-                <th>|Prescription|</th>
+                <th>Prescription|</th>
                 <th>Date Issued|</th>
                 <th>Cost|</th>
+                <th>Payment Type</th>
             </tr>
             
             <%
-                float prescriptionTotal = 0;
+                String type1 = "NHS";
+        
+                float NHSPrescriptionTotal = 0;
+                float PrivatePrescriptionTotal = 0;
                 for (int i = 0; i < prescription.size(); i++) {
                     out.println("<tr>");
                     out.println("<td>" + prescription.get(i).getDrug() + "</td>");
                     out.println("<td>" + prescription.get(i).getDate() + "</td>");
                     out.println("<td>" + prescription.get(i).getCost() + "</td>");
+                    out.println("<td>" + prescription.get(i).getType() + "</td>");
                     out.println("</tr>");
-                    prescriptionTotal = prescriptionTotal + prescription.get(i).getCost() ;
+                    boolean equalTo = type1.equals(prescription.get(i).getType());
+                    if (equalTo == true){
+                        NHSPrescriptionTotal = NHSPrescriptionTotal + prescription.get(i).getCost();
+                    } else
+                        PrivatePrescriptionTotal = PrivatePrescriptionTotal + prescription.get(i).getCost();
                 }   
             %>
         </table>
             <%
-                out.println("<tr>" + "Total Prescription Turnover: £" + prescriptionTotal + "</tr>");
+                out.println("<h4>" + "Total NHS Prescription Turnover: £" + NHSPrescriptionTotal + "</h4>");
+                out.println("<h4>" + "Total Private Prescription Turnover: £" + PrivatePrescriptionTotal + "</h4>" + "\n");
+                float TotalPrescriptionSum = NHSPrescriptionTotal + PrivatePrescriptionTotal;
+                out.println("<h4>" + "Total Prescription Turnover: £" + TotalPrescriptionSum + "</h4>");
             %>
         <h2>Operations</h2>
         <table>
@@ -51,28 +63,39 @@
                 <th>|Surgery|</th>
                 <th>Date Issued|</th>
                 <th>Cost|</th>
+                <th>Payment Type</th>
             </tr>
             
             <%
-                float operationsTotal = 0;
+                String type2 = "NHS";
+                float NHSOperationTotal = 0;
+                float PrivateOperationTotal = 0;
                 for (int j = 0; j < operations.size(); j++) {
                     out.println("<tr>");
                     out.println("<td>" + operations.get(j).getSurgery() + "</td>");
                     out.println("<td>" + operations.get(j).getDate() + "</td>");
                     out.println("<td>" + operations.get(j).getCost() + "</td>");
+                    out.println("<td>" + operations.get(j).getType() + "</td>");
                     out.println("</tr>");
-                    operationsTotal = operationsTotal + operations.get(j).getCost() ;
+                    boolean equalTo = type2.equals(operations.get(j).getType());
+                    if (equalTo == true){
+                        NHSOperationTotal = NHSOperationTotal + operations.get(j).getCost();
+                    } else
+                        PrivateOperationTotal = PrivateOperationTotal + operations.get(j).getCost();
                 }
             %>
         </table>
         <%
-                out.println("<tr>" + "Total Operations Turnover: £" + operationsTotal + "</tr>");
+                out.println("<h4>" + "Total NHS Operation Turnover: £" + NHSOperationTotal + "</h4>");
+                out.println("<h4>" + "Total Private Operation Turnover: £" + PrivateOperationTotal + "</h4>" + "\n");
+                float TotalOperationSum = NHSOperationTotal + PrivateOperationTotal;
+                out.println("<h4>" + "Total Operation Turnover: £" + TotalOperationSum + "</h4>");
             %>
         <h1>Weekly Turnover</h1>
         <%
                 float totalTurnover = 0;
-                totalTurnover = operationsTotal + prescriptionTotal;
-                out.println("<tr>" + "Total Operations Turnover: £" + totalTurnover + "</tr>");
+                totalTurnover = TotalOperationSum + TotalPrescriptionSum;
+                out.println("<h1>" + "Total Turnover: £" + totalTurnover + "</h1>");
             %>
         </div>
     </body>

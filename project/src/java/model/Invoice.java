@@ -12,16 +12,17 @@ package model;
 public class Invoice {
     
     private int id, patient_id, employee_id;
-    private String  date, surgery;
+    private String  date, surgery, type;
     private float cost;
 
-    public Invoice(int employee_id, int patient_id, String surgery, String date,  float cost) {
+    public Invoice(int employee_id, int patient_id, String surgery, String date,  float cost, String type) {
         //this.id = id;
         this.employee_id = employee_id;
         this.patient_id = patient_id;
         this.surgery = surgery;
         this.cost = cost;
         this.date = date;
+        this.type = type;
     }
 
     public String getSurgery() {
@@ -31,6 +32,15 @@ public class Invoice {
     public void setSurgery(String surgery) {
         this.surgery = surgery;
     }
+    
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
 
     public int getPatient_id() {
         return patient_id;

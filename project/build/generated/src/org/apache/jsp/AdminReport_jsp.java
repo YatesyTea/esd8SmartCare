@@ -63,33 +63,46 @@ public final class AdminReport_jsp extends org.apache.jasper.runtime.HttpJspBase
             ArrayList<Invoice> operations = (ArrayList<Invoice>)request.getAttribute("operation");
         
       out.write("\n");
+      out.write("        <div class=\"box\">\n");
       out.write("        <h1>Weekly Report</h1>\n");
       out.write("        <h1>Charges</h1>\n");
       out.write("        <h2>Prescriptions</h2>\n");
       out.write("         <table>\n");
       out.write("            <tr>\n");
-      out.write("                <th>|Prescription|</th>\n");
+      out.write("                <th>Prescription|</th>\n");
       out.write("                <th>Date Issued|</th>\n");
       out.write("                <th>Cost|</th>\n");
+      out.write("                <th>Payment Type</th>\n");
       out.write("            </tr>\n");
       out.write("            \n");
       out.write("            ");
 
-                float prescriptionTotal = 0;
+                String type1 = "NHS";
+        
+                float NHSPrescriptionTotal = 0;
+                float PrivatePrescriptionTotal = 0;
                 for (int i = 0; i < prescription.size(); i++) {
                     out.println("<tr>");
                     out.println("<td>" + prescription.get(i).getDrug() + "</td>");
                     out.println("<td>" + prescription.get(i).getDate() + "</td>");
                     out.println("<td>" + prescription.get(i).getCost() + "</td>");
+                    out.println("<td>" + prescription.get(i).getType() + "</td>");
                     out.println("</tr>");
-                    prescriptionTotal = prescriptionTotal + prescription.get(i).getCost() ;
+                    boolean equalTo = type1.equals(prescription.get(i).getType());
+                    if (equalTo == true){
+                        NHSPrescriptionTotal = NHSPrescriptionTotal + prescription.get(i).getCost();
+                    } else
+                        PrivatePrescriptionTotal = PrivatePrescriptionTotal + prescription.get(i).getCost();
                 }   
             
       out.write("\n");
       out.write("        </table>\n");
       out.write("            ");
 
-                out.println("<tr>" + "Total Prescription Turnover: " + prescriptionTotal + "</tr>");
+                out.println("<h4>" + "Total NHS Prescription Turnover: £" + NHSPrescriptionTotal + "</h4>");
+                out.println("<h4>" + "Total Private Prescription Turnover: £" + PrivatePrescriptionTotal + "</h4>" + "\n");
+                float TotalPrescriptionSum = NHSPrescriptionTotal + PrivatePrescriptionTotal;
+                out.println("<h4>" + "Total Prescription Turnover: £" + TotalPrescriptionSum + "</h4>");
             
       out.write("\n");
       out.write("        <h2>Operations</h2>\n");
@@ -116,18 +129,18 @@ public final class AdminReport_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        </table>\n");
       out.write("        ");
 
-                out.println("<tr>" + "Total Operations Turnover: " + operationsTotal + "</tr>");
+                out.println("<tr>" + "Total Operations Turnover: £" + operationsTotal + "</tr>");
             
       out.write("\n");
-      out.write("        <h1>Payments</h1>\n");
       out.write("        <h1>Weekly Turnover</h1>\n");
       out.write("        ");
 
                 float totalTurnover = 0;
-                totalTurnover = operationsTotal + prescriptionTotal;
-                out.println("<tr>" + "Total Operations Turnover: " + totalTurnover + "</tr>");
+                totalTurnover = operationsTotal + TotalPrescriptionSum;
+                out.println("<tr>" + "Total Operations Turnover: £" + totalTurnover + "</tr>");
             
       out.write("\n");
+      out.write("        </div>\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {
