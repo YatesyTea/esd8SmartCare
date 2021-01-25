@@ -618,7 +618,7 @@ create table prescriptions(
     dIssue date,
     dosage int,
     cost float,
-    reIssue int,
+    reIssue int
 );
 
 
